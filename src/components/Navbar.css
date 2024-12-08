@@ -36,3 +36,14 @@
     margin-left: 1rem;
     vertical-align: middle;
   }
+
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo-img {
+    height: 40px; /* Adjust to your design */
+    width: auto;  /* Maintain aspect ratio */
+    margin-right: 1rem; /* Add space between the logo and menu */
+  }
