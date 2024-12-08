@@ -4,7 +4,9 @@ import "./Navbar.css";
 function Navbar() {
   return (
     <nav className="navbar">
-      <div className="logo">Schoolify</div>
+      <div className="logo">
+        <img src="/SchoolifyT2ai.png" alt="Schoolify" className="logo-img"/>
+      </div>
       <div className="menu">
         <a href="#">Home</a>
         <a href="#">Resources</a>
