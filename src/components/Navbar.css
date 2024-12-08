@@ -1,0 +1,38 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #fbc02d;
+  }
+  
+  .navbar .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .navbar .menu a {
+    margin: 0 1rem;
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+  }
+  
+  .navbar .icons span {
+    margin-left: 1rem;
+    font-size: 1.5rem;
+  }
+
+  .icon-svg {
+    width: 24px;
+    height: 24px;
+    margin-left: 1rem;
+    vertical-align: middle;
+  }
+
+  .icon-svg1 {
+    width: 24px;
+    height: 24px;
+    margin-left: 1rem;
+    vertical-align: middle;
+  }
