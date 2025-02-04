@@ -1,0 +1,9 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file:///Users/sonalkethaka/Documents/Coursework/SDGP-NEXTJS/SDGP-FULL-FRONT-END-NEXT/schoolify/src/app/page.js"],"sourcesContent":["// src/app/page.js\nimport { redirect } from 'next/navigation';\n\nexport default function Home() {\n  redirect('/schoolifylanding');\n}"],"names":[],"mappings":"AAAA,kBAAkB;;;;AAClB;AAAA;;AAEe,SAAS;IACtB,CAAA,GAAA,qLAAA,CAAA,WAAQ,AAAD,EAAE;AACX"}},
+    {"offset": {"line": 17, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}},
+    {"offset": {"line": 28, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":""}},
+    {"offset": {"line": 28, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
+}
