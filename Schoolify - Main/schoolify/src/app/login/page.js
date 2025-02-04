@@ -23,6 +23,39 @@ export default function LoginPage() {
 
     const toggleVisibility = () => setIsVisible(!isVisible);
 
+    // const handleSubmit = async (event) => {
+    //     event.preventDefault();
+    //
+    //     const email = event.target.email.value;
+    //     const password = event.target.password.value;
+    //
+    //     try {
+    //         const response = await fetch('/api/auth/login', {
+    //             method: 'POST',
+    //             headers: { 'Content-Type': 'application/json' },
+    //             body: JSON.stringify({ email, password, role }),
+    //         });
+    //
+    //         const data = await response.json();
+    //
+    //         if (response.ok) {
+    //             // Store JWT token securely in localStorage
+    //             localStorage.setItem('token', data.token);
+    //
+    //             // Navigate to the main dashboard based on selected role
+    //             // router.push(`/main/${data.role}/dashboard`);
+    //             router.push(`/main/${data.role}/dashboard/?role=${data.role}`);
+    //         } else {
+    //             alert(data.message || 'Login failed, please check your credentials.');
+    //         }
+    //     } catch (error) {
+    //         alert('Error logging in. Please try again.');
+    //         console.error(error);
+    //     }
+    // };
+
+
+
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -39,11 +72,7 @@ export default function LoginPage() {
             const data = await response.json();
 
             if (response.ok) {
-                // Store JWT token securely in localStorage
                 localStorage.setItem('token', data.token);
-
-                // Navigate to the main dashboard based on selected role
-                // router.push(`/main/${data.role}/dashboard`);
                 router.push(`/main/${data.role}/dashboard/?role=${data.role}`);
             } else {
                 alert(data.message || 'Login failed, please check your credentials.');

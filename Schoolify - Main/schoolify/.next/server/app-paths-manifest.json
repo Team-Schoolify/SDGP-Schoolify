@@ -1,6 +1,14 @@
 {
+  "/login/page": "app/login/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/main/student/dashboard/page": "app/main/student/dashboard/page.js",
   "/page": "app/page.js",
   "/schoolifylanding/page": "app/schoolifylanding/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/login/page": "app/login/page.js"
+  "/main/student/assignments/page": "app/main/student/assignments/page.js",
+  "/main/student/gradebook/page": "app/main/student/gradebook/page.js",
+  "/main/student/attendance/page": "app/main/student/attendance/page.js",
+  "/main/student/event/page": "app/main/student/event/page.js",
+  "/main/student/resources/page": "app/main/student/resources/page.js",
+  "/main/parent/dashboard/page": "app/main/parent/dashboard/page.js",
+  "/main/parent/appointment/page": "app/main/parent/appointment/page.js"
 }
