@@ -23,6 +23,7 @@ export default function LoginPage() {
 
     const toggleVisibility = () => setIsVisible(!isVisible);
 
+
     // const handleSubmit = async (event) => {
     //     event.preventDefault();
     //
@@ -83,6 +84,13 @@ export default function LoginPage() {
             alert('Error logging in. Please try again.');
             console.error(error);
         }
+    };
+
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        // Navigate to the main page with the selected role
+        router.push(`/main/${role}/dashboard/?role=${role}`);
     };
 
     console.log(`this is the login ${role}`);
@@ -146,7 +154,10 @@ export default function LoginPage() {
                         <Input
                             isRequired
                             label="Email Address"
+
                             labelPlacement={"outside"}
+
+
                             name="email"
                             placeholder="Enter your email"
                             type="email"
@@ -198,6 +209,7 @@ export default function LoginPage() {
                         <p className="shrink-0 text-xs sm:text-sm text-gray-400">OR</p>
                         <Divider className="flex-1" />
                     </div>
+
                     {/*<div className="flex flex-col gap-2">*/}
                     {/*    <Button*/}
                     {/*        startContent={*/}
@@ -217,10 +229,32 @@ export default function LoginPage() {
                             Sign Up
                         </Link>
                     {/*</p>*/}
+
+                    <div className="flex flex-col gap-2">
+                        <Button
+                            startContent={
+                                <Icon
+                                    icon="flat-color-icons:google"
+                                    width={24}
+                                />
+                            }
+                            variant="bordered"
+                        >
+                            Continue with Google
+                        </Button>
+                    </div>
+                    <p className="text-center text-sm text-gray-400">
+                        Need to create an account?&nbsp;
+                        <Link href="#" size="sm" className="text-blue-500">
+                            Sign Up
+                        </Link>
+                    </p>
+
                 </div>
             </div>
         </div>
     );
+
 }
 
 
@@ -299,3 +333,5 @@ export default function LoginPage() {
 //         </div>
 //     );
 // }
+
+}
