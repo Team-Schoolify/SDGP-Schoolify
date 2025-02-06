@@ -24,6 +24,6 @@ module.exports = {
   plugins: [
     heroui(),
     require("@tailwindcss/forms"), 
-    require("@tailwindcss/typography"), 
+    require("@tailwindcss/typography"),
   ],
 };
