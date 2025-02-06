@@ -23,11 +23,76 @@ export default function LoginPage() {
 
     const toggleVisibility = () => setIsVisible(!isVisible);
 
+
+    // const handleSubmit = async (event) => {
+    //     event.preventDefault();
+    //
+    //     const email = event.target.email.value;
+    //     const password = event.target.password.value;
+    //
+    //     try {
+    //         const response = await fetch('/api/auth/login', {
+    //             method: 'POST',
+    //             headers: { 'Content-Type': 'application/json' },
+    //             body: JSON.stringify({ email, password, role }),
+    //         });
+    //
+    //         const data = await response.json();
+    //
+    //         if (response.ok) {
+    //             // Store JWT token securely in localStorage
+    //             localStorage.setItem('token', data.token);
+    //
+    //             // Navigate to the main dashboard based on selected role
+    //             // router.push(`/main/${data.role}/dashboard`);
+    //             router.push(`/main/${data.role}/dashboard/?role=${data.role}`);
+    //         } else {
+    //             alert(data.message || 'Login failed, please check your credentials.');
+    //         }
+    //     } catch (error) {
+    //         alert('Error logging in. Please try again.');
+    //         console.error(error);
+    //     }
+    // };
+
+
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        const email = event.target.email.value;
+        const password = event.target.password.value;
+
+        try {
+            const response = await fetch('/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password, role }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('school_id', data.school_id); // Save school_id
+                console.log(`schooooooooool id ${data.school_id}`);
+                router.push(`/main/${data.role}/dashboard/?role=${data.role}`);
+            } else {
+                alert(data.message || 'Login failed, please check your credentials.');
+            }
+        } catch (error) {
+            alert('Error logging in. Please try again.');
+            console.error(error);
+        }
+    };
+
+
     const handleSubmit = (event) => {
         event.preventDefault();
         // Navigate to the main page with the selected role
         router.push(`/main/${role}/dashboard/?role=${role}`);
     };
+
     console.log(`this is the login ${role}`);
 
     return (
@@ -89,6 +154,10 @@ export default function LoginPage() {
                         <Input
                             isRequired
                             label="Email Address"
+
+                            labelPlacement={"outside"}
+
+
                             name="email"
                             placeholder="Enter your email"
                             type="email"
@@ -140,6 +209,27 @@ export default function LoginPage() {
                         <p className="shrink-0 text-xs sm:text-sm text-gray-400">OR</p>
                         <Divider className="flex-1" />
                     </div>
+
+                    {/*<div className="flex flex-col gap-2">*/}
+                    {/*    <Button*/}
+                    {/*        startContent={*/}
+                    {/*            <Icon*/}
+                    {/*                icon="flat-color-icons:google"*/}
+                    {/*                width={24}*/}
+                    {/*            />*/}
+                    {/*        }*/}
+                    {/*        variant="bordered"*/}
+                    {/*    >*/}
+                    {/*        Continue with Google*/}
+                    {/*    </Button>*/}
+                    {/*</div>*/}
+                    {/*<p className="text-center text-sm text-gray-400">*/}
+                    {/*    Need to create an account?&nbsp;*/}
+                        <Link href="#" size="sm" className="text-blue-500">
+                            Sign Up
+                        </Link>
+                    {/*</p>*/}
+
                     <div className="flex flex-col gap-2">
                         <Button
                             startContent={
@@ -159,8 +249,89 @@ export default function LoginPage() {
                             Sign Up
                         </Link>
                     </p>
+
                 </div>
             </div>
         </div>
     );
+
+}
+
+
+
+//
+// "use client";
+//
+// import React, { useState } from "react";
+// import { useRouter } from "next/navigation";
+// import { Button, Input, Select, SelectItem, Form } from "@nextui-org/react";
+//
+// export default function LoginPage() {
+//     const [role, setRole] = useState("student");
+//     const router = useRouter();
+//     const schoolRole = [
+//         {key: "teacher", label: "Teacher"},
+//         {key: "student", label: "Student"},
+//         {key: "parent", label: "Parent"},
+//     ];
+//
+//     const handleSubmit = async (event) => {
+//         event.preventDefault();
+//
+//         const email = event.target.email.value;
+//         const password = event.target.password.value;
+//
+//         try {
+//             const response = await fetch('/api/auth/login', {
+//                 method: 'POST',
+//                 headers: { 'Content-Type': 'application/json' },
+//                 body: JSON.stringify({ email, password, role }),
+//             });
+//
+//             const data = await response.json();
+//
+//             if (response.ok) {
+//                 // Store JWT token & school_id
+//                 localStorage.setItem('token', data.token);
+//                 localStorage.setItem('school_id', data.school_id); // Save school_id
+//                 console.log(`schooooooooool id ${data.school_id}`);
+//
+//                 // Redirect user to their dashboard
+//                 router.push(`/main/${data.role}/dashboard/?role=${data.role}`);
+//             } else {
+//                 alert(data.message || 'Login failed, please check your credentials.');
+//             }
+//         } catch (error) {
+//             alert('Error logging in. Please try again.');
+//             console.error(error);
+//         }
+//     };
+//
+//     return (
+//         <div className="flex items-center justify-center min-h-screen bg-black">
+//             <div className="relative z-10 flex flex-col items-center w-full max-w-md px-6 py-8 bg-black border-1 border-gray-600 rounded-lg shadow-lg">
+//                 <h1 className="text-lg sm:text-xl font-medium text-white">Sign in to your account</h1>
+//
+//                 <Form onSubmit={handleSubmit} className="flex flex-col gap-3">
+//                     <Select
+//                         isRequired
+//                         label="Your Role"
+//                         selectedKeys={new Set([role])}
+//                         onSelectionChange={(keys) => setRole(Array.from(keys)[0])}
+//                     >
+//                         {schoolRole.map((schoolRole) => (
+//                             <SelectItem key={schoolRole.key}>{schoolRole.label}</SelectItem>
+//                         ))}
+//                     </Select>
+//
+//                     <Input isRequired label="Email Address" name="email" type="email" />
+//                     <Input isRequired label="Password" name="password" type="password" />
+//
+//                     <Button className="w-full" color="primary" type="submit">Sign In</Button>
+//                 </Form>
+//             </div>
+//         </div>
+//     );
+// }
+
 }

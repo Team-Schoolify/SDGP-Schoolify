@@ -28,7 +28,11 @@ export default function Subjects() {
         },
         {
             title: "Commerce",
+
+            img: "/img/commerce.png",
+
             img: "./img/commerce.png",
+
         },
         {
             title: "Music",
