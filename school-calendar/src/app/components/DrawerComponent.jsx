@@ -6,10 +6,12 @@ import CalendarComponent from "./CalendarComponent";
 
 export default function DrawerComponent() {
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
+    const {isOpen: isNestedOpen, onOpen: onNestedOpen, onOpenChange: onNestedOpenChange} = useDisclosure();
   
     return (
       <>
         <Button onPress={onOpen}>Open Drawer</Button>
+
         <Drawer isOpen={isOpen} onOpenChange={onOpenChange}>
           <DrawerContent>
             {(onClose) => (
@@ -39,13 +41,31 @@ export default function DrawerComponent() {
                   <Button color="danger" variant="light" onPress={onClose}>
                     Close
                   </Button>
-                  <Button color="primary" onPress={onClose}>
-                    Action
+                  <Button color="primary" onPress={onNestedOpen}>
+                    Add New Event
                   </Button>
                 </DrawerFooter>
               </>
             )}
           </DrawerContent>
+        </Drawer>
+
+        <Drawer isOpen={isNestedOpen} onOpenChange={onNestedOpenChange} disableAnimation={true} backdrop="transparent" placement="right">
+            <DrawerContent>
+                {(onNestedClose) => (
+                    <>
+                        <DrawerHeader className="flex flex-col gap-1">Add New Event</DrawerHeader>
+                            <DrawerBody>
+                                <p>Forum here</p>
+                            </DrawerBody>
+                            <DrawerFooter>
+                                <Button color="danger" variant="light" onPress={onNestedClose}>
+                                    Cancel
+                                </Button>
+                            </DrawerFooter>
+                    </>
+                )}
+            </DrawerContent>
         </Drawer>
       </>
     );
