@@ -1,6 +1,6 @@
 "use client";
 
-import {  Drawer,  DrawerContent,  DrawerHeader,  DrawerBody,  DrawerFooter, Button} from "@heroui/react";
+import {  Drawer,  DrawerContent,  DrawerHeader,  DrawerBody,  DrawerFooter, Button, Input, DatePicker, Checkbox, TimeInput} from "@heroui/react";
 import { useDisclosure } from "@heroui/react";
 import CalendarComponent from "./CalendarComponent";
 
@@ -56,11 +56,26 @@ export default function DrawerComponent() {
                     <>
                         <DrawerHeader className="flex flex-col gap-1">Add New Event</DrawerHeader>
                             <DrawerBody>
-                                <p>Forum here</p>
+
+                                <form className="flex flex-col gap-4">
+                                    <Input label="Event Title" placeholder="Add an event title" />
+                                    <DatePicker label="Event Date" />
+                                    <TimeInput label="Starting time"></TimeInput>
+                                    <TimeInput label="End time"></TimeInput>
+                                    {/* <DatePicker label="End Date" /> */}
+                                    <Checkbox>All Day</Checkbox>
+                                    <Checkbox>Repeat Event</Checkbox>
+                                    <Input label="Location" placeholder="Add a location" />
+                                    <Input label="Description" placeholder="Describe the event" />
+                                </form>
+
                             </DrawerBody>
                             <DrawerFooter>
                                 <Button color="danger" variant="light" onPress={onNestedClose}>
                                     Cancel
+                                </Button>
+                                <Button color="primary">
+                                    Save Event
                                 </Button>
                             </DrawerFooter>
                     </>
