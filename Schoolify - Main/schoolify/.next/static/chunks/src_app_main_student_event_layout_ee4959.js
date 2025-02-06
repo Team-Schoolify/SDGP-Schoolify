@@ -5,9 +5,9 @@
 (globalThis.TURBOPACK_CHUNK_LISTS = globalThis.TURBOPACK_CHUNK_LISTS || []).push({
   "path": "static/chunks/src_app_main_student_event_layout_ee4959.js",
   "chunks": [
-    "static/chunks/node_modules_b079bd._.js",
+    "static/chunks/node_modules_4ee840._.js",
     "static/chunks/src_app_371fce._.js",
-    "static/chunks/node_modules_@nextui-org_dom-animation_dist_index_mjs_a016c0._.js"
+    "static/chunks/node_modules_@nextui-org_dom-animation_dist_index_mjs_a1cd01._.js"
   ],
   "source": "dynamic"
 });

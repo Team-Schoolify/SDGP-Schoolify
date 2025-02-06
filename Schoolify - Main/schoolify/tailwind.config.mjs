@@ -16,6 +16,7 @@ export default {
   			customBlue: '#005AA0',
   			customWhite: '#F3F2FF',
   			customGreen: '#6CBC82',
+			customBlack: "#18181B",
   			customLightBlue: '#6598E5',
   			card: {
   				DEFAULT: 'hsl(var(--card))',

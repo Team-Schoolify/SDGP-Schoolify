@@ -28,7 +28,7 @@
     &quot;git-widget-placeholder&quot;: &quot;&lt;unknown&gt;&quot;,
     &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;22.4.1&quot;,
     &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;22.4.2&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/sonalkethaka/Documents/GitHub/SDGP-Schoolify/Schoolify - Main/schoolify&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/sonalkethaka/Documents/GitHub/SDGP-Schoolify/Schoolify - Main/schoolify/src/app/main/parent/appointment/book&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -47,11 +47,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/app/main/parent/appointment/book" />
+      <recent name="$PROJECT_DIR$/src/app/lib" />
       <recent name="$PROJECT_DIR$/src/app/teacher/gradebook" />
       <recent name="$PROJECT_DIR$/src/app/teacher/event" />
       <recent name="$PROJECT_DIR$/src/app/teacher/dashboard" />
-      <recent name="$PROJECT_DIR$/src/app/teacher/attendance" />
-      <recent name="$PROJECT_DIR$/src/app/teacher/assignments" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/app/main" />
@@ -123,7 +123,12 @@
       <workItem from="1738662193127" duration="64000" />
       <workItem from="1738669022564" duration="192000" />
       <workItem from="1738669239126" duration="963000" />
-      <workItem from="1738673716281" duration="10430000" />
+      <workItem from="1738673716281" duration="24908000" />
+      <workItem from="1738759063751" duration="18244000" />
+      <workItem from="1738784113952" duration="6784000" />
+      <workItem from="1738790925490" duration="3165000" />
+      <workItem from="1738832302445" duration="23231000" />
+      <workItem from="1738867863561" duration="3630000" />
     </task>
     <servers />
   </component>
