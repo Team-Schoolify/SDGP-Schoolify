@@ -2,6 +2,7 @@
 
 import {  Drawer,  DrawerContent,  DrawerHeader,  DrawerBody,  DrawerFooter, Button} from "@heroui/react";
 import { useDisclosure } from "@heroui/react";
+import CalendarComponent from "./CalendarComponent";
 
 export default function DrawerComponent() {
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
@@ -13,7 +14,8 @@ export default function DrawerComponent() {
           <DrawerContent>
             {(onClose) => (
               <>
-                <DrawerHeader className="flex flex-col gap-1">Drawer Title</DrawerHeader>
+                <DrawerHeader className="flex flex-col gap-1">School Calendar</DrawerHeader>
+                <CalendarComponent/>
                 <DrawerBody>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pulvinar risus non
