@@ -1,6 +1,6 @@
 "use client";
 
-import {  Drawer,  DrawerContent,  DrawerHeader,  DrawerBody,  DrawerFooter, Button, Input, DatePicker, Checkbox, TimeInput} from "@heroui/react";
+import {  Drawer,  DrawerContent,  DrawerHeader,  DrawerBody,  DrawerFooter, Button, Input, DatePicker, Checkbox, TimeInput, Card, CardBody, CardHeader, Divider} from "@heroui/react";
 import { useDisclosure } from "@heroui/react";
 import CalendarComponent from "./CalendarComponent";
 
@@ -16,27 +16,55 @@ export default function DrawerComponent() {
           <DrawerContent>
             {(onClose) => (
               <>
-                <DrawerHeader className="flex flex-col gap-1">School Calendar</DrawerHeader>
+                <DrawerHeader className="flex flex-col gap-1 justify-center items-center">School Calendar</DrawerHeader>
                 <CalendarComponent/>
-                <DrawerBody>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pulvinar risus non
-                    risus hendrerit venenatis. Pellentesque sit amet hendrerit risus, sed porttitor
-                    quam.
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pulvinar risus non
-                    risus hendrerit venenatis. Pellentesque sit amet hendrerit risus, sed porttitor
-                    quam.
-                  </p>
-                  <p>
-                    Magna exercitation reprehenderit magna aute tempor cupidatat consequat elit dolor
-                    adipisicing. Mollit dolor eiusmod sunt ex incididunt cillum quis. Velit duis sit
-                    officia eiusmod Lorem aliqua enim laboris do dolor eiusmod. Et mollit incididunt
-                    nisi consectetur esse laborum eiusmod pariatur proident Lorem eiusmod et. Culpa
-                    deserunt nostrud ad veniam.
-                  </p>
+                <br/><hr/>
+                {/* <h4>Upcoming Events</h4> */}
+                <DrawerBody className="flex flex-col gap-4 overflow-y-auto max-h-[50vh] px-4">
+                    <h3 className="text-lg font-semibold">Upcoming Events</h3>
+
+                    {/* <Card className="w-full p-4 shadow-md">
+                        <CardHeader>Card</CardHeader>
+                        <Divider />
+                        <CardBody> Content for Card</CardBody>
+                    </Card> */}
+
+                    <div className="flex flex-col gap-2">
+
+                        <Card className="w-full p-1">
+                        <CardHeader>Card 1</CardHeader>
+                        <Divider />
+                        <CardBody>Content for Card</CardBody>
+                        </Card>
+
+                        <Card className="w-full p-1">
+                        <CardHeader>Card 2</CardHeader>
+                        <Divider />
+                        <CardBody>Another Content</CardBody>
+                        </Card>
+
+                        <Card className="w-full p-1">
+                        <CardHeader>Card 3</CardHeader>
+                        <Divider />
+                        <CardBody>More Content</CardBody>
+                        </Card>
+
+                        <Card className="w-full p-1">
+                        <CardHeader>Card 3</CardHeader>
+                        <Divider />
+                        <CardBody>More Content</CardBody>
+                        </Card>
+
+                        <Card className="w-full p-1">
+                        <CardHeader>Card 3</CardHeader>
+                        <Divider />
+                        <CardBody>More Content</CardBody>
+                        </Card>
+
+                    </div>
+
                 </DrawerBody>
+                <hr/>            
                 <DrawerFooter>
                   <Button color="danger" variant="light" onPress={onClose}>
                     Close
