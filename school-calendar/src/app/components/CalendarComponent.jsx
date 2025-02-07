@@ -6,7 +6,7 @@ import {today, getLocalTimeZone} from "@internationalized/date";
 export default function CalendarComponent() {
   return (
     <div className="flex justify-center items-center">
-        <Calendar  calendarWidth={280} isReadOnly aria-label="Date (Read Only)" value={today(getLocalTimeZone())} />
+        <Calendar classNames={{cell: "your-custom-cell-class"}} calendarWidth={350} isReadOnly aria-label="Date (Read Only)" value={today(getLocalTimeZone())} />
     </div>
   )
 }
