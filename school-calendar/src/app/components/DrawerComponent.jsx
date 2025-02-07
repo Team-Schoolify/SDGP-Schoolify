@@ -1,12 +1,27 @@
 "use client";
 
-import {  Drawer,  DrawerContent,  DrawerHeader,  DrawerBody,  DrawerFooter, Button, Input, DatePicker, Checkbox, TimeInput, Card, CardBody, CardHeader, Divider} from "@heroui/react";
+import React, { useState } from "react";
+import {  Drawer,  DrawerContent,  DrawerHeader,  DrawerBody,  DrawerFooter, Button, Input, DatePicker, TimeInput, Card, CardBody, CardHeader, CardFooter, Divider, RadioGroup, Radio} from "@heroui/react";
 import { useDisclosure } from "@heroui/react";
 import CalendarComponent from "./CalendarComponent";
+import { Time } from "@internationalized/date";
 
 export default function DrawerComponent() {
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
     const {isOpen: isNestedOpen, onOpen: onNestedOpen, onOpenChange: onNestedOpenChange} = useDisclosure();
+    const [selectedOption, setSelectedOption] = useState("all-day");
+    const [startTime, setStartTime] = useState(new Time(0, 0));
+    const [endTime, setEndTime] = useState(new Time(23, 59));
+
+    const handleOptionChange = (value) => {
+        setSelectedOption(value);
+
+        if (value === "all-day") {
+          setStartTime(new Time(0, 0));
+          setEndTime(new Time(23, 59));
+        }
+
+    };
   
     return (
       <>
@@ -25,38 +40,43 @@ export default function DrawerComponent() {
                 </div>
                 <hr/>
 
-                <DrawerBody className="flex flex-col gap-4 overflow-y-auto max-h-[50vh] px-5">
+                <DrawerBody className="flex flex-col gap-4 overflow-y-scroll max-h-[50vh] px-5 scrollbar-hide">
                     
                     <div className="flex flex-col gap-2">
 
-                        <Card className="w-full p-1">
-                        <CardHeader>Card 1</CardHeader>
+                        <Card className="w-full p-1" classNames={{header: "text-sm", body: "text-sm"}}>
+                        <CardHeader className="pr-1 pb-2 pt-1 font-medium">Mathematics assignment</CardHeader>
                         <Divider />
-                        <CardBody>Content for Card</CardBody>
+                        <CardBody className="pb-0">Blank face in the windowpane. Made clear in seconds of life. Disappears and returns again. Counting hours searching the night.</CardBody>
+                        <CardFooter>Date: 24/02/2025 | Time: 1.30 PM - 4.30 PM</CardFooter>
                         </Card>
 
-                        <Card className="w-full p-1">
-                        <CardHeader>Card 2</CardHeader>
+                        <Card className="w-full p-1" classNames={{header: "text-sm", body: "text-sm"}}>
+                        <CardHeader className="pr-1 pb-2 pt-1 font-medium">Deshiya makkal shakthi</CardHeader>
                         <Divider />
-                        <CardBody>Another Content</CardBody>
+                        <CardBody className="pb-0">Kusata sagini hadata sogini inata warahali kabali ellaa</CardBody>
+                        <CardFooter>Date: 12/11/2025 | Time: All Day</CardFooter>
                         </Card>
 
-                        <Card className="w-full p-1">
-                        <CardHeader>Card 3</CardHeader>
+                        <Card className="w-full p-1" classNames={{header: "text-sm", body: "text-sm"}}>
+                        <CardHeader className="pr-1 pb-2 pt-1 font-medium">Rabada dabada rabada dabada</CardHeader>
                         <Divider />
-                        <CardBody>More Content</CardBody>
+                        <CardBody className="pb-0">Rambari kiyapan ube numbare</CardBody>
+                        <CardFooter>Deadline: 24/02/2025</CardFooter>
                         </Card>
 
-                        <Card className="w-full p-1">
-                        <CardHeader>Card 3</CardHeader>
+                        <Card className="w-full p-1" classNames={{header: "text-sm", body: "text-sm"}}>
+                        <CardHeader className="pr-1 pb-2 pt-1 font-medium">Mathematics assignment</CardHeader>
                         <Divider />
-                        <CardBody>More Content</CardBody>
+                        <CardBody className="pb-0">Blank face in the windowpane. Made clear in seconds of life. Disappears and returns again. Counting hours searching the night.</CardBody>
+                        <CardFooter>Deadline: 24/02/2025</CardFooter>
                         </Card>
 
-                        <Card className="w-full p-1">
-                        <CardHeader>Card 3</CardHeader>
+                        <Card className="w-full p-1" classNames={{header: "text-sm", body: "text-sm"}}>
+                        <CardHeader className="pr-1 pb-2 pt-1 font-medium">Mathematics assignment</CardHeader>
                         <Divider />
-                        <CardBody>More Content</CardBody>
+                        <CardBody className="pb-0">Blank face in the windowpane. Made clear in seconds of life. Disappears and returns again. Counting hours searching the night.</CardBody>
+                        <CardFooter>Deadline: 24/02/2025</CardFooter>
                         </Card>
 
                     </div>
@@ -84,12 +104,23 @@ export default function DrawerComponent() {
                             <DrawerBody>
 
                                 <form className="flex flex-col gap-4">
-                                    <Input label="Event Title" placeholder="Add an event title" />
-                                    <DatePicker label="Event Date" />
-                                    <Checkbox>All Day</Checkbox>
-                                    <Checkbox>Specific Time</Checkbox>
-                                    <TimeInput label="Starting time"></TimeInput>
-                                    <TimeInput label="End time"></TimeInput>
+                                    <Input isRequired label="Event Title" placeholder="Add an event title" />
+                                    <DatePicker format="dd/mm/yyyy" label="Event Date" isRequired />
+
+                                    <div className="flex flex-col gap-4">
+                                        <RadioGroup orientation="horizontal" value={selectedOption} onValueChange={handleOptionChange}>
+                                            <Radio value="all-day">All Day</Radio>
+                                            <Radio value="specific-time" >Specific Time</Radio>
+                                        </RadioGroup>
+
+                                        <TimeInput isRequired label="Starting time" isDisabled={selectedOption === "all-day"} value={startTime} onChange={setStartTime}></TimeInput>
+                                        <TimeInput isRequired label="End time" isDisabled={selectedOption === "all-day"} value={endTime} onChange={setEndTime}></TimeInput>
+
+                                    </div>
+                                    
+                                    
+
+                                    
                                     {/* <DatePicker label="End Date" /> */}
                                     
                                     
@@ -113,3 +144,5 @@ export default function DrawerComponent() {
       </>
     );
   }
+
+  
