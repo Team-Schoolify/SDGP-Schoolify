@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import {  Drawer,  DrawerContent,  DrawerHeader,  DrawerBody,  DrawerFooter, Button, Input, DatePicker, TimeInput, Card, CardBody, CardHeader, CardFooter, Divider, RadioGroup, Radio} from "@heroui/react";
+import {  Drawer,  DrawerContent,  DrawerHeader,  DrawerBody,  DrawerFooter, Button, Input, DatePicker, TimeInput, Card, CardBody, CardHeader, CardFooter, Divider, RadioGroup, Radio, Textarea} from "@heroui/react";
 import { useDisclosure } from "@heroui/react";
 import CalendarComponent from "./CalendarComponent";
 import { Time } from "@internationalized/date";
@@ -104,8 +104,8 @@ export default function DrawerComponent() {
                             <DrawerBody>
 
                                 <form className="flex flex-col gap-4">
-                                    <Input isRequired label="Event Title" placeholder="Add an event title" />
-                                    <DatePicker format="dd/mm/yyyy" label="Event Date" isRequired />
+                                    <Input isRequired label="Event Title" placeholder="Add an event title" maxLength={45} />
+                                    <DatePicker label="Event Date" isRequired />
 
                                     <div className="flex flex-col gap-4">
                                         <RadioGroup orientation="horizontal" value={selectedOption} onValueChange={handleOptionChange}>
@@ -124,8 +124,8 @@ export default function DrawerComponent() {
                                     {/* <DatePicker label="End Date" /> */}
                                     
                                     
-                                    <Input label="Location" placeholder="Add a location" />
-                                    <Input label="Description" placeholder="Describe the event" />
+                                    <Input label="Location" placeholder="Add a location" maxLength={45} />
+                                    <Textarea label="Description" placeholder="Describe the event" maxLength={315} minRows={1} maxRows={7} />
                                 </form>
 
                             </DrawerBody>
