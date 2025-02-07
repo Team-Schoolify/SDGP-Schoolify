@@ -12,23 +12,21 @@ export default function DrawerComponent() {
       <>
         <Button onPress={onOpen}>Open Drawer</Button>
 
-        <Drawer isOpen={isOpen} onOpenChange={onOpenChange}>
+        <Drawer isOpen={isOpen} size="md" onOpenChange={onOpenChange}>
           <DrawerContent>
             {(onClose) => (
               <>
                 <DrawerHeader className="flex flex-col gap-1 justify-center items-center">School Calendar</DrawerHeader>
                 <CalendarComponent/>
-                <br/><hr/>
-                {/* <h4>Upcoming Events</h4> */}
-                <DrawerBody className="flex flex-col gap-4 overflow-y-auto max-h-[50vh] px-4">
+
+                <br/>
+                <div className="sticky top-0 bg-white z-10 p-1 pl-4 pb-2">
                     <h3 className="text-lg font-semibold">Upcoming Events</h3>
+                </div>
+                <hr/>
 
-                    {/* <Card className="w-full p-4 shadow-md">
-                        <CardHeader>Card</CardHeader>
-                        <Divider />
-                        <CardBody> Content for Card</CardBody>
-                    </Card> */}
-
+                <DrawerBody className="flex flex-col gap-4 overflow-y-auto max-h-[50vh] px-5">
+                    
                     <div className="flex flex-col gap-2">
 
                         <Card className="w-full p-1">
@@ -82,17 +80,19 @@ export default function DrawerComponent() {
             <DrawerContent>
                 {(onNestedClose) => (
                     <>
-                        <DrawerHeader className="flex flex-col gap-1">Add New Event</DrawerHeader>
+                        <DrawerHeader className="flex flex-col gap-1 justify-center items-center">Add New Event</DrawerHeader>
                             <DrawerBody>
 
                                 <form className="flex flex-col gap-4">
                                     <Input label="Event Title" placeholder="Add an event title" />
                                     <DatePicker label="Event Date" />
+                                    <Checkbox>All Day</Checkbox>
+                                    <Checkbox>Specific Time</Checkbox>
                                     <TimeInput label="Starting time"></TimeInput>
                                     <TimeInput label="End time"></TimeInput>
                                     {/* <DatePicker label="End Date" /> */}
-                                    <Checkbox>All Day</Checkbox>
-                                    <Checkbox>Repeat Event</Checkbox>
+                                    
+                                    
                                     <Input label="Location" placeholder="Add a location" />
                                     <Input label="Description" placeholder="Describe the event" />
                                 </form>
