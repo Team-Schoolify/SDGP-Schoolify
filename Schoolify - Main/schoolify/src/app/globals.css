@@ -9,11 +9,7 @@ body {
     width: 100% !important;
     min-height: 100% !important;
     box-sizing: border-box;
-
     background-color: black;
-
-    background-color: #F3F3FF;
-
 }
 #root {
     max-width: 1280px;
@@ -52,26 +48,6 @@ body {
 .fade-out {
     animation: fadeOut 0.5s ease-in-out forwards;
 }
-
-
-/*:root {*/
-/*  --background: #ffffff;*/
-/*  --foreground: #171717;*/
-/*}*/
-
-/*@media (prefers-color-scheme: dark) {*/
-/*  :root {*/
-/*    --background: #b60c0c;*/
-/*    --foreground: #ededed;*/
-/*  }*/
-/*}*/
-
-/*body {*/
-/*  color: var(--foreground);*/
-/*  background: var(--background);*/
-/*  font-family: Arial, Helvetica, sans-serif;*/
-/*}*/
-
 @layer base {
   :root {
         --background: 0 0% 100%;
@@ -141,4 +117,3 @@ body {
         @apply font-bold text-4xl md:text-5xl text-center;
     }
 }
-
