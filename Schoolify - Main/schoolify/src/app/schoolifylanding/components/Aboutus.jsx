@@ -23,7 +23,7 @@ export default function Aboutus (){
                     <div>
                         <div className="mb-10">
                             <h1 className="text-4xl text-black font-sans font-bold relative inline-block">
-                                About Us
+                                About Ussss
                                 <span
                                     className="absolute bottom-[-4px] left-0 w-1/2 h-[3px] bg-gradient-to-r from-blue-500 to-blue-200"
                                     style={{
