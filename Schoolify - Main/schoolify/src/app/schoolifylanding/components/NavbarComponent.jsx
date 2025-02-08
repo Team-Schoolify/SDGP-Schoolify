@@ -141,6 +141,7 @@ export default function NavbarComponent() {
 
                         <Button as={NextLink} href="/login" color="white" variant="flat" className="bg-customBlue">
                                 Log In
+                        </Button>
 
                         <Button as={NextLink} href="/login" color="primary" variant="flat" className="bg-customBlue">
                                 Register
