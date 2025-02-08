@@ -11,9 +11,9 @@
     "static/chunks/node_modules_@nextui-org_shared-utils_dist_b88aa9._.js",
     "static/chunks/node_modules_@react-aria_ec2cfc._.js",
     "static/chunks/node_modules_@nextui-org_6c56fe._.js",
-    "static/chunks/node_modules_a69cd2._.js",
+    "static/chunks/node_modules_b04621._.js",
     "static/chunks/src_app_88f68a._.js",
-    "static/chunks/node_modules_@nextui-org_dom-animation_dist_index_mjs_a7736f._.js"
+    "static/chunks/node_modules_@nextui-org_dom-animation_dist_index_mjs_7310ee._.js"
   ],
   "source": "dynamic"
 });

@@ -1,9 +1,4 @@
 {
-  "/page": "app/page.js",
-  "/schoolifylanding/page": "app/schoolifylanding/page.js",
-  "/login/page": "app/login/page.js",
-  "/main/parent/dashboard/page": "app/main/parent/dashboard/page.js",
-  "/main/parent/appointment/page": "app/main/parent/appointment/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/_not-found/page": "app/_not-found/page.js"
+  "/main/teacher/appointment/page": "app/main/teacher/appointment/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js"
 }

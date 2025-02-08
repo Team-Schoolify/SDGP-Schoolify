@@ -6,7 +6,7 @@ import { Button, Input, Checkbox, Link, Form, Divider } from "@nextui-org/react"
 import { Icon } from "@iconify/react";
 import { AcmeIcon } from "./AcmeIcon";
 import NextLink from "next/link";
-
+import { jwtDecode } from "jwt-decode";
 import {Select, SelectItem} from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 export const schoolRole = [
@@ -22,6 +22,8 @@ export default function LoginPage() {
     const router = useRouter();
 
     const toggleVisibility = () => setIsVisible(!isVisible);
+
+
 
 
     // const handleSubmit = async (event) => {
@@ -57,6 +59,7 @@ export default function LoginPage() {
 
 
 
+
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -71,11 +74,28 @@ export default function LoginPage() {
             });
 
             const data = await response.json();
+            console.log("Full API Response:", data);
 
             if (response.ok) {
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('school_id', data.school_id); // Save school_id
                 console.log(`schooooooooool id ${data.school_id}`);
+
+                const decodedToken = jwtDecode(data.token);
+                console.log("Decoded Token:", decodedToken);
+
+                const decodedData = decodedToken.id; // Extract user ID from token
+
+                // Save the correct user ID based on role
+                if (role === "student") {
+                    localStorage.setItem('student_id', decodedData);
+                } else if (role === "teacher") {
+                    localStorage.setItem('teacher_id', decodedData);
+                } else if (role === "parent") {
+                    localStorage.setItem('parent_id', decodedData);
+                }
+
+                console.log(`User ID (${role}): ${decodedData}`);
                 router.push(`/main/${data.role}/dashboard/?role=${data.role}`);
             } else {
                 alert(data.message || 'Login failed, please check your credentials.');
