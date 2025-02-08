@@ -15,6 +15,10 @@ export const SessionEdit = () => {
     const [isFridayAvailable, setIsFridayAvailable] = useState(false);
     const [isTeacherAvailable, setIsTeacherAvailable] = useState(false);
 
+    const [isDisabled, setIsDisabled] = useState(false);
+    const [isWednesdayDisabled, setIsWednesdayDisabled] = useState(false);
+    const [isFridayDisabled, setIsFridayDisabled] = useState(false);
+
 
     useEffect(() => {
         if (typeof window !== "undefined") {
@@ -187,8 +191,20 @@ export const SessionEdit = () => {
     };
 
 
-    // Function to update time in state
+    const formatTimeSlot = (timeSlot) => {
+        if (typeof timeSlot === "string") {
+            return timeSlot; // Already formatted
+        }
+        if (typeof timeSlot === "object" && timeSlot !== null) {
+            const { hour, minute } = timeSlot;
+            if (hour !== null && minute !== null) {
+                return `${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}`;
+            }
+        }
+        return null; // Invalid format
+    };
 
+    // Function to update time in state
     const handleTimeChange = (day, index, newTime) => {
         const formattedTime = `${newTime.hour.toString().padStart(2, "0")}:${newTime.minute.toString().padStart(2, "0")}`;
 
@@ -224,8 +240,15 @@ export const SessionEdit = () => {
             return;
         }
 
+        // const updates = validTimeslots.map(async (slot) => {
+        //     const formattedTime = slot.time_slot; // Already formatted in "HH:MM"
         const updates = validTimeslots.map(async (slot) => {
-            const formattedTime = slot.time_slot; // Already formatted in "HH:MM"
+            const formattedTime = formatTimeSlot(slot.time_slot);
+
+            if (!formattedTime) {
+                console.error(`❌ Invalid time format for slot ID ${slot.id}:`, slot.time_slot);
+                return `Invalid format for slot ID ${slot.id}`;
+            }
 
             console.log(`⏳ Updating slot ID ${slot.id} -> ${formattedTime}`);
 
@@ -254,7 +277,76 @@ export const SessionEdit = () => {
         }
     };
 
+    // To disable availability Switch
+    useEffect(() => {
+        const updateAvailability = () => {
+            const now = new Date();
+            const day = now.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
 
+            // 🚀 Saturday: Switch is ALWAYS enabled
+            if (day === 6) {
+                setIsDisabled(false);
+                return;
+            }
+
+            // ❌ Sunday 00:00 - Tuesday 23:59: Switch is ALWAYS disabled
+            if (day === 0 || day === 1 || day === 2) {
+                setIsDisabled(true);
+                setIsTeacherAvailable(false); // Auto-disable if inside restriction period
+                return;
+            }
+
+            // ✅ Tuesday 00:00 - Saturday 23:59:
+            if (day >= 2 && day <= 5) {
+                if (!isTeacherAvailable) {
+                    setIsDisabled(false); // Allow enabling
+                } else {
+                    setIsDisabled(true); // If already enabled, disable it
+                }
+                return;
+            }
+
+            // Default case (should never be reached)
+            setIsDisabled(false);
+        };
+
+        updateAvailability(); // Run on mount
+        const interval = setInterval(updateAvailability, 60000); // Check every minute
+
+        return () => clearInterval(interval); // Cleanup on unmount
+    }, [isTeacherAvailable]); // React to teacher availability changes
+
+    //Wednesday disable switch
+    useEffect(() => {
+        const updateWednesdayAvailability = () => {
+            const now = new Date();
+            const day = now.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+
+            // ✅ Enable switch only on Tuesday
+            setIsWednesdayDisabled(day !== 2);
+        };
+
+        updateWednesdayAvailability(); // Run on mount
+        const interval = setInterval(updateWednesdayAvailability, 60000); // Check every minute
+
+        return () => clearInterval(interval); // Cleanup on unmount
+    }, []);
+
+    //Friday disable switch
+    useEffect(() => {
+        const updateFridayAvailability = () => {
+            const now = new Date();
+            const day = now.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+
+            // ✅ Enable switch only on Tuesday
+            setIsFridayDisabled(day !== 5);
+        };
+
+        updateFridayAvailability(); // Run on mount
+        const interval = setInterval(updateFridayAvailability, 60000); // Check every minute
+
+        return () => clearInterval(interval); // Cleanup on unmount
+    }, []);
 
     return (
         <div className="mt-10">
@@ -267,6 +359,7 @@ export const SessionEdit = () => {
                 <div className="justify-center mb-4">
                     <Switch
                         isSelected={isTeacherAvailable}
+                        isDisabled={isDisabled}
                         onValueChange={(value) => handleTeacherAvailability(value)}
                         size="md"
                         classNames={{
@@ -304,6 +397,7 @@ export const SessionEdit = () => {
                         <div className="justify-center mt-3 mb-3">
                             <Switch
                                 isSelected={isWednesdayAvailable}
+                                isDisabled={isWednesdayDisabled}
                                 onValueChange={(value) => handleAvailabilityChange("wednesday", value)}
                                 size="md"
                                 classNames={{
@@ -379,6 +473,7 @@ export const SessionEdit = () => {
                         <div className="justify-center mt-3 mb-3">
                             <Switch
                                 isSelected={isFridayAvailable}
+                                isDisabled={isFridayDisabled}
                                 onValueChange={(value) => handleAvailabilityChange("friday", value)}
                                 size="md"
                                 classNames={{
@@ -420,7 +515,7 @@ export const SessionEdit = () => {
                                 {fridayTimeslots.length > 0 ? (
                                     fridayTimeslots.map((time, index) => (
                                         <TimeInput
-                                            key={`wednesday-${index}`}
+                                            key={`friday-${index}`}
                                             defaultValue={
                                                 typeof time.time_slot === "string"
                                                     ? new Time(...time.time_slot.split(":").map(Number))  // Convert "HH:MM" string to Time object
@@ -428,16 +523,17 @@ export const SessionEdit = () => {
                                             } granularity="minute"
                                             hourCycle={24}
                                             label={`Time Slot ${index + 1}`}
-                                            onChange={(newTime) => handleTimeChange("wednesday", index, newTime)}
+                                            onChange={(newTime) => handleTimeChange("friday", index, newTime)}
                                         />
                                     ))
                                 ) : (
-                                    <p className="text-gray-400 text-sm">No time slots available for Wednesday.</p>
+                                    <p className="text-gray-400 text-sm">No time slots available for Friday.</p>
                                 )}
 
                                 <div className="flex justify-end gap-4 mt-4">
                                     <Button variant="bordered"
-                                            color="warning" type="submit"
+                                            color="warning"
+                                            type="submit"
                                     >
                                         Save
                                     </Button>
