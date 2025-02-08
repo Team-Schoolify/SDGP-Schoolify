@@ -138,8 +138,13 @@ export default function NavbarComponent() {
                 {/* Login & Signup */}
                 <NavbarContent justify="end" className="hidden sm:flex">
                     <NavbarItem>
+
                         <Button as={NextLink} href="/login" color="white" variant="flat" className="bg-customBlue">
                                 Log In
+
+                        <Button as={NextLink} href="/login" color="primary" variant="flat" className="bg-customBlue">
+                                Register
+
                         </Button>
                     </NavbarItem>
                 </NavbarContent>

@@ -68,7 +68,11 @@ export default function MainNavbar() {
     return (
         <>
             <Navbar
+
                 className="bg-customBlue bg-opacity-60 text-black shadow-md rounded-2xl"
+
+                className="bg-customBlue bg-opacity-60 text-black shadow-md fixed"
+
                 isBordered
                 shouldHideOnScroll
             >
