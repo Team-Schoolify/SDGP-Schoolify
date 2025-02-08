@@ -8,23 +8,44 @@ import {TrashIcon} from "@heroicons/react/24/outline";
 const Session = () => {
 
     const [sessions, setSessions] = useState([]);
+    const [parentId, setParentId] = useState(null); // Store school_id in state
 
     useEffect(() => {
-        const fetchSessions = async () => {
-            const { data, error } = await supabase
-                .from("sessions")
-                .select("*") // Select all session data
-                .order("id", { ascending: false }); // Show latest sessions first
+        // Ensure localStorage is accessed only in the browser
+        if (typeof window !== "undefined") {
+            const storedParentId = localStorage.getItem("parent_id");
+            setParentId(storedParentId);
+            console.log("parent:",storedParentId);
+        }
+    }, []);
 
-            if (error) {
-                console.error("Error fetching sessions:", error);
-            } else {
-                setSessions(data);
+    useEffect(() => {
+        if (!parentId) {
+            console.warn("⚠️ Skipping session fetch - parentId is missing.");
+            return;
+        }
+
+        const fetchSessions = async () => {
+            try {
+                const { data, error } = await supabase
+                    .from("sessions")
+                    .select("*")
+                    .eq("parent_session_id", parentId) // Only filter if parentId exists
+                    .order("id", { ascending: false });
+
+                if (error) {
+                    console.error("❌ Error fetching sessions:", error);
+                } else {
+                    setSessions(data || []);
+                    console.log("✅ Fetched Sessions:", data);
+                }
+            } catch (err) {
+                console.error("Unexpected error fetching sessions:", err);
             }
         };
 
         fetchSessions();
-    }, []);
+    }, [parentId]); // Runs only when parentId changes
 
     const handleDelete = async (sessionId, selectedTime, selectedDate, teacherSessionId) => {
         const confirmDelete = window.confirm("Are you sure you want to delete this session?");

@@ -23,12 +23,16 @@ const Booking = () => {
         teacherId:"",
         teacherName: "",
         teacherLink: "",
+        teacherPhoto:"",
         selectedTime: "",
         selectedDate: "",
         selectedDay: "",
-        teacherPhoto:"",
+        sessionParentId:"",
         parentName: "",
+        parentPhoto:"",
         studentName: "",
+        studentId:"",
+        studentGrade:"",
     });
     useEffect(() => {
         console.log("Updated useeffect Form Data:", formData);
@@ -42,6 +46,8 @@ const Booking = () => {
         onOpen();
     };
 
+    const [parentId, setParentId] = useState(null); // Store school_id in state
+
     const [timeSlots, setTimeSlots] = useState({}); // Store time slots per teacher
     const [teachers, setTeachers] = useState([]);
     const [disabledKeys, setDisabledKeys] = useState([]); // Store disabled teacher IDs
@@ -51,8 +57,9 @@ const Booking = () => {
         // Ensure localStorage is accessed only in the browser
         if (typeof window !== "undefined") {
             const storedSchoolId = localStorage.getItem("school_id");
-            console.log(storedSchoolId);
+            const storedParentId = localStorage.getItem("parent_id");
             setSchoolId(storedSchoolId);
+            setParentId(storedParentId);
         }
     }, []);
 
@@ -119,6 +126,75 @@ const Booking = () => {
         }
     }, [teachers]); // Runs after teachers are fetched
 
+    // Fetch parent details (parent_name & student_id)
+    useEffect(() => {
+        const fetchParentDetails = async () => {
+            if (!parentId) return;
+
+            try {
+                const { data, error } = await supabase
+                    .from("parent")
+                    .select("parent_name, student_id, parent_email, photo")
+                    .eq("parent_id", parentId)
+                    .single(); // Fetch only one row
+
+                if (error) {
+                    console.error("❌ Error fetching parent details:", error);
+                    return;
+                }
+
+                if (data) {
+                    console.log("✅ Parent Details:", data);
+                    setFormData((prev) => ({
+                        ...prev,
+                        parentName: data.parent_name,
+                        parentPhoto: data.photo,
+                        studentId: data.student_id, // Store student_id to fetch student details
+                    }));
+                }
+            } catch (err) {
+                console.error("❌ Unexpected error fetching parent details:", err);
+            }
+        };
+
+        fetchParentDetails();
+    }, [parentId]); // Runs when parentId is available
+
+    // Fetch student details (student_name & grade) after studentId is retrieved
+    useEffect(() => {
+        const fetchStudentDetails = async () => {
+            console.log("formdatastudent", formData.studentId)
+            if (!formData.studentId) return;
+
+            try {
+                const { data, error } = await supabase
+                    .from("student")
+                    .select("student_name, student_grade")
+                    .eq("student_id", formData.studentId)
+                    .single(); // Fetch only one row
+
+                if (error) {
+                    console.error("❌ Error fetching student details:", error);
+                    return;
+                }
+
+                if (data) {
+                    console.log("✅ Student Details:", data);
+                    setFormData((prev) => ({
+                        ...prev,
+                        studentName: data.student_name,
+                        studentGrade: data.student_grade,
+                    }));
+                }
+            } catch (err) {
+                console.error("❌ Unexpected error fetching student details:", err);
+            }
+        };
+
+        fetchStudentDetails();
+    }, [formData.studentId]); // Runs when studentId is available
+
+
 
     const handleSubmit = async (event) => {
         event.preventDefault(); // Prevent page reload
@@ -141,6 +217,11 @@ const Booking = () => {
                         selected_date: formData.selectedDate,
                         teacher_photo: formData.teacherPhoto,
                         selected_day_name: formData.selectedDay,
+                        parent_session_id: formData.sessionParentId,
+                        parent_name: formData.parentName,
+                        parent_photo: formData.parentPhoto,
+                        student_grade: formData.studentGrade,
+                        student_name: formData.studentName,
                     },
                 ]);
 
@@ -327,6 +408,7 @@ const Booking = () => {
                                                                         teacherLink: teacher.link,
                                                                         teacherId: teacher.teacher_id,
                                                                         teacherPhoto: teacher.photo,
+                                                                        sessionParentId: parentId,
                                                                     }));
                                                                 }}
                                                             >
@@ -346,22 +428,26 @@ const Booking = () => {
 
 
                                                             <Input
+                                                                isDisabled={true}
                                                                 isRequired
                                                                 className="w-full"
-                                                                placeholder="Kamala"
+                                                                // placeholder={formData.parent_name}
                                                                 label="Parent Name"
                                                                 labelPlacement={"outside"}
                                                                 type="name"
-                                                                onChange={(e) => setFormData((prev) => ({ ...prev, yourName: e.target.value }))}
+                                                                defaultValue={formData.parentName}
+                                                                // onChange={(e) => setFormData((prev) => ({ ...prev, yourName: e.target.value }))}
                                                             />
                                                             <Input
+                                                                isDisabled={true}
                                                                 isRequired
                                                                 className="w-full"
-                                                                placeholder="Saman"
+                                                                // placeholder={formData.student_name}
                                                                 label="Student Name"
                                                                 labelPlacement={"outside"}
                                                                 type="name"
-                                                                onChange={(e) => setFormData((prev) => ({ ...prev, studentName: e.target.value }))}
+                                                                defaultValue={formData.studentName}
+                                                                // onChange={(e) => setFormData((prev) => ({ ...prev, studentName: e.target.value }))}
                                                             />
                                                             <Textarea
                                                                 minRows={6}
