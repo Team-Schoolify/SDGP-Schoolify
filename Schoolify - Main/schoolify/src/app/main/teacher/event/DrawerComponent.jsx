@@ -18,7 +18,8 @@ import {  Drawer,
     RadioGroup, 
     Radio, 
     Textarea, 
-    Calendar} 
+    Calendar
+    } 
     from "@heroui/react";
 
 import { useDisclosure } from "@heroui/react";
@@ -88,6 +89,12 @@ export default function DrawerComponent() {
 
     };
 
+    // Delete event cards
+    const handleDeleteEvent = (eventIndex) => {
+        const updatedEvents = events.filter((_, index) => index !== eventIndex);
+        setEvents(updatedEvents);
+    };
+
 
   
     return (
@@ -131,7 +138,21 @@ export default function DrawerComponent() {
                         ) : (
                             events.map((event, index) => (
                                 <Card key={index} className="w-full p-1" classNames={{ header: "text-sm", body: "text-sm" }}>
-                                    <CardHeader className="pr-1 pb-2 pt-1 font-medium">{event.title}</CardHeader>
+
+                                    <CardHeader className="pr-1 pb-2 pt-1 font-medium flex justify-between items-center">
+                                        {event.title}
+
+                                        {/* Delete Button */}
+                                        <Button 
+                                            color="none"
+                                            size="sm" 
+                                            onPress={() => handleDeleteEvent(index)}
+                                        >
+                                            Delete
+                                        </Button>
+
+                                        </CardHeader>
+
                                     <Divider />
                                     <CardBody className="pb-0">{event.description}</CardBody>
                                     <CardFooter>
@@ -262,7 +283,21 @@ export default function DrawerComponent() {
                                     ) : (
                                         events.map((event, index) => (
                                             <Card key={index} className="w-full p-1" classNames={{ header: "text-sm", body: "text-sm" }}>
-                                                <CardHeader className="pr-1 pb-2 pt-1 font-medium">{event.title}</CardHeader>
+
+                                                <CardHeader className="pr-1 pb-2 pt-1 font-medium flex justify-between items-center">
+                                                    {event.title}
+
+                                                    {/* Delete Button */}
+                                                    <Button 
+                                                        color="none"
+                                                        size="sm" 
+                                                        onPress={() => handleDeleteEvent(index)}
+                                                    >
+                                                        Delete
+                                                    </Button>
+                                                    
+                                                    </CardHeader>
+
                                                 <Divider />
                                                 <CardBody className="pb-0">{event.description}</CardBody>
                                                 <CardFooter>
