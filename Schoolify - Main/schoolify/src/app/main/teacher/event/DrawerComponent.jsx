@@ -28,6 +28,7 @@ export default function DrawerComponent() {
     // Disclosure hooks for main and nested drawers
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
     const {isOpen: isNestedOpen, onOpen: onNestedOpen, onOpenChange: onNestedOpenChange} = useDisclosure();
+    const { isOpen: isViewAllOpen, onOpen: onViewAllOpen, onOpenChange: onViewAllChange } = useDisclosure();
     
     // Form fields states
     const [selectedOption, setSelectedOption] = useState("all-day");
@@ -110,8 +111,14 @@ export default function DrawerComponent() {
                 </div>
 
                 <br/>
-                <div className="sticky top-0 bg-white z-10 p-1 pl-4 pb-2">
+                <div className="sticky top-0 z-10 p-1 pl-4 pb-2 flex justify-between items-center">
                     <h3 className="text-lg font-semibold">Upcoming Events</h3>
+                    <div className="pr-1">
+                        <Button radius="full" color="primary" variant="light" size="sm" onPress={onViewAllOpen}>
+                            View All
+                        </Button>
+                    </div>
+                    
                 </div>
                 <hr/>
 
@@ -133,41 +140,6 @@ export default function DrawerComponent() {
                                 </Card>
                         ))
                         )}
-
-                        {/* <Card className="w-full p-1" classNames={{header: "text-sm", body: "text-sm"}}>
-                        <CardHeader className="pr-1 pb-2 pt-1 font-medium">Mathematics assignment</CardHeader>
-                        <Divider />
-                        <CardBody className="pb-0">Blank face in the windowpane. Made clear in seconds of life. Disappears and returns again. Counting hours searching the night.</CardBody>
-                        <CardFooter>Date: 24/02/2025 | Time: 1.30 PM - 4.30 PM</CardFooter>
-                        </Card>
-
-                        <Card className="w-full p-1" classNames={{header: "text-sm", body: "text-sm"}}>
-                        <CardHeader className="pr-1 pb-2 pt-1 font-medium">Deshiya makkal shakthi</CardHeader>
-                        <Divider />
-                        <CardBody className="pb-0">Kusata sagini hadata sogini inata warahali kabali ellaa</CardBody>
-                        <CardFooter>Date: 12/11/2025 | Time: All Day</CardFooter>
-                        </Card>
-
-                        <Card className="w-full p-1" classNames={{header: "text-sm", body: "text-sm"}}>
-                        <CardHeader className="pr-1 pb-2 pt-1 font-medium">Rabada dabada rabada dabada</CardHeader>
-                        <Divider />
-                        <CardBody className="pb-0">Rambari kiyapan ube numbare</CardBody>
-                        <CardFooter>Deadline: 24/02/2025</CardFooter>
-                        </Card>
-
-                        <Card className="w-full p-1" classNames={{header: "text-sm", body: "text-sm"}}>
-                        <CardHeader className="pr-1 pb-2 pt-1 font-medium">Mathematics assignment</CardHeader>
-                        <Divider />
-                        <CardBody className="pb-0">Blank face in the windowpane. Made clear in seconds of life. Disappears and returns again. Counting hours searching the night.</CardBody>
-                        <CardFooter>Deadline: 24/02/2025</CardFooter>
-                        </Card>
-
-                        <Card className="w-full p-1" classNames={{header: "text-sm", body: "text-sm"}}>
-                        <CardHeader className="pr-1 pb-2 pt-1 font-medium">Mathematics assignment</CardHeader>
-                        <Divider />
-                        <CardBody className="pb-0">Blank face in the windowpane. Made clear in seconds of life. Disappears and returns again. Counting hours searching the night.</CardBody>
-                        <CardFooter>Deadline: 24/02/2025</CardFooter>
-                        </Card> */}
 
                     </div>
 
@@ -199,7 +171,7 @@ export default function DrawerComponent() {
                         <DrawerHeader className="flex flex-col gap-1 justify-center items-center">Add New Event</DrawerHeader>
                             <DrawerBody>
 
-                                {/* <form className="flex flex-col gap-4"> */}
+                                
                                     <Input 
                                         isRequired 
                                         label="Event Title" 
@@ -259,7 +231,8 @@ export default function DrawerComponent() {
                                         onChange={(e) => setDescription(e.target.value)}
                                     />
 
-                                    <DrawerFooter>
+                            </DrawerBody>
+                            <DrawerFooter>
                                         <Button color="danger" variant="light" onPress={onNestedClose}>
                                             Cancel
                                         </Button>
@@ -267,16 +240,49 @@ export default function DrawerComponent() {
                                         <Button color="primary" onPress={handleSaveEvent}>
                                             Save Event
                                         </Button>
-                                    </DrawerFooter>
-                                
-                                {/* </form> */}
-
-                            </DrawerBody>
+                            </DrawerFooter>
                             
                     </>
                 )}
             </DrawerContent>
         </Drawer>
+
+        {/* View All Drawer */}
+        <Drawer isOpen={isViewAllOpen} onOpenChange={onViewAllChange} disableAnimation={true} backdrop="transparent" placement="right">
+                <DrawerContent>
+                    {(onViewAllClose) => (
+                        <>
+                            <DrawerHeader className="flex flex-col gap-1 justify-center items-center">Upcoming Events</DrawerHeader>
+                            <DrawerBody className="flex flex-col gap-4 overflow-y-scroll px-5 scrollbar-hide">
+
+                                {/* Display Events in New Event Drawer */}
+                                <div className="flex flex-col gap-2">
+                                    {events.length === 0 ? (
+                                        <p className="text-sm text-gray-500">No upcoming events</p>
+                                    ) : (
+                                        events.map((event, index) => (
+                                            <Card key={index} className="w-full p-1" classNames={{ header: "text-sm", body: "text-sm" }}>
+                                                <CardHeader className="pr-1 pb-2 pt-1 font-medium">{event.title}</CardHeader>
+                                                <Divider />
+                                                <CardBody className="pb-0">{event.description}</CardBody>
+                                                <CardFooter>
+                                                    Date: {event.date.toString()} | Time: {event.time}
+                                                </CardFooter>
+                                            </Card>
+                                        ))
+                                    )}
+                                </div>
+
+                            </DrawerBody>
+                            <DrawerFooter>
+                                <Button color="danger" variant="light" onPress={onViewAllClose}>
+                                    Go Back
+                                </Button>
+                            </DrawerFooter>
+                        </>
+                    )}
+                </DrawerContent>
+            </Drawer>
       </>
     );
   }
