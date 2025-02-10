@@ -163,7 +163,7 @@ const TeacherSessionCard = () => {
                         ))}
                     </div>
                 ) : (
-                    <p className="text-white font-bold text-2xl">No sessions booked yet.</p>
+                    <p className="text-white font-bold text-2xl">No sessions booked for youyet.</p>
                 )}
             </div>
         </div>
