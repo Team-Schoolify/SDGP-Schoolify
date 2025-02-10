@@ -30,6 +30,7 @@ export default function DrawerComponent() {
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
     const {isOpen: isNestedOpen, onOpen: onNestedOpen, onOpenChange: onNestedOpenChange} = useDisclosure();
     const { isOpen: isViewAllOpen, onOpen: onViewAllOpen, onOpenChange: onViewAllChange } = useDisclosure();
+    const { isOpen: isEventDetailOpen, onOpen: onEventDetailOpen, onOpenChange: onEventDetailChange } = useDisclosure();
     
     // Form fields states
     const [selectedOption, setSelectedOption] = useState("all-day");
@@ -44,6 +45,9 @@ export default function DrawerComponent() {
 
     // State for the list of events
     const [events, setEvents] = useState([]);
+
+    // State for More Details 
+    const [selectedEvent, setSelectedEvent] = useState(null)
 
     // Handle radio button change for time selection
     const handleOptionChange = (value) => {
@@ -95,6 +99,12 @@ export default function DrawerComponent() {
         setEvents(updatedEvents);
     };
 
+    // Open the event details drawer
+    const handleViewMore = (event) => {
+        setSelectedEvent(event);
+        onEventDetailOpen();
+    };
+
 
   
     return (
@@ -102,9 +112,11 @@ export default function DrawerComponent() {
         <Button onPress={onOpen}>Open Drawer</Button>
 
         <Drawer isOpen={isOpen} size="md" onOpenChange={onOpenChange}>
+
           <DrawerContent>
             {(onClose) => (
               <>
+
                 <DrawerHeader className="flex flex-col gap-1 justify-center items-center">School Calendar</DrawerHeader>
                 
                 <div className="flex justify-center items-center">
@@ -135,31 +147,51 @@ export default function DrawerComponent() {
 
                         {events.length === 0 ? (
                             <p className="text-sm text-gray-500">No upcoming events</p>
+
                         ) : (
+
                             events.map((event, index) => (
+
                                 <Card key={index} className="w-full p-1" classNames={{ header: "text-sm", body: "text-sm" }}>
 
-                                    <CardHeader className="pr-1 pb-2 pt-1 font-medium flex justify-between items-center">
+                                    <CardHeader 
+                                        className="pr-1 pb-2 pt-1 font-medium flex justify-between items-center">
                                         {event.title}
+                                    </CardHeader>
+
+                                    <Divider />
+                                    
+                                    <CardBody className="pb-0">
+                                        Date: {event.date.toString()} <br/>
+                                        Time: {event.time}
+                                    </CardBody>
+                                    
+                                    <CardFooter className="flex justify-end gap-2">
+
+                                        {/* More Details Button */}
+                                        <Button 
+                                            color="none"
+                                            variant="ghost"
+                                            size="sm" 
+                                            onPress={() => handleViewMore(event)}
+                                            >
+                                            More Details
+                                        </Button>
 
                                         {/* Delete Button */}
                                         <Button 
                                             color="none"
+                                            variant="ghost"
                                             size="sm" 
                                             onPress={() => handleDeleteEvent(index)}
-                                        >
+                                            >
                                             Delete
                                         </Button>
-
-                                        </CardHeader>
-
-                                    <Divider />
-                                    <CardBody className="pb-0">{event.description}</CardBody>
-                                    <CardFooter>
-                                        Date: {event.date.toString()} | Time: {event.time}
+                                    
                                     </CardFooter>
+
                                 </Card>
-                        ))
+                            ))
                         )}
 
                     </div>
@@ -318,6 +350,37 @@ export default function DrawerComponent() {
                     )}
                 </DrawerContent>
             </Drawer>
+
+            {/* Event Details Drawer */}
+            <Drawer isOpen={isEventDetailOpen} onOpenChange={onEventDetailChange} disableAnimation={true} backdrop="transparent" placement="right">
+                
+                <DrawerContent>
+
+                    {(onEventDetailClose) => (
+                        <>
+                        <DrawerHeader className="flex flex-col gap-1 justify-center items-center">{selectedEvent?.title}</DrawerHeader>
+                        <DrawerBody>
+                            {selectedEvent ? (
+                            <>
+                                <p><strong>Date:</strong> {selectedEvent.date.toString()}</p>
+                                <p><strong>Time:</strong> {selectedEvent.time}</p>
+                                <p><strong>Location:</strong> {selectedEvent.location}</p>
+                                <p><strong>Description:</strong> {selectedEvent.description}</p>
+                            </>
+                            ) : (
+                                <p>No event selected</p>
+                            )}
+                        </DrawerBody>
+                        <DrawerFooter>
+                            <Button color="danger" variant="light" onPress={onEventDetailClose}>
+                                Close
+                            </Button>
+                        </DrawerFooter>
+                        </>
+                    )}
+
+                </DrawerContent>
+        </Drawer>
       </>
     );
   }
