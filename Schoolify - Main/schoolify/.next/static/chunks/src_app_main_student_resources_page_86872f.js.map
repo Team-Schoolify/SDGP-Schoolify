@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file:///Users/sonalkethaka/Documents/GitHub/SDGP-Schoolify/Schoolify%20-%20Main/schoolify/src/app/main/student/resources/page.js"],"sourcesContent":["\"use client\";\n\nimport React from \"react\";\n\nexport default function Page() {\n    return (\n        <div className=\"min-h-screen flex items-center justify-center bg-gray-100\">\n            <h1 className=\"text-4xl font-bold text-gray-800\">\n                Welcome to Resources Page of Students!\n            </h1>\n\n        </div>\n    );\n}"],"names":[],"mappings":";;;;AAEA;AAFA;;;AAIe,SAAS;IACpB,qBACI,6LAAC;QAAI,WAAU;kBACX,cAAA,6LAAC;YAAG,WAAU;sBAAmC;;;;;;;;;;;AAM7D;KATwB"}},
-    {"offset": {"line": 38, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
-}

@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file:///Users/sonalkethaka/Documents/WebStorm/schoolify/src/app/schoolifylanding/page.js"],"sourcesContent":["\"use client\";\nimport  React from 'react';\nimport NavbarComponent from \"@/app/schoolifylanding/components/NavbarComponent\";\nimport {Hero} from \"@/app/schoolifylanding/components/Hero\";\nimport Features from \"@/app/schoolifylanding/components/Features\";\nimport Aboutus from \"@/app/schoolifylanding/components/Aboutus\";\nimport Team from \"@/app/schoolifylanding/components/Team\";\nimport {FooterSection} from \"@/app/schoolifylanding/components/FooterSection\";\n\nexport default function LoginPage() {\n    return (\n        <div>\n            <NavbarComponent />\n            <Hero />\n            <Features />\n            <Aboutus/>\n            <Team/>\n            <FooterSection/>\n        </div>\n    );\n}"],"names":[],"mappings":";;;;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AAPA;;;;;;;;;AASe,SAAS;IACpB,qBACI,8OAAC;;0BACG,8OAAC,gKAAA,CAAA,UAAe;;;;;0BAChB,8OAAC,qJAAA,CAAA,OAAI;;;;;0BACL,8OAAC,yJAAA,CAAA,UAAQ;;;;;0BACT,8OAAC,wJAAA,CAAA,UAAO;;;;;0BACR,8OAAC,qJAAA,CAAA,UAAI;;;;;0BACL,8OAAC,8JAAA,CAAA,gBAAa;;;;;;;;;;;AAG1B"}},
-    {"offset": {"line": 67, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
-}

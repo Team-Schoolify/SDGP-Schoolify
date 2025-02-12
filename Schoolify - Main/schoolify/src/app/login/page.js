@@ -6,7 +6,7 @@ import { Button, Input, Checkbox, Link, Form, Divider } from "@nextui-org/react"
 import { Icon } from "@iconify/react";
 import { AcmeIcon } from "./AcmeIcon";
 import NextLink from "next/link";
-
+import { jwtDecode } from "jwt-decode";
 import {Select, SelectItem} from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 export const schoolRole = [
@@ -23,40 +23,6 @@ export default function LoginPage() {
 
     const toggleVisibility = () => setIsVisible(!isVisible);
 
-
-    // const handleSubmit = async (event) => {
-    //     event.preventDefault();
-    //
-    //     const email = event.target.email.value;
-    //     const password = event.target.password.value;
-    //
-    //     try {
-    //         const response = await fetch('/api/auth/login', {
-    //             method: 'POST',
-    //             headers: { 'Content-Type': 'application/json' },
-    //             body: JSON.stringify({ email, password, role }),
-    //         });
-    //
-    //         const data = await response.json();
-    //
-    //         if (response.ok) {
-    //             // Store JWT token securely in localStorage
-    //             localStorage.setItem('token', data.token);
-    //
-    //             // Navigate to the main dashboard based on selected role
-    //             // router.push(`/main/${data.role}/dashboard`);
-    //             router.push(`/main/${data.role}/dashboard/?role=${data.role}`);
-    //         } else {
-    //             alert(data.message || 'Login failed, please check your credentials.');
-    //         }
-    //     } catch (error) {
-    //         alert('Error logging in. Please try again.');
-    //         console.error(error);
-    //     }
-    // };
-
-
-
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -71,11 +37,28 @@ export default function LoginPage() {
             });
 
             const data = await response.json();
+            console.log("Full API Response:", data);
 
             if (response.ok) {
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('school_id', data.school_id); // Save school_id
                 console.log(`schooooooooool id ${data.school_id}`);
+
+                const decodedToken = jwtDecode(data.token);
+                console.log("Decoded Token:", decodedToken);
+
+                const decodedData = decodedToken.id; // Extract user ID from token
+
+                // Save the correct user ID based on role
+                if (role === "student") {
+                    localStorage.setItem('student_id', decodedData);
+                } else if (role === "teacher") {
+                    localStorage.setItem('teacher_id', decodedData);
+                } else if (role === "parent") {
+                    localStorage.setItem('parent_id', decodedData);
+                }
+
+                console.log(`User ID (${role}): ${decodedData}`);
                 router.push(`/main/${data.role}/dashboard/?role=${data.role}`);
             } else {
                 alert(data.message || 'Login failed, please check your credentials.');
@@ -84,13 +67,6 @@ export default function LoginPage() {
             alert('Error logging in. Please try again.');
             console.error(error);
         }
-    };
-
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        // Navigate to the main page with the selected role
-        router.push(`/main/${role}/dashboard/?role=${role}`);
     };
 
     console.log(`this is the login ${role}`);
@@ -154,10 +130,7 @@ export default function LoginPage() {
                         <Input
                             isRequired
                             label="Email Address"
-
                             labelPlacement={"outside"}
-
-
                             name="email"
                             placeholder="Enter your email"
                             type="email"
@@ -209,7 +182,6 @@ export default function LoginPage() {
                         <p className="shrink-0 text-xs sm:text-sm text-gray-400">OR</p>
                         <Divider className="flex-1" />
                     </div>
-
                     {/*<div className="flex flex-col gap-2">*/}
                     {/*    <Button*/}
                     {/*        startContent={*/}
@@ -229,32 +201,10 @@ export default function LoginPage() {
                             Sign Up
                         </Link>
                     {/*</p>*/}
-
-                    <div className="flex flex-col gap-2">
-                        <Button
-                            startContent={
-                                <Icon
-                                    icon="flat-color-icons:google"
-                                    width={24}
-                                />
-                            }
-                            variant="bordered"
-                        >
-                            Continue with Google
-                        </Button>
-                    </div>
-                    <p className="text-center text-sm text-gray-400">
-                        Need to create an account?&nbsp;
-                        <Link href="#" size="sm" className="text-blue-500">
-                            Sign Up
-                        </Link>
-                    </p>
-
                 </div>
             </div>
         </div>
     );
-
 }
 
 
@@ -333,5 +283,3 @@ export default function LoginPage() {
 //         </div>
 //     );
 // }
-
-}
