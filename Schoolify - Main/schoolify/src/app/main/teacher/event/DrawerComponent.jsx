@@ -18,7 +18,8 @@ import {  Drawer,
     RadioGroup, 
     Radio, 
     Textarea, 
-    Calendar
+    Calendar,
+    Image
     } 
     from "@heroui/react";
 
@@ -319,21 +320,37 @@ export default function DrawerComponent() {
                                                 <CardHeader className="pr-1 pb-2 pt-1 font-medium flex justify-between items-center">
                                                     {event.title}
 
-                                                    {/* Delete Button */}
-                                                    <Button 
-                                                        color="none"
-                                                        size="sm" 
-                                                        onPress={() => handleDeleteEvent(index)}
-                                                    >
-                                                        Delete
-                                                    </Button>
+                                                    
                                                     
                                                     </CardHeader>
 
                                                 <Divider />
-                                                <CardBody className="pb-0">{event.description}</CardBody>
-                                                <CardFooter>
-                                                    Date: {event.date.toString()} | Time: {event.time}
+                                                <CardBody className="pb-0">
+                                                    Date: {event.date.toString()} <br/>
+                                                    Time: {event.time}
+                                                </CardBody>
+                                                <CardFooter className="flex justify-end gap-2">
+
+                                                    {/* More Details Button */}
+                                                    <Button 
+                                                        color="none"
+                                                        variant="ghost"
+                                                        size="sm" 
+                                                        onPress={() => handleViewMore(event)}
+                                                        >
+                                                        More Details
+                                                    </Button>
+
+                                                    {/* Delete Button */}
+                                                    <Button 
+                                                        color="none"
+                                                        variant="ghost"
+                                                        size="sm" 
+                                                        onPress={() => handleDeleteEvent(index)}
+                                                        >
+                                                        Delete
+                                                    </Button>
+                                                
                                                 </CardFooter>
                                             </Card>
                                         ))
@@ -358,14 +375,37 @@ export default function DrawerComponent() {
 
                     {(onEventDetailClose) => (
                         <>
-                        <DrawerHeader className="flex flex-col gap-1 justify-center items-center">{selectedEvent?.title}</DrawerHeader>
+                        <DrawerHeader className="flex flex-col gap-1 justify-center items-center">
+                            <h1 className="text-2xl font-bold leading-7">{selectedEvent?.title}</h1>
+                        </DrawerHeader>
                         <DrawerBody>
                             {selectedEvent ? (
                             <>
-                                <p><strong>Date:</strong> {selectedEvent.date.toString()}</p>
+                                <div className="flex w-full justify-center items-center pt-4">
+                                    <Image
+                                    isBlurred
+                                    isZoomed
+                                    alt="Event image"
+                                    className="aspect-square w-full hover:scale-110"
+                                    height={300}
+                                    src="https://nextuipro.nyc3.cdn.digitaloceanspaces.com/components-images/places/san-francisco.png"
+                                    />
+                                </div>
+                                 
+                                
+                                <div className="flex flex-col gap-2 py-4">
+
+
+                                </div>
+                                
+                                <p><strong>Date:</strong> {new Date(selectedEvent.date).toLocaleDateString("en-GB", {
+                                    day: "numeric",
+                                    month: "long",
+                                    year: "numeric",
+                                })}</p>
                                 <p><strong>Time:</strong> {selectedEvent.time}</p>
                                 <p><strong>Location:</strong> {selectedEvent.location}</p>
-                                <p><strong>Description:</strong> {selectedEvent.description}</p>
+                                <p><strong>About the Event:</strong> {selectedEvent.description}</p>
                             </>
                             ) : (
                                 <p>No event selected</p>
