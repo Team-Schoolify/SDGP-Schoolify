@@ -3,6 +3,7 @@ import "@/app/globals.css";
 import {Providers} from "@/app/providers";
 import MainNavbar from "@/app/components/MainNavbar";
 import {FooterSection} from "@/app/components/FooterSection";
+import {ProfileAndNotificationParent} from "@/app/main/parent/profileAndNotificationParent";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -26,6 +27,7 @@ export default function RootLayout({ children }) {
             <Providers>
                 <MainNavbar/>
                 <div id="root">{children}</div>
+                <ProfileAndNotificationParent/>
                 <FooterSection/>
             </Providers>
 
