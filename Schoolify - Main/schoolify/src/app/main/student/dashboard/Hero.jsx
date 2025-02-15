@@ -21,12 +21,12 @@ export const Hero = (props) => {
                     <div className="self-start">
                         <h1
                             className="text-2xl font-bold  sm:text-6xl xl:text-8xl pb-2
-          bg-gradient-to-r from-customBlue via-customGreen to-customLightBlue bg-clip-text text-transparent"
+          bg-gradient-to-r from-customBlue to-customLightBlue bg-clip-text text-transparent"
                         >
-                            Hello Name!
+                            Hello Student!
                         </h1>
                         <p className="mt-4 text-base text-black sm:text-3xl">
-                            Are you ready to do the learning.
+                            Are you ready to do the learning?
                         </p>
                     </div>
 
