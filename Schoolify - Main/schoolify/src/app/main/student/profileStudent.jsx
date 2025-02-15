@@ -13,7 +13,7 @@ import {
 } from "@heroui/react";
 import {supabase} from "@/app/lib/supabaseClient";
 
-export const ProfileAndNotificationStudent = () => {
+export const ProfileStudent = () => {
     const [studentId, setStudentId] = useState(null); // Store school_id in state
     const [student, setStudent] = useState(null);
     const [school, setSchool] = useState(null);

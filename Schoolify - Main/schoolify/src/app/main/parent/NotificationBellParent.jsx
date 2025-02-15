@@ -156,7 +156,7 @@ const NotificationBell = () => {
                 </Button>
             </Badge>
 
-            <Drawer isOpen={isOpen} size="sm" onClose={onClose}>
+            <Drawer isOpen={isOpen} size="sm" onClose={onClose} backdrop="blur">
                 <DrawerContent>
                     {(onClose) => (
                         <>

@@ -3,7 +3,7 @@ import "@/app/globals.css";
 import {Providers} from "@/app/providers";
 import MainNavbar from "@/app/components/MainNavbar";
 import {FooterSection} from "@/app/components/FooterSection";
-import {ProfileAndNotificationStudent} from "@/app/main/student/profileAndNotificationStudent";
+import {ProfileStudent} from "@/app/main/student/profileStudent";
 import NotificationBell from "@/app/main/student/NotificationBellStudent";
 
 const geistSans = Geist({
@@ -33,7 +33,7 @@ export default function RootLayout({ children }) {
                   bottom-4 right-6 shadow-lg dark:bg-white dark:text-black
                   flex gap-4 items-center sm:flex-row flex-col z-50">
                     <NotificationBell/>
-                    <ProfileAndNotificationStudent/>
+                    <ProfileStudent/>
                 </div>
                     <FooterSection/>
             </Providers>
