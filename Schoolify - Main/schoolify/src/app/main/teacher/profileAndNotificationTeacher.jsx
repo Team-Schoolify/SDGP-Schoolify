@@ -123,11 +123,6 @@ export const ProfileAndNotificationTeacher = () => {
                     </div>
                 </PopoverContent>
             </Popover>
-            <Badge color="danger" content="99+" shape="circle">
-                <Button className="bg-red-400" isIconOnly aria-label="more than 99 notifications" radius="full" variant="light">
-                    <NotificationIcon size={24} />
-                </Button>
-            </Badge>
         </div>
 
         {/*<Drawer isOpen={isOpen} size="sm" onClose={onClose}>*/}

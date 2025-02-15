@@ -103,10 +103,7 @@ export const ProfileAndNotificationStudent = () => {
 
     return (
     <>
-        <div className="
-                  text-white rounded-full fixed
-                  bottom-4 right-6 shadow-lg dark:bg-white dark:text-black
-                  flex gap-4 items-center sm:flex-row flex-col z-50"
+        <div
         >
             <Popover placement="top" showArrow={true} backdrop="blur">
                 <PopoverTrigger>
@@ -123,11 +120,6 @@ export const ProfileAndNotificationStudent = () => {
                     </div>
                 </PopoverContent>
             </Popover>
-            <Badge color="danger" content="99+" shape="circle">
-                <Button className="bg-red-400" isIconOnly aria-label="more than 99 notifications" radius="full" variant="light">
-                    <NotificationIcon size={24} />
-                </Button>
-            </Badge>
         </div>
 
         {/*<Drawer isOpen={isOpen} size="sm" onClose={onClose}>*/}
