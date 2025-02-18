@@ -105,7 +105,7 @@ export default function MainNavbar() {
                 </NavbarContent>
 
                 {/* Login & Signup */}
-                <NavbarContent justify="end" className="hidden sm:flex">
+                {/* <NavbarContent justify="end" className="hidden sm:flex">
                     <NavbarItem>
                         <Button as={NextLink} href="#" color="primary" variant="flat" className="text-customWhite bg-customBlue">
                             Login
@@ -116,7 +116,7 @@ export default function MainNavbar() {
                             Sign Up
                         </Button>
                     </NavbarItem>
-                </NavbarContent>
+                </NavbarContent> */}
 
                 {/* Hamburger Menu (Mobile) */}
                 <NavbarContent className="sm:hidden flex items-center justify-end">

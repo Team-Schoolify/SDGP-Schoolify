@@ -15,7 +15,7 @@ const teamMembers = [
         },
     },
     {
-        name: "Jane Doe",
+        name: "Chalitha Gunarathna",
         title: "UI/UX Designer",
         description:
             "Experienced in crafting intuitive and user-friendly interfaces for modern web applications.",
@@ -27,7 +27,7 @@ const teamMembers = [
         },
     },
     {
-        name: "John Smith",
+        name: "Sathira Dahanayaka",
         title: "Backend Developer",
         description:
             "Specialized in building scalable backend solutions with expertise in Java and Spring Boot.",
@@ -39,7 +39,7 @@ const teamMembers = [
         },
     },
     {
-        name: "Alice Johnson",
+        name: "Hasaru Jayasumana",
         title: "Frontend Developer",
         description:
             "Focused on creating seamless and visually appealing user experiences using React and Tailwind.",
@@ -51,7 +51,7 @@ const teamMembers = [
         },
     },
     {
-        name: "Robert Brown",
+        name: "Ibrahim Amna",
         title: "Data Analyst",
         description:
             "Driven by insights and data visualization to make impactful decisions and strategies.",
@@ -63,7 +63,7 @@ const teamMembers = [
         },
     },
     {
-        name: "Emily White",
+        name: "Sachini Nishshanka",
         title: "Project Manager",
         description:
             "Expert in coordinating and managing teams to deliver projects on time and with excellence.",
