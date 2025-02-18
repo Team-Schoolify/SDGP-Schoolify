@@ -23,11 +23,11 @@ export default function RootLayout({ children }) {
     return (
         <>
 
-            <Providers>
-                <MainNavbar/>
-                <div id="root">{children}</div>
-                <FooterSection/>
-            </Providers>
+        <Providers>
+            <MainNavbar/>
+            <div id="root">{children}</div>
+            <FooterSection/>
+        </Providers>
 
         </>
     );
