@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import {  Drawer,  
     DrawerContent,  
     DrawerHeader,  
@@ -25,6 +25,8 @@ import {  Drawer,
 
 import { useDisclosure } from "@heroui/react";
 import { Time, today, getLocalTimeZone } from "@internationalized/date";
+import {supabase} from "@/app/lib/supabaseClient";
+
 
 export default function DrawerComponent() {
     // Disclosure hooks for main and nested drawers
@@ -62,25 +64,80 @@ export default function DrawerComponent() {
     };
 
     // Handle form submission to save a new event
-    const handleSaveEvent = (e) => {
+    // const handleSaveEvent = (e) => {
+    //     if (e && e.preventDefault) {
+    //         e.preventDefault(); // Ensure it's an event object before calling this
+    //     }
+    //
+    //     const newEvent = {
+    //     title: eventTitle,
+    //     date: eventDate,
+    //
+    //     // Format time based on the option selected
+    //     time: selectedOption === "all-day" ? "All Day" : `${startTime.toString()} - ${endTime.toString()}`,
+    //     location,
+    //     description,
+    //     };
+    //
+    //     // Add the new event to the events list
+    //     setEvents([...events, newEvent]);
+    //
+    //     // Reset form fields after saving
+    //     setEventTitle("");
+    //     setEventDate(today(getLocalTimeZone()));
+    //     setLocation("");
+    //     setDescription("");
+    //     setSelectedOption("all-day");
+    //     setStartTime(new Time(0, 0));
+    //     setEndTime(new Time(23, 59));
+    //
+    //     // Close the nested drawer
+    //     onNestedOpenChange(false);
+    //
+    // };
+
+    const handleSaveEvent = async (e) => {
         if (e && e.preventDefault) {
-            e.preventDefault(); // Ensure it's an event object before calling this
+            e.preventDefault();
+        }
+
+        // Ensure time fields have a valid format
+        let formattedStartTime = selectedOption === "all-day" ? "00:00" : startTime.toString();
+        let formattedEndTime = selectedOption === "all-day" ? "23:59" : endTime.toString();
+
+        // Ensure required fields are not empty
+        if (!eventTitle || !eventDate) {
+            console.error("Error: Title and Date are required");
+            return;
         }
 
         const newEvent = {
-        title: eventTitle,
-        date: eventDate,
-
-        // Format time based on the option selected
-        time: selectedOption === "all-day" ? "All Day" : `${startTime.toString()} - ${endTime.toString()}`,
-        location,
-        description,
+            title: eventTitle.trim(),
+            date: eventDate.toString(),
+            start_time: formattedStartTime,
+            end_time: formattedEndTime,
+            location: location.trim() || "No location specified",
+            description: description.trim() || "No description provided"
         };
-    
-        // Add the new event to the events list
-        setEvents([...events, newEvent]);
 
-        // Reset form fields after saving
+        console.log("Inserting new event:", newEvent);
+
+        const { data, error } = await supabase.from("events").insert([newEvent]).select("*");
+
+        if (error) {
+            console.error("Error saving event:", error);
+            return;
+        }
+
+        if (data && data.length > 0) {
+            console.log("Event saved successfully:", data[0]);
+            setEvents([...events, data[0]]);
+        } else {
+            console.warn("Event saved, but no data returned. Fetching updated list...");
+            fetchEvents(); // Fetch latest events if no direct data is returned
+        }
+
+        // Reset form fields
         setEventTitle("");
         setEventDate(today(getLocalTimeZone()));
         setLocation("");
@@ -89,15 +146,36 @@ export default function DrawerComponent() {
         setStartTime(new Time(0, 0));
         setEndTime(new Time(23, 59));
 
-        // Close the nested drawer
+        // Close the drawer
         onNestedOpenChange(false);
-
     };
 
+
     // Delete event cards
-    const handleDeleteEvent = (eventIndex) => {
-        const updatedEvents = events.filter((_, index) => index !== eventIndex);
-        setEvents(updatedEvents);
+    // const handleDeleteEvent = (eventIndex) => {
+    //     const updatedEvents = events.filter((_, index) => index !== eventIndex);
+    //     setEvents(updatedEvents);
+    // };
+
+    const handleDeleteEvent = async (eventId) => {
+        // Confirm deletion before proceeding (optional)
+        const confirmDelete = window.confirm("Are you sure you want to delete this event?");
+        if (!confirmDelete) return;
+
+        console.log(`Deleting event with ID: ${eventId}`);
+
+        // Delete the event from Supabase
+        const { error } = await supabase.from("events").delete().eq("id", eventId);
+
+        if (error) {
+            console.error("Error deleting event:", error);
+            return;
+        }
+
+        console.log("Event deleted successfully:", eventId);
+
+        // Remove the event from the state
+        setEvents((prevEvents) => prevEvents.filter(event => event.id !== eventId));
     };
 
     // Open the event details drawer
@@ -107,6 +185,19 @@ export default function DrawerComponent() {
     };
 
 
+
+    useEffect(() => {
+        fetchEvents();
+    }, []);
+
+    const fetchEvents = async () => {
+        const { data, error } = await supabase.from("events").select("*");
+        if (error) {
+            console.error("Error fetching events:", error);
+        } else {
+            setEvents(data);
+        }
+    };
   
     return (
       <>
@@ -142,62 +233,102 @@ export default function DrawerComponent() {
                 </div>
                 <hr/>
 
-                <DrawerBody className="flex flex-col gap-4 overflow-y-scroll max-h-[50vh] px-5 scrollbar-hide">
-                    
-                    <div className="flex flex-col gap-2">
+                {/*<DrawerBody className="flex flex-col gap-4 overflow-y-scroll max-h-[50vh] px-5 scrollbar-hide">*/}
+                {/*    */}
+                {/*    <div className="flex flex-col gap-2">*/}
 
-                        {events.length === 0 ? (
-                            <p className="text-sm text-gray-500">No upcoming events</p>
+                {/*        {events.length === 0 ? (*/}
+                {/*            <p className="text-sm text-gray-500">No upcoming events</p>*/}
 
-                        ) : (
+                {/*        ) : (*/}
 
-                            events.map((event, index) => (
+                {/*            events.map((event, index) => (*/}
 
-                                <Card key={index} className="w-full p-1" classNames={{ header: "text-sm", body: "text-sm" }}>
+                {/*                <Card key={index} className="w-full p-1" classNames={{ header: "text-sm", body: "text-sm" }}>*/}
 
-                                    <CardHeader 
-                                        className="pr-1 pb-2 pt-1 font-medium flex justify-between items-center">
-                                        {event.title}
-                                    </CardHeader>
+                {/*                    <CardHeader */}
+                {/*                        className="pr-1 pb-2 pt-1 font-medium flex justify-between items-center">*/}
+                {/*                        {event.title}*/}
+                {/*                    </CardHeader>*/}
 
-                                    <Divider />
-                                    
-                                    <CardBody className="pb-0">
-                                        Date: {event.date.toString()} <br/>
-                                        Time: {event.time}
-                                    </CardBody>
-                                    
-                                    <CardFooter className="flex justify-end gap-2">
+                {/*                    <Divider />*/}
+                {/*                    */}
+                {/*                    <CardBody className="pb-0">*/}
+                {/*                        Date: {event.date.toString()} <br/>*/}
+                {/*                        Time: {event.time}*/}
+                {/*                    </CardBody>*/}
+                {/*                    */}
+                {/*                    <CardFooter className="flex justify-end gap-2">*/}
 
-                                        {/* More Details Button */}
-                                        <Button 
-                                            color="none"
-                                            variant="ghost"
-                                            size="sm" 
-                                            onPress={() => handleViewMore(event)}
-                                            >
-                                            More Details
-                                        </Button>
+                {/*                        /!* More Details Button *!/*/}
+                {/*                        <Button */}
+                {/*                            color="none"*/}
+                {/*                            variant="ghost"*/}
+                {/*                            size="sm" */}
+                {/*                            onPress={() => handleViewMore(event)}*/}
+                {/*                            >*/}
+                {/*                            More Details*/}
+                {/*                        </Button>*/}
 
-                                        {/* Delete Button */}
-                                        <Button 
-                                            color="none"
-                                            variant="ghost"
-                                            size="sm" 
-                                            onPress={() => handleDeleteEvent(index)}
-                                            >
-                                            Delete
-                                        </Button>
-                                    
-                                    </CardFooter>
+                {/*                        /!* Delete Button *!/*/}
+                {/*                        <Button */}
+                {/*                            color="none"*/}
+                {/*                            variant="ghost"*/}
+                {/*                            size="sm" */}
+                {/*                            onPress={() => handleDeleteEvent(index)}*/}
+                {/*                            >*/}
+                {/*                            Delete*/}
+                {/*                        </Button>*/}
+                {/*                    */}
+                {/*                    </CardFooter>*/}
 
-                                </Card>
-                            ))
-                        )}
+                {/*                </Card>*/}
+                {/*            ))*/}
+                {/*        )}*/}
 
-                    </div>
+                {/*    </div>*/}
 
-                </DrawerBody>
+                {/*</DrawerBody>*/}
+
+                  <DrawerBody className="flex flex-col gap-4 overflow-y-scroll max-h-[50vh] px-5 scrollbar-hide">
+                      <div className="flex flex-col gap-2">
+                          {events.length === 0 ? (
+                              <p className="text-sm text-gray-500">No upcoming events</p>
+                          ) : (
+                              events.map((event) => (
+                                  <Card key={event.id} className="w-full p-1" classNames={{ header: "text-sm", body: "text-sm" }}>
+                                      <CardHeader className="pr-1 pb-2 pt-1 font-medium flex justify-between items-center">
+                                          {event.title}
+                                      </CardHeader>
+                                      <Divider />
+                                      <CardBody className="pb-0">
+                                          Date: {new Date(event.date).toLocaleDateString("en-GB")} <br/>
+                                          Time: {event.start_time ? `${event.start_time} - ${event.end_time}` : "All Day"}
+                                      </CardBody>
+                                      <CardFooter className="flex justify-end gap-2">
+                                          <Button
+                                              color="none"
+                                              variant="ghost"
+                                              size="sm"
+                                              onPress={() => handleViewMore(event)}
+                                          >
+                                              More Details
+                                          </Button>
+                                          <Button
+                                              color="none"
+                                              variant="ghost"
+                                              size="sm"
+                                              onPress={() => handleDeleteEvent(event.id)}
+                                          >
+                                              Delete
+                                          </Button>
+                                      </CardFooter>
+                                  </Card>
+                              ))
+                          )}
+                      </div>
+                  </DrawerBody>
+
                 <hr/>            
                 <DrawerFooter>
                   <Button color="danger" variant="light" onPress={onClose}>

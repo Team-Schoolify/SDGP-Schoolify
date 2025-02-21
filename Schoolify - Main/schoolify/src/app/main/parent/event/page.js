@@ -1,12 +1,12 @@
 "use client";
 
 import React from "react";
-import DrawerComponent from "./DrawerComponent";
+import DrawerComponentParentAndStudent from "@/app/components/DrawerComponentParentAndStudent";
 
 export default function Page() {
     return (
         <div>
-            <DrawerComponent/>
+            <DrawerComponentParentAndStudent/>
         </div>
     );
 }

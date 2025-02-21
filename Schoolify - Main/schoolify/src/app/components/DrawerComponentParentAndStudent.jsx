@@ -19,8 +19,10 @@ import {  Drawer,
 
 import { useDisclosure } from "@heroui/react";
 import { today, getLocalTimeZone } from "@internationalized/date";
+import { supabase } from "@/app/lib/supabaseClient";
 
-export default function DrawerComponent() {
+
+export default function DrawerComponentParentAndStudent() {
     // Disclosure hooks for main and nested drawers
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
     const { isOpen: isViewAllOpen, onOpen: onViewAllOpen, onOpenChange: onViewAllChange } = useDisclosure();
@@ -32,15 +34,19 @@ export default function DrawerComponent() {
     // State for More Details 
     const [selectedEvent, setSelectedEvent] = useState(null);
 
-    // Fetch events from backend
+    // Fetch events from Supabase on component mount
     useEffect(() => {
-        async function fetchEvents() {
-            const response = await fetch("/api/events");
-            const data = await response.json();
-            setEvents(data);
-        }
         fetchEvents();
     }, []);
+
+    const fetchEvents = async () => {
+        const { data, error } = await supabase.from("events").select("*");
+        if (error) {
+            console.error("Error fetching events:", error);
+        } else {
+            setEvents(data);
+        }
+    };
 
     // Open the event details drawer
     const handleViewMore = (event) => {
@@ -82,55 +88,88 @@ export default function DrawerComponent() {
                 </div>
                 <hr/>
 
-                <DrawerBody className="flex flex-col gap-4 overflow-y-scroll max-h-[50vh] px-5 scrollbar-hide">
-                    
-                    <div className="flex flex-col gap-2">
+                {/*<DrawerBody className="flex flex-col gap-4 overflow-y-scroll max-h-[50vh] px-5 scrollbar-hide">*/}
+                {/*    */}
+                {/*    <div className="flex flex-col gap-2">*/}
 
-                        {events.length === 0 ? (
-                            <p className="text-sm text-gray-500">No upcoming events</p>
+                {/*        {events.length === 0 ? (*/}
+                {/*            <p className="text-sm text-gray-500">No upcoming events</p>*/}
 
-                        ) : (
+                {/*        ) : (*/}
 
-                            events.map((event, index) => (
+                {/*            events.map((event, index) => (*/}
 
-                                <Card key={index} className="w-full p-1" classNames={{ header: "text-sm", body: "text-sm" }}>
+                {/*                <Card key={index} className="w-full p-1" classNames={{ header: "text-sm", body: "text-sm" }}>*/}
 
-                                    <CardHeader 
-                                        className="pr-1 pb-2 pt-1 font-medium flex justify-between items-center">
-                                        {event.title}
-                                    </CardHeader>
+                {/*                    <CardHeader */}
+                {/*                        className="pr-1 pb-2 pt-1 font-medium flex justify-between items-center">*/}
+                {/*                        {event.title}*/}
+                {/*                    </CardHeader>*/}
 
-                                    <Divider />
-                                    
-                                    <CardBody className="pb-0">
-                                        Date: {event.date.toString()} <br/>
-                                        Time: {event.time}
-                                    </CardBody>
-                                    
-                                    <CardFooter className="flex justify-end gap-2">
+                {/*                    <Divider />*/}
+                {/*                    */}
+                {/*                    <CardBody className="pb-0">*/}
+                {/*                        Date: {event.date.toString()} <br/>*/}
+                {/*                        Time: {event.time}*/}
+                {/*                    </CardBody>*/}
+                {/*                    */}
+                {/*                    <CardFooter className="flex justify-end gap-2">*/}
 
-                                        {/* More Details Button */}
-                                        <Button 
-                                            color="none"
-                                            variant="ghost"
-                                            size="sm" 
-                                            onPress={() => handleViewMore(event)}
-                                            >
-                                            More Details
-                                        </Button>
+                {/*                        /!* More Details Button *!/*/}
+                {/*                        <Button */}
+                {/*                            color="none"*/}
+                {/*                            variant="ghost"*/}
+                {/*                            size="sm" */}
+                {/*                            onPress={() => handleViewMore(event)}*/}
+                {/*                            >*/}
+                {/*                            More Details*/}
+                {/*                        </Button>*/}
 
-                                    
-                                    
-                                    </CardFooter>
+                {/*                    */}
+                {/*                    */}
+                {/*                    </CardFooter>*/}
 
-                                </Card>
-                            ))
-                        )}
+                {/*                </Card>*/}
+                {/*            ))*/}
+                {/*        )}*/}
 
-                    </div>
+                {/*    </div>*/}
 
-                </DrawerBody>
-                <hr/>            
+                {/*</DrawerBody>*/}
+
+                  <DrawerBody className="flex flex-col gap-4 overflow-y-scroll max-h-[50vh] px-5 scrollbar-hide">
+                      <div className="flex flex-col gap-2">
+                          {events.length === 0 ? (
+                              <p className="text-sm text-gray-500">No upcoming events</p>
+                          ) : (
+                              events.map((event) => (
+                                  <Card key={event.id} className="w-full p-1" classNames={{ header: "text-sm", body: "text-sm" }}>
+                                      <CardHeader className="pr-1 pb-2 pt-1 font-medium flex justify-between items-center">
+                                          {event.title}
+                                      </CardHeader>
+                                      <Divider />
+                                      <CardBody className="pb-0">
+                                          Date: {new Date(event.date).toLocaleDateString("en-GB")} <br/>
+                                          Time: {event.start_time ? `${event.start_time} - ${event.end_time}` : "All Day"}
+                                      </CardBody>
+                                      <CardFooter className="flex justify-end gap-2">
+                                          <Button
+                                              color="none"
+                                              variant="ghost"
+                                              size="sm"
+                                              onPress={() => handleViewMore(event)}
+                                          >
+                                              More Details
+                                          </Button>
+                                      </CardFooter>
+                                  </Card>
+                              ))
+                          )}
+                      </div>
+                  </DrawerBody>
+
+
+                  <hr/>
                 <DrawerFooter>
                   <Button color="danger" variant="light" onPress={onClose}>
                     Close

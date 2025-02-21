@@ -7,7 +7,6 @@ import CardSlideshow from "@/app/main/student/dashboard/CardSlideshow"
 import {FooterSection} from "@/app/components/FooterSection";
 import {useRouter} from "next/navigation";
 import {ProfileStudent} from "@/app/main/student/profileStudent";
-import NotificationBell from "@/app/components/NotificationBell";
 
 export default function LoginPage() {
 
