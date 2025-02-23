@@ -51,11 +51,9 @@ export default function LoginPage() {
 
     return (
         <div>
-            {/*<MainNavbar/>*/}
             <Hero/>
             <Subjects/>
             <CardSlideshow/>
-            {/*<FooterSection/>*/}
         </div>
     );
 }
