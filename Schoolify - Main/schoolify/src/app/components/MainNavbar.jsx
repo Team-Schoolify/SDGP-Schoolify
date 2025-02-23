@@ -39,7 +39,6 @@ export default function MainNavbar() {
             { name: "Dashboard", path: `/main/student/dashboard` },
             { name: "Assignments", path: `/main/student/assignments` },
             { name: "Gradebook", path: `/main/student/gradebook` },
-            { name: "Attendance", path: `/main/student/attendance` },
             { name: "Events", path: `/main/student/event` },
             { name: "Resources", path: `/main/student/resources` },
         ],

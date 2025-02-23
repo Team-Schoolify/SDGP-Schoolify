@@ -1,10 +1,8 @@
 "use client";
 import React, {useEffect, useState} from 'react';
-import MainNavbar from "@/app/components/MainNavbar";
 import Hero from "@/app/main/student/dashboard/Hero";
 import Subjects from "@/app/main/student/dashboard/Subjects";
 import CardSlideshow from "@/app/main/student/dashboard/CardSlideshow"
-import {FooterSection} from "@/app/components/FooterSection";
 import {useRouter} from "next/navigation";
 
 export default function LoginPage() {
@@ -42,7 +40,7 @@ export default function LoginPage() {
     }, []);
 
     if (loading) {
-        return <p className="text-center text-white">Loading...</p>;
+        return <p className="text-center text-black">Loading...</p>;
     }
 
     if (!user) {
@@ -51,11 +49,9 @@ export default function LoginPage() {
 
     return (
         <div>
-            {/*<MainNavbar/>*/}
             <Hero/>
             <Subjects/>
             <CardSlideshow/>
-            {/*<FooterSection/>*/}
         </div>
     );
 }
