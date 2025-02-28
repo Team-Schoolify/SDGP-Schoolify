@@ -4,22 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26e29180-a7b6-4d83-9617-8c4b38ae8cd0" name="Changes" comment="Backend for event">
-      <change afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/parent/dashboard/CardSlideshow.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/parent/dashboard/Hero.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/student/dashboard/lottie.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/teacher/dashboard/CardSlideshow.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/teacher/dashboard/Hero.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/teacher/dashboard/Subjects.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/teacher/dashboard/lottie.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/parent/dashboard/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/parent/dashboard/page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/student/dashboard/Hero.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/student/dashboard/Hero.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/student/dashboard/lotti.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/teacher/dashboard/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/teacher/dashboard/page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/schoolifylanding/components/Hero.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/schoolifylanding/components/Hero.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/schoolifylanding/components/Team.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/schoolifylanding/components/Team.jsx" afterDir="false" />
-    </list>
+    <list default="true" id="26e29180-a7b6-4d83-9617-8c4b38ae8cd0" name="Changes" comment="Backend for event" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,7 +40,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Merging Sonal",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "/Users/sonalkethaka/SDGP-Schoolify/Schoolify - Main/schoolify/src/app/main/parent/gradebook",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -125,7 +110,7 @@
       <workItem from="1740723060967" duration="8470000" />
       <workItem from="1740734993902" duration="1491000" />
       <workItem from="1740739577461" duration="1344000" />
-      <workItem from="1740743801400" duration="11406000" />
+      <workItem from="1740743801400" duration="11722000" />
     </task>
     <task id="LOCAL-00001" summary="Attendance changed for the test commit">
       <option name="closed" value="true" />
