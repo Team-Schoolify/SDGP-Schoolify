@@ -86,7 +86,7 @@ const ResultSheet = () => {
                     </TableBody>
                 </Table>
             ) : (
-                <p>No grades available.</p>
+                <p className="text-black">No grades available.</p>
             )}
         </div>
     );

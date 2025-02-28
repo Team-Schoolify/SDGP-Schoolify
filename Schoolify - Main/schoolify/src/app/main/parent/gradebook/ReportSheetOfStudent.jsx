@@ -15,6 +15,7 @@ import { supabase } from "@/app/lib/supabaseClient";
 const ReportSheetOfStudent = () => {
     const [schoolId, setSchoolId] = useState(null);
     const [studentId, setStudentId] = useState(null);
+    const [studentName, setStudentName] = useState("");
     const [parentId, setParentId] = useState(null);
     const [grades, setGrades] = useState([]);
     const [teacherName, setTeacherName] = useState(null);
@@ -48,6 +49,26 @@ const ReportSheetOfStudent = () => {
 
         fetchStudent();
     }, [parentId]); // <-- Use parentId instead of schoolId
+
+    useEffect(() => {
+        const fetchStudentName = async () => {
+            if (!studentId) return;
+
+            const { data, error } = await supabase
+                .from("student")
+                .select("student_name")
+                .eq("student_id", studentId)
+                .single(); // <-- Use .single() to get a single record
+
+            if (error) {
+                console.error("Error fetching student Name:", error);
+                return;
+            }
+            setStudentName(data.student_name); // <-- Corrected access to student_id
+        };
+
+        fetchStudentName();
+    }, [studentId]); // <-- Use parentId instead of schoolId
 
     useEffect(() => {
         const fetchStudentGrades = async () => {
@@ -86,7 +107,8 @@ const ReportSheetOfStudent = () => {
     return (
         <div className="flex flex-col gap-3">
             <h2 className="text-4xl text-black font-bold">Result Sheet</h2>
-            {teacherName && <p className="text-black text-2xl mb-2"><strong>Teacher:</strong> {teacherName}</p>}
+            {teacherName && <p className="text-black text-2xl"><strong>Teacher:</strong> {teacherName}</p>}
+            <p className="text-black text-2xl mb-2"><strong>Student:</strong> {studentName}</p>
             {grades.length > 0 ? (
                 <Table aria-label="Student Grade Table" color="primary" selectionMode="single">
                     <TableHeader>
