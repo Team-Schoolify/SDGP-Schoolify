@@ -12,21 +12,42 @@ import {
 
 import { supabase } from "@/app/lib/supabaseClient";
 
-const ResultSheet = () => {
+const ReportSheetOfStudent = () => {
     const [schoolId, setSchoolId] = useState(null);
     const [studentId, setStudentId] = useState(null);
+    const [parentId, setParentId] = useState(null);
     const [grades, setGrades] = useState([]);
     const [teacherName, setTeacherName] = useState(null);
 
     useEffect(() => {
         if (typeof window !== "undefined") {
             const storedSchoolId = localStorage.getItem("school_id");
-            const storedStudentId = localStorage.getItem("student_id");
+            const storedParentId = localStorage.getItem("parent_id");
 
             setSchoolId(storedSchoolId);
-            setStudentId(storedStudentId);
+            setParentId(storedParentId);
         }
     }, []);
+
+    useEffect(() => {
+        const fetchStudent = async () => {
+            if (!parentId) return;
+
+            const { data, error } = await supabase
+                .from("parent")
+                .select("student_id")
+                .eq("parent_id", parentId)
+                .single(); // <-- Use .single() to get a single record
+
+            if (error) {
+                console.error("Error fetching student ID:", error);
+                return;
+            }
+            setStudentId(data.student_id); // <-- Corrected access to student_id
+        };
+
+        fetchStudent();
+    }, [parentId]); // <-- Use parentId instead of schoolId
 
     useEffect(() => {
         const fetchStudentGrades = async () => {
@@ -86,10 +107,10 @@ const ResultSheet = () => {
                     </TableBody>
                 </Table>
             ) : (
-                <p>No grades available.</p>
+                <p className="text-black">No grades available.</p>
             )}
         </div>
     );
 };
 
-export default ResultSheet;
+export default ReportSheetOfStudent;
