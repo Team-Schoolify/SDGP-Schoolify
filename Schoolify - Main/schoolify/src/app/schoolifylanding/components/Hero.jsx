@@ -22,7 +22,7 @@ export const Hero = (props) => {
             <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <div className="grid items-center grid-cols-1 gap-12 lg:grid-cols-2">
                     <div>
-                        <p className="text-base font-semibold tracking-wider text-blue-600 uppercase">A website for learners</p>
+                        <p className="text-base font-semibold tracking-wider text-black uppercase">A website for learners</p>
                         <h1 className="mt-4 text-2xl font-bold text-black lg:mt-8 sm:text-6xl xl:text-8xl pb-2
                     bg-gradient-to-r from-customBlue via-customGreen to-customLightBlue bg-clip-text text-transparent
                     ">Connect & Continue your learnings.</h1>
