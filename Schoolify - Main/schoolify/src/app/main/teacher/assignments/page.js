@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowRight, X } from "lucide-react"
+import { ArrowRight, X, Plus, MoreVertical } from "lucide-react"
 import { useState } from "react"
 
 const resources = [
@@ -8,16 +8,18 @@ const resources = [
     id: 1,
     title: "Learning Materials",
     subTopics: [
-        { id: 1, title: " Chapter 01: ", description: "Explains Newton's first, second, and third laws." },
-        { id: 2, title: " Chapter 02: ", description: "Covers the effects of gravity and objects in free fall." },
-        { id: 3, title: " Chapter 03: ", description: "Discusses how friction and air resistance affect motion." }
-    ]
+      { id: 1, title: " Chapter 01: ", description: "Explains Newton's first, second, and third laws." },
+      { id: 2, title: " Chapter 02: ", description: "Covers the effects of gravity and objects in free fall." },
+      { id: 3, title: " Chapter 03: ", description: "Discusses how friction and air resistance affect motion." },
+    ],
   },
   {
     id: 2,
     title: "Past Papers",
-    content:
-      "Atomic structure refers to the organization and composition of atoms, including protons, neutrons, and electrons, which form the basic building blocks of matter.",
+    subTopics: [
+      { id: 1, title: " 2021 PastPaper" },
+      { id: 2, title: " 2022 PastPaper" },
+    ],
   },
   {
     id: 3,
@@ -25,7 +27,7 @@ const resources = [
     content:
       "Cell theory states that all living things are composed of cells, cells are the basic unit of structure and function in living things, and all cells arise from pre-existing cells.",
   },
-];
+]
 
 export default function ScienceResources() {
   const [selectedTopic, setSelectedTopic] = useState(null)
@@ -35,7 +37,10 @@ export default function ScienceResources() {
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white p-6 md:p-12">
       <div className="mx-auto max-w-4xl">
         <div className="mb-12">
-          <h1 className="text-4xl font-bold tracking-tight text-custom-blue md:text-5xl lg:text-6xl pl-4" style={{ color: "#5d98c6", float: "left" }}>
+          <h1
+            className="text-4xl font-bold tracking-tight text-custom-blue md:text-5xl lg:text-6xl pl-4"
+            style={{ color: "#5d98c6", float: "left" }}
+          >
             Science
           </h1>
         </div>
@@ -65,16 +70,32 @@ export default function ScienceResources() {
               <div className="rounded-xl bg-white p-6 shadow-lg">
                 <div className="mb-4 flex items-center justify-between">
                   <h2 className="text-2xl font-bold text-gray-900">{selectedTopic.title}</h2>
-                  <button
-                    onClick={() => { setSelectedTopic(null); setSelectedSubTopic(null); }}
-                    className="rounded-full p-2 text-gray-500 transition-colors hover:bg-gray-100"
-                  >
-                    <X className="size-6" />
-                  </button>
+                  <div className="flex items-center gap-2">
+                    {selectedTopic.title === "Past Papers" && (
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          // Add your action here
+                        }}
+                        className="rounded-full w-8 h-8 bg-blue-500 border-2 border-dotted border-blue-300 flex items-center justify-center transition-all hover:bg-blue-600 hover:scale-110"
+                      >
+                        <Plus className="w-5 h-5 text-white" />
+                      </button>
+                    )}
+                    <button
+                      onClick={() => {
+                        setSelectedTopic(null)
+                        setSelectedSubTopic(null)
+                      }}
+                      className="rounded-full p-2 text-gray-500 transition-colors hover:bg-gray-100"
+                    >
+                      <X className="size-6" />
+                    </button>
+                  </div>
                 </div>
-                <p className="text-gray-600">{selectedTopic.content}</p>
+                <p className="text-gray-600 text-center">{selectedTopic.content}</p>
 
-                {/* Sub-Topic Boxes for "Physics: Forces and Motion" */}
+                {/* Sub-Topic Boxes */}
                 {selectedTopic.subTopics && !selectedSubTopic && (
                   <div className="mt-6 space-y-4">
                     {selectedTopic.subTopics.map((subTopic) => (
@@ -83,7 +104,10 @@ export default function ScienceResources() {
                         onClick={() => setSelectedSubTopic(subTopic)}
                         className="block w-full rounded-xl bg-blue-300 p-4 text-left transition-all duration-300 hover:bg-blue-400 hover:shadow-lg"
                       >
-                        <h3 className="text-lg font-semibold text-white">{subTopic.title}</h3>
+                        <div className="flex items-center justify-between">
+                          <h3 className="text-lg font-semibold text-white">{subTopic.title}</h3>
+                          <MoreVertical className="w-5 h-5 text-white opacity-75 hover:opacity-100" />
+                        </div>
                       </button>
                     ))}
                   </div>
@@ -110,3 +134,4 @@ export default function ScienceResources() {
     </div>
   )
 }
+
