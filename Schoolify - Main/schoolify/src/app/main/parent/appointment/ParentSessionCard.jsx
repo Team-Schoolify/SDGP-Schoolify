@@ -5,7 +5,7 @@ import {Card, CardHeader, CardBody, Image, Button, Link} from "@heroui/react";
 import {CardFooter} from "@nextui-org/react";
 import {TrashIcon} from "@heroicons/react/24/outline";
 
-const Session = () => {
+const ParentSessionCard = () => {
 
     const [sessions, setSessions] = useState([]);
     const [parentId, setParentId] = useState(null); // Store school_id in state
@@ -139,7 +139,7 @@ const Session = () => {
                                     startContent={<TrashIcon className="size-4" />}
                                     onClick={() => handleDelete(session.id,session.selected_time, session.selected_day_name, session.teacher_session_id)}
                                 >
-                                    <span className="text-md">
+                                    <span className="text-medium">
                                         Delete
                                     </span>
                                 </Button>
@@ -155,4 +155,4 @@ const Session = () => {
 
     )
 }
-export default Session
+export default ParentSessionCard

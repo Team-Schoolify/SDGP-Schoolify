@@ -117,3 +117,14 @@ body {
         @apply font-bold text-4xl md:text-5xl text-center;
     }
 }
+
+.custom-cell {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  
+  .custom-header-cell {
+    padding-left: 21px;
+    padding-right: 21px;
+  }
+  
