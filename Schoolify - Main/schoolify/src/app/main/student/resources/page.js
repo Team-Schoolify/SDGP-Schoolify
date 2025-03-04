@@ -14,7 +14,7 @@ const subjects = [
     id: 2,
     name: "Science",
     description: "Physics, Chemistry, Biology",
-    href: "/Sujects/Science",
+    href: "/Sujects/Science/page",
     color: "bg-green-500",
   },
   {
@@ -65,7 +65,7 @@ export default function SubjectsPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white p-6">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-bold text-center mb-12 relative inline-block">
+        <h1 className="text-4xl font-bold text-center mb-12 relative inline-block  text-black">
           Subjects
           <span className="absolute bottom-0 left-0 w-full h-1 bg-blue-500"></span>
         </h1>
