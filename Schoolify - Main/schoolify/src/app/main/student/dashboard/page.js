@@ -1,9 +1,12 @@
 "use client";
 import React, {useEffect, useState} from 'react';
+import MainNavbar from "@/app/components/MainNavbar";
 import Hero from "@/app/main/student/dashboard/Hero";
 import Subjects from "@/app/main/student/dashboard/Subjects";
 import CardSlideshow from "@/app/main/student/dashboard/CardSlideshow"
+import {FooterSection} from "@/app/components/FooterSection";
 import {useRouter} from "next/navigation";
+import {ProfileStudent} from "@/app/main/student/profileStudent";
 
 export default function LoginPage() {
 
@@ -40,7 +43,7 @@ export default function LoginPage() {
     }, []);
 
     if (loading) {
-        return <p className="text-center text-black">Loading...</p>;
+        return <p className="text-center text-white">Loading...</p>;
     }
 
     if (!user) {
@@ -49,9 +52,12 @@ export default function LoginPage() {
 
     return (
         <div>
+            {/*<MainNavbar/>*/}
             <Hero/>
             <Subjects/>
             <CardSlideshow/>
+            {/*<ProfileStudent/>*/}
+            {/*<FooterSection/>*/}
         </div>
     );
 }

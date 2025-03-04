@@ -39,6 +39,7 @@ export default function MainNavbar() {
             { name: "Dashboard", path: `/main/student/dashboard` },
             { name: "Assignments", path: `/main/student/assignments` },
             { name: "Gradebook", path: `/main/student/gradebook` },
+            { name: "Attendance", path: `/main/student/attendance` },
             { name: "Events", path: `/main/student/event` },
             { name: "Resources", path: `/main/student/resources` },
         ],
@@ -104,18 +105,18 @@ export default function MainNavbar() {
                 </NavbarContent>
 
                 {/* Login & Signup */}
-                {/* <NavbarContent justify="end" className="hidden sm:flex">
-                    <NavbarItem>
-                        <Button as={NextLink} href="#" color="primary" variant="flat" className="text-customWhite bg-customBlue">
-                            Login
-                        </Button>
-                    </NavbarItem>
-                    <NavbarItem>
-                        <Button as={NextLink} href="#" color="primary" variant="flat" className="text-customWhite bg-customBlue">
-                            Sign Up
-                        </Button>
-                    </NavbarItem>
-                </NavbarContent> */}
+                {/*<NavbarContent justify="end" className="hidden sm:flex">*/}
+                {/*    <NavbarItem>*/}
+                {/*        <Button as={NextLink} href="#" color="primary" variant="flat" className="text-customWhite bg-customBlue">*/}
+                {/*            Login*/}
+                {/*        </Button>*/}
+                {/*    </NavbarItem>*/}
+                {/*    <NavbarItem>*/}
+                {/*        <Button as={NextLink} href="#" color="primary" variant="flat" className="text-customWhite bg-customBlue">*/}
+                {/*            Sign Up*/}
+                {/*        </Button>*/}
+                {/*    </NavbarItem>*/}
+                {/*</NavbarContent>*/}
 
                 {/* Hamburger Menu (Mobile) */}
                 <NavbarContent className="sm:hidden flex items-center justify-end">
@@ -198,14 +199,14 @@ export default function MainNavbar() {
                                             ></span>
                                         </NextLink>
                                     ))}
-                                    <div className="flex flex-col items-center gap-2">
-                                        <Button as={NextLink} href="#" color="primary" variant="flat" className="text-customWhite bg-customBlue">
-                                            Login
-                                        </Button>
-                                        <Button as={NextLink} href="#" color="primary" variant="flat" className="text-customWhite bg-customBlue">
-                                            Sign Up
-                                        </Button>
-                                    </div>
+                                    {/*<div className="flex flex-col items-center gap-2">*/}
+                                    {/*    <Button as={NextLink} href="#" color="primary" variant="flat" className="text-customWhite bg-customBlue">*/}
+                                    {/*        Login*/}
+                                    {/*    </Button>*/}
+                                    {/*    <Button as={NextLink} href="#" color="primary" variant="flat" className="text-customWhite bg-customBlue">*/}
+                                    {/*        Sign Up*/}
+                                    {/*    </Button>*/}
+                                    {/*</div>*/}
                                 </div>
                             </ModalBody>
                         </>

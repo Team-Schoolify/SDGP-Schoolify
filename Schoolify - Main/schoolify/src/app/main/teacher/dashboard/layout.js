@@ -3,6 +3,7 @@ import "@/app/globals.css";
 import {Providers} from "@/app/providers";
 import MainNavbar from "@/app/components/MainNavbar";
 import {FooterSection} from "@/app/components/FooterSection";
+import {ProfileAndNotificationTeacher} from "@/app/main/teacher/profileAndNotificationTeacher";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -23,11 +24,12 @@ export default function RootLayout({ children }) {
     return (
         <>
 
-        <Providers>
-            <MainNavbar/>
-            <div id="root">{children}</div>
-            <FooterSection/>
-        </Providers>
+            <Providers>
+                <MainNavbar/>
+                <div id="root">{children}</div>
+                <ProfileAndNotificationTeacher/>
+                <FooterSection/>
+            </Providers>
 
         </>
     );
