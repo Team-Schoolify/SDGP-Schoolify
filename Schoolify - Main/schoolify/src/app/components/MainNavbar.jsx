@@ -75,8 +75,7 @@ export default function MainNavbar() {
                 {/* Brand */}
                 <NavbarBrand>
                     <NextLink href={`/main/${role}/dashboard?role=${role}`} className="font-bold text-customWhite flex items-center">
-                        <AcmeLogo />
-                        <p>Schoolify</p>
+                        <img src="public/img/SchoolifyLogo.png" alt="Schoolify"/>
                     </NextLink>
                 </NavbarBrand>
 
