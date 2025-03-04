@@ -16,9 +16,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-    title: "Schoolify - Teacher",
+    title: "Dashboard",
     description: "This is Schoolify Website",
-  };
+};
 
 export default function RootLayout({ children }) {
     return (
