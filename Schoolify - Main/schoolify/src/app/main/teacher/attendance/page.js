@@ -1,14 +1,12 @@
 "use client";
 
 import React from "react";
+import AttendanceMark from "@/app/main/teacher/attendance/AttendanceMark";
 
 export default function Page() {
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-100">
-            <h1 className="text-4xl font-bold text-gray-800">
-                Welcome to Attendance Page of Teachers!
-            </h1>
-
+        <div className="min-h-screen">
+            <AttendanceMark/>
         </div>
     );
 }
