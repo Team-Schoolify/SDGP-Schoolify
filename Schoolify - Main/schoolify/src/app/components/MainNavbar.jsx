@@ -1,5 +1,7 @@
 'use client';
 
+import Image from "next/image";
+
 import React from "react";
 import {
     Navbar,
@@ -75,7 +77,7 @@ export default function MainNavbar() {
                 {/* Brand */}
                 <NavbarBrand>
                     <NextLink href={`/main/${role}/dashboard?role=${role}`} className="font-bold text-customWhite flex items-center">
-                        <img src="public/img/SchoolifyLogo.png" alt="Schoolify"/>
+                        <img src="/img/logowhite.png" alt="Schoolify Logo" className="w-16"/>
                     </NextLink>
                 </NavbarBrand>
 

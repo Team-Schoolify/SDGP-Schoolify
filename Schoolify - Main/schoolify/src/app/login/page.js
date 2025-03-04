@@ -100,7 +100,7 @@ export default function LoginPage() {
                         <h1 className="text-lg sm:text-xl font-medium text-white">
                             Sign in to your account
                         </h1>
-                        <p className="text-sm text-gray-400">to continue to Acme</p>
+                        <p className="text-sm text-gray-400">to continue to Schoolify</p>
                     </div>
 
                     <Form
@@ -127,6 +127,7 @@ export default function LoginPage() {
                                 <SelectItem key={schoolRole.key}>{schoolRole.label}</SelectItem>
                             ))}
                         </Select>
+                        
                         <Input
                             isRequired
                             label="Email Address"
