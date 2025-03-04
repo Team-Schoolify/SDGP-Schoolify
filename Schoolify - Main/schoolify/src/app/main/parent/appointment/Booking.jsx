@@ -33,6 +33,7 @@ const Booking = () => {
         studentName: "",
         studentId:"",
         studentGrade:"",
+        purpose:"",
     });
     useEffect(() => {
         console.log("Updated useeffect Form Data:", formData);
@@ -222,6 +223,7 @@ const Booking = () => {
                         parent_photo: formData.parentPhoto,
                         student_grade: formData.studentGrade,
                         student_name: formData.studentName,
+                        purpose: formData.purpose,
                     },
                 ]);
 

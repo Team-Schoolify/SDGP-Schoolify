@@ -1,5 +1,5 @@
 import React from "react";
-const Lottie = dynamic(() => import("lottie-react"), { ssr: false });import animationData from "@/app/main/student/dashboard/lottie.json"
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });import animationData from "@/app/main/student/dashboard/lottie_student.json"
 import { useRef } from "react";
 import dynamic from "next/dynamic";
 
@@ -21,13 +21,10 @@ export const Hero = (props) => {
                     <div className="self-start">
                         <h1
                             className="text-2xl font-bold  sm:text-6xl xl:text-8xl pb-2
-          bg-gradient-to-r from-customBlue via-customGreen to-customLightBlue bg-clip-text text-transparent"
+          bg-gradient-to-r from-customBlue to-customLightBlue bg-clip-text text-transparent"
                         >
-                            Hello Name!
+                            Welcome Back!
                         </h1>
-                        <p className="mt-4 text-base text-black sm:text-3xl">
-                            Are you ready to do the learning.
-                        </p>
                     </div>
 
                     {/* Animation Section */}

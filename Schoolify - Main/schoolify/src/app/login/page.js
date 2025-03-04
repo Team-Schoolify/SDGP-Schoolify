@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { BackgroundLines } from "@/app/components/ui/background-lines";
 import { Button, Input, Checkbox, Link, Form, Divider } from "@nextui-org/react";
 import { Icon } from "@iconify/react";
-import { AcmeIcon } from "./AcmeIcon";
+import { SchoolifyIcon } from "./SchoolifyIcon";
 import NextLink from "next/link";
 import { jwtDecode } from "jwt-decode";
 import {Select, SelectItem} from "@nextui-org/react";
@@ -87,7 +87,7 @@ export default function LoginPage() {
             <div className="relative z-10 flex flex-col items-center w-full max-w-md px-6 py-8 bg-black border-1 border-gray-600 rounded-lg shadow-lg">
                 {/* Welcome Section */}
                 <div className="flex flex-col items-center mb-6">
-                    <AcmeIcon size={60} />
+                    <SchoolifyIcon size={60} />
                     <p className="text-lg sm:text-xl font-medium text-white">Welcome Back</p>
                     <p className="text-sm sm:text-base text-gray-400">
                         Log in to your account to continue
@@ -100,7 +100,7 @@ export default function LoginPage() {
                         <h1 className="text-lg sm:text-xl font-medium text-white">
                             Sign in to your account
                         </h1>
-                        <p className="text-sm text-gray-400">to continue to Acme</p>
+                        <p className="text-sm text-gray-400">to continue to Schoolify</p>
                     </div>
 
                     <Form
@@ -127,6 +127,7 @@ export default function LoginPage() {
                                 <SelectItem key={schoolRole.key}>{schoolRole.label}</SelectItem>
                             ))}
                         </Select>
+                        
                         <Input
                             isRequired
                             label="Email Address"

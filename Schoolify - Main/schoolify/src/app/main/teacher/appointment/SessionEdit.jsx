@@ -33,31 +33,6 @@ export const SessionEdit = () => {
         }
     }, []);
 
-    // useEffect(() => {
-    //     const fetchTeachers = async () => {
-    //         console.log("Fetching Teachers");
-    //         if (!teacherId) {
-    //             return;
-    //         }
-    //         console.log("Fetching started teachers");
-    //
-    //         const {teacherData, error} = await supabase
-    //             .from("teacher")
-    //             .select("teacher_id, status")
-    //             .eq("teacher_id", teacherId);
-    //
-    //         if (error) {
-    //             console.error("Error fetching teachers:",error);
-    //             return;
-    //         }
-    //
-    //         setIsTeacherAvailable(teacherData[0].status === "Available" ? true : false);
-    //     };
-    //     if (teacherId) {
-    //         fetchTeachers();
-    //     }
-    // }, [teacherId]);
-
     useEffect(() => {
         const fetchTeachers = async () => {
             console.log("Fetching Teachers");
@@ -114,9 +89,16 @@ export const SessionEdit = () => {
             console.log("Fetched TimeSlots:", data);
 
             // ✅ Set the switch default state based on availability
-            setIsWednesdayAvailable(data.filter(slot => slot.day === "wednesday").every(slot => slot.availability === "available") ? true : false);
-            setIsFridayAvailable(data.filter(slot => slot.day === "friday").every(slot => slot.availability === "available") ? true : false);
+            // setIsWednesdayAvailable(data.filter(slot => slot.day === "wednesday").every(slot => slot.availability === "available") ? true : false);
+            // setIsFridayAvailable(data.filter(slot => slot.day === "friday").every(slot => slot.availability === "available") ? true : false);
 
+            // ✅ Determine availability for Wednesday and Friday
+            const wednesdayOpening = data.some(slot => slot.day === "wednesday" && slot.availability === "available");
+            const fridayOpening = data.some(slot => slot.day === "friday" && slot.availability === "available");
+
+            // ✅ Set switch default state
+            setIsWednesdayAvailable(wednesdayOpening);
+            setIsFridayAvailable(fridayOpening);
 
             // Separate timeslots by day and convert them into Time objects
             const convertTimeSlot = (slot) => ({
@@ -278,75 +260,75 @@ export const SessionEdit = () => {
     };
 
     // To disable availability Switch
-    useEffect(() => {
-        const updateAvailability = () => {
-            const now = new Date();
-            const day = now.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
-
-            // 🚀 Saturday: Switch is ALWAYS enabled
-            if (day === 6) {
-                setIsDisabled(false);
-                return;
-            }
-
-            // ❌ Sunday 00:00 - Tuesday 23:59: Switch is ALWAYS disabled
-            if (day === 0 || day === 1 || day === 2) {
-                setIsDisabled(true);
-                setIsTeacherAvailable(false); // Auto-disable if inside restriction period
-                return;
-            }
-
-            // ✅ Tuesday 00:00 - Saturday 23:59:
-            if (day >= 2 && day <= 5) {
-                if (!isTeacherAvailable) {
-                    setIsDisabled(false); // Allow enabling
-                } else {
-                    setIsDisabled(true); // If already enabled, disable it
-                }
-                return;
-            }
-
-            // Default case (should never be reached)
-            setIsDisabled(false);
-        };
-
-        updateAvailability(); // Run on mount
-        const interval = setInterval(updateAvailability, 60000); // Check every minute
-
-        return () => clearInterval(interval); // Cleanup on unmount
-    }, [isTeacherAvailable]); // React to teacher availability changes
-
-    //Wednesday disable switch
-    useEffect(() => {
-        const updateWednesdayAvailability = () => {
-            const now = new Date();
-            const day = now.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
-
-            // ✅ Enable switch only on Tuesday
-            setIsWednesdayDisabled(day !== 2);
-        };
-
-        updateWednesdayAvailability(); // Run on mount
-        const interval = setInterval(updateWednesdayAvailability, 60000); // Check every minute
-
-        return () => clearInterval(interval); // Cleanup on unmount
-    }, []);
-
-    //Friday disable switch
-    useEffect(() => {
-        const updateFridayAvailability = () => {
-            const now = new Date();
-            const day = now.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
-
-            // ✅ Enable switch only on Tuesday
-            setIsFridayDisabled(day !== 5);
-        };
-
-        updateFridayAvailability(); // Run on mount
-        const interval = setInterval(updateFridayAvailability, 60000); // Check every minute
-
-        return () => clearInterval(interval); // Cleanup on unmount
-    }, []);
+    // useEffect(() => {
+    //     const updateAvailability = () => {
+    //         const now = new Date();
+    //         const day = now.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+    //
+    //         // 🚀 Saturday: Switch is ALWAYS enabled
+    //         if (day === 6) {
+    //             setIsDisabled(false);
+    //             return;
+    //         }
+    //
+    //         // ❌ Sunday 00:00 - Tuesday 23:59: Switch is ALWAYS disabled
+    //         if (day === 0 || day === 1 || day === 2) {
+    //             setIsDisabled(true);
+    //             setIsTeacherAvailable(false); // Auto-disable if inside restriction period
+    //             return;
+    //         }
+    //
+    //         // ✅ Tuesday 00:00 - Saturday 23:59:
+    //         if (day >= 2 && day <= 5) {
+    //             if (!isTeacherAvailable) {
+    //                 setIsDisabled(false); // Allow enabling
+    //             } else {
+    //                 setIsDisabled(true); // If already enabled, disable it
+    //             }
+    //             return;
+    //         }
+    //
+    //         // Default case (should never be reached)
+    //         setIsDisabled(false);
+    //     };
+    //
+    //     updateAvailability(); // Run on mount
+    //     const interval = setInterval(updateAvailability, 60000); // Check every minute
+    //
+    //     return () => clearInterval(interval); // Cleanup on unmount
+    // }, [isTeacherAvailable]); // React to teacher availability changes
+    //
+    // //Wednesday disable switch
+    // useEffect(() => {
+    //     const updateWednesdayAvailability = () => {
+    //         const now = new Date();
+    //         const day = now.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+    //
+    //         // ✅ Enable switch only on Tuesday
+    //         setIsWednesdayDisabled(day !== 2);
+    //     };
+    //
+    //     updateWednesdayAvailability(); // Run on mount
+    //     const interval = setInterval(updateWednesdayAvailability, 60000); // Check every minute
+    //
+    //     return () => clearInterval(interval); // Cleanup on unmount
+    // }, []);
+    //
+    // //Friday disable switch
+    // useEffect(() => {
+    //     const updateFridayAvailability = () => {
+    //         const now = new Date();
+    //         const day = now.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+    //
+    //         // ✅ Enable switch only on Tuesday
+    //         setIsFridayDisabled(day !== 5);
+    //     };
+    //
+    //     updateFridayAvailability(); // Run on mount
+    //     const interval = setInterval(updateFridayAvailability, 60000); // Check every minute
+    //
+    //     return () => clearInterval(interval); // Cleanup on unmount
+    // }, []);
 
     return (
         <div className="mt-10">

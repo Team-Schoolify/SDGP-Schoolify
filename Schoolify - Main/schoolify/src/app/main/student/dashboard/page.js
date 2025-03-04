@@ -6,6 +6,7 @@ import Subjects from "@/app/main/student/dashboard/Subjects";
 import CardSlideshow from "@/app/main/student/dashboard/CardSlideshow"
 import {FooterSection} from "@/app/components/FooterSection";
 import {useRouter} from "next/navigation";
+import {ProfileStudent} from "@/app/main/student/profileStudent";
 
 export default function LoginPage() {
 
@@ -55,6 +56,7 @@ export default function LoginPage() {
             <Hero/>
             <Subjects/>
             <CardSlideshow/>
+            {/*<ProfileStudent/>*/}
             {/*<FooterSection/>*/}
         </div>
     );
