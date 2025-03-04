@@ -1,7 +1,8 @@
 "use client"
 
-import { ArrowRight, X, Plus, MoreVertical } from "lucide-react"
+import { ArrowRight, X } from "lucide-react"
 import { useState } from "react"
+import Link from "next/link"
 
 const resources = [
   {
@@ -16,10 +17,8 @@ const resources = [
   {
     id: 2,
     title: "Past Papers",
-    subTopics: [
-      { id: 1, title: " 2021 PastPaper" },
-      { id: 2, title: " 2022 PastPaper" },
-    ],
+    content:
+      "Atomic structure refers to the organization and composition of atoms, including protons, neutrons, and electrons, which form the basic building blocks of matter.",
   },
   {
     id: 3,
@@ -36,16 +35,16 @@ export default function ScienceResources() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white p-6 md:p-12">
       <div className="mx-auto max-w-4xl">
-        <div className="mb-12">
-          <h1
-            className="text-4xl font-bold tracking-tight text-custom-blue md:text-5xl lg:text-6xl pl-4"
-            style={{ color: "#5d98c6", float: "left" }}
-          >
+        <div className="mb-12 flex items-center justify-between">
+          <h1 className="text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl pl-4" style={{ color: "#5d98c6" }}>
             Science
           </h1>
+          <Link href="/" className="px-4 py-2 text-sm text-blue-600 hover:text-blue-800 transition-colors">
+            Back to Subjects
+          </Link>
         </div>
 
-        <div className="relative">
+        <div className="relative mt-16">
           {/* Main Topic List */}
           {!selectedTopic && (
             <div className="space-y-6 transition-all duration-500">
@@ -66,34 +65,21 @@ export default function ScienceResources() {
 
           {/* Topic Content Panel */}
           {selectedTopic && (
-            <div className="absolute left-0 top-0 w-full transition-all duration-500 opacity-100 translate-x-0">
+            <div className="w-full transition-all duration-500">
               <div className="rounded-xl bg-white p-6 shadow-lg">
                 <div className="mb-4 flex items-center justify-between">
                   <h2 className="text-2xl font-bold text-gray-900">{selectedTopic.title}</h2>
-                  <div className="flex items-center gap-2">
-                    {selectedTopic.title === "Past Papers" && (
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation()
-                          // Add your action here
-                        }}
-                        className="rounded-full w-8 h-8 bg-blue-500 border-2 border-dotted border-blue-300 flex items-center justify-center transition-all hover:bg-blue-600 hover:scale-110"
-                      >
-                        <Plus className="w-5 h-5 text-white" />
-                      </button>
-                    )}
-                    <button
-                      onClick={() => {
-                        setSelectedTopic(null)
-                        setSelectedSubTopic(null)
-                      }}
-                      className="rounded-full p-2 text-gray-500 transition-colors hover:bg-gray-100"
-                    >
-                      <X className="size-6" />
-                    </button>
-                  </div>
+                  <button
+                    onClick={() => {
+                      setSelectedTopic(null)
+                      setSelectedSubTopic(null)
+                    }}
+                    className="rounded-full p-2 text-gray-500 transition-colors hover:bg-gray-100"
+                  >
+                    <X className="size-6" />
+                  </button>
                 </div>
-                <p className="text-gray-600 text-center">{selectedTopic.content}</p>
+                <p className="text-gray-600">{selectedTopic.content}</p>
 
                 {/* Sub-Topic Boxes */}
                 {selectedTopic.subTopics && !selectedSubTopic && (
@@ -104,10 +90,7 @@ export default function ScienceResources() {
                         onClick={() => setSelectedSubTopic(subTopic)}
                         className="block w-full rounded-xl bg-blue-300 p-4 text-left transition-all duration-300 hover:bg-blue-400 hover:shadow-lg"
                       >
-                        <div className="flex items-center justify-between">
-                          <h3 className="text-lg font-semibold text-white">{subTopic.title}</h3>
-                          <MoreVertical className="w-5 h-5 text-white opacity-75 hover:opacity-100" />
-                        </div>
+                        <h3 className="text-lg font-semibold text-white">{subTopic.title}</h3>
                       </button>
                     ))}
                   </div>
