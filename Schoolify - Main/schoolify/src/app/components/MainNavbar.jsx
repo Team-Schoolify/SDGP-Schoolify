@@ -45,7 +45,7 @@ export default function MainNavbar() {
         ],
         teacher: [
             { name: "Dashboard", path: `/main/teacher/dashboard` },
-            { name: "Assignments", path: `/main/teacher/assignments` },
+            { name: "Resources", path: `/main/teacher/resources` },
             { name: "Gradebook", path: `/main/teacher/gradebook` },
             { name: "Attendance", path: `/main/teacher/attendance` },
             { name: "Events", path: `/main/teacher/event` },

@@ -1,12 +1,12 @@
 "use client";
 
 import React from "react";
-import DrawerComponent from "./DrawerComponent";
+import SubjectCardsTeacher from "@/app/main/teacher/resources/SubjectCardsTeacher";
 
 export default function Page() {
     return (
         <div className="min-h-screen">
-            <DrawerComponent/>
+            <SubjectCardsTeacher/>
         </div>
     );
 }
