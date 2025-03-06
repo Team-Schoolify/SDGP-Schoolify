@@ -14,7 +14,7 @@ const subjects = [
     id: 2,
     name: "Science",
     description: "Physics, Chemistry, Biology",
-    href: "/Sujects/Science/page",
+    href: "/resources/Subjects/Science",
     color: "bg-green-500",
   },
   {
