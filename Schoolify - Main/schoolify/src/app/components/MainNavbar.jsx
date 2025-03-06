@@ -58,6 +58,11 @@ export default function MainNavbar() {
             { name: "Events", path: `/main/parent/event` },
             { name: "Appointments", path: `/main/parent/appointment` },
         ],
+        admin: [
+            { name: "Student", path: `/main/admin/student` },
+            { name: "Teacher", path: `/main/admin/teacher` },
+            { name: "Parent", path: `/main/admin/parent` },
+        ],
     };
 
     const navLinks = roleBasedNavLinks[role] || []; // Fallback to an empty array
