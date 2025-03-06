@@ -17,6 +17,7 @@ export default function GradebookPage() {
         { name: "History", score: 50 },
         { name: "Western Music", score: 68 },
         { name: "ICT", score: 90 },
+        
       ],
     },
     {
@@ -31,6 +32,7 @@ export default function GradebookPage() {
         { name: "History", score: 64 },
         { name: "Western Music", score: 79 },
         { name: "ICT", score: 85 },
+  
       ],
     },
   ];
