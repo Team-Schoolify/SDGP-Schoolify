@@ -21,3 +21,31 @@ export default function TermMarksPage() {
     };
     fetchMarks();
   }, [year, term]);
+
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-200 p-8">
+      <h1 className="text-4xl font-bold text-gray-800 mb-6 text-center">
+        Report Book - {year} Term {term}
+      </h1>
+      {marksData ? (
+        <Card className="bg-white shadow-xl rounded-lg p-6 w-96 border border-gray-300">
+          <CardHeader className="text-center font-bold text-lg text-gray-900">
+            Report Book - {year} Term {term}
+          </CardHeader>
+          <CardBody className="text-gray-800">
+            <p className="mb-2">
+              <strong>Name:</strong> {marksData.studentName}
+            </p>
+            <p className="mb-2">
+              <strong>Grade:</strong> {marksData.grade}
+            </p>
+            <ul className="space-y-2">
+              {marksData.subjects.map((subject, idx) => (
+                <li key={idx} className="flex justify-between">
+                  <span>{subject.name}</span>
+                  <span className="font-semibold">{subject.score}</span>
+                </li>
+              ))}
+            </ul>
+
+
