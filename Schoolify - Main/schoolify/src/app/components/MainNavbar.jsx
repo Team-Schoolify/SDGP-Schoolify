@@ -45,7 +45,7 @@ export default function MainNavbar() {
         ],
         teacher: [
             { name: "Dashboard", path: `/main/teacher/dashboard` },
-            { name: "Assignments", path: `/main/teacher/assignments` },
+            { name: "Resources", path: `/main/teacher/resources` },
             { name: "Gradebook", path: `/main/teacher/gradebook` },
             { name: "Attendance", path: `/main/teacher/attendance` },
             { name: "Events", path: `/main/teacher/event` },
@@ -57,6 +57,11 @@ export default function MainNavbar() {
             { name: "Attendance", path: `/main/parent/attendance` },
             { name: "Events", path: `/main/parent/event` },
             { name: "Appointments", path: `/main/parent/appointment` },
+        ],
+        admin: [
+            { name: "Student", path: `/main/admin/student` },
+            { name: "Teacher", path: `/main/admin/teacher` },
+            { name: "Parent", path: `/main/admin/parent` },
         ],
     };
 
