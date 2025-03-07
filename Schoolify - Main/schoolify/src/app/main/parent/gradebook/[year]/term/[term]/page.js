@@ -48,4 +48,9 @@ export default function TermMarksPage() {
               ))}
             </ul>
 
+            {/* Line Above Average */}
+            <div className="mt-3 border-t-2 border-gray-700 w-full"></div>
+
+
+
 
