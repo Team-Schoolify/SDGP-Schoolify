@@ -9,10 +9,8 @@ const resources = [
     id: 1,
     title: "Learning Materials",
     subTopics: [
-        { id: 1, title: "Chapter 01: World History", description: "Covers the all world history like World Wars, Civil Wars." },
-        { id: 2, title: "Chapter 02: Civilizations", description: "Disscusses about every civilizations." },
-        { id: 3, title: "Chapter 03: Sri Lankan Ancient Kingdoms", description: "Covers the Sri Lankan kings, their kingdoms and insidents." },
-        { id: 4, title: "Chapter 04: Sri Lankan Political System", description: "Covers the Sri Lankan political parties, PrimeMinisters and Presidents." },
+        { id: 1, title: "Chapter 01: Business Studies", description: "Covers the all world history like World Wars, Civil Wars." },
+        { id: 2, title: "Chapter 02: Economics", description: "Disscusses about every civilizations." },
     ],
   },
   {
