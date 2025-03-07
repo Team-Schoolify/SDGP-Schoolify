@@ -51,6 +51,19 @@ export default function TermMarksPage() {
             {/* Line Above Average */}
             <div className="mt-3 border-t-2 border-gray-700 w-full"></div>
 
+            {/* Average Row */}
+            <div className="flex justify-between mt-2 text-gray-900 font-bold">
+              <span>Average</span>
+              <span className="font-semibold">
+                {(
+                  marksData.subjects.reduce(
+                    (sum, subject) => sum + subject.score,
+                    0
+                  ) / marksData.subjects.length
+                ).toFixed(2)}
+              </span>
+            </div>
+
 
 
 
