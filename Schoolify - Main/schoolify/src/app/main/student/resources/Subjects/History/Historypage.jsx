@@ -9,9 +9,9 @@ const resources = [
     id: 1,
     title: "Learning Materials",
     subTopics: [
-      { id: 1, title: "Chapter 01: Trigonometry", description: "Discusses how to solve with trigonometry functions." },
-      { id: 2, title: "Chapter 02: Algebra", description: "Studies algebric structures and the operations they use." },
-      { id: 3, title: "Chapter 03: Statistics", description: "Concerns the collection, organization, analysis, and presentation of data." },
+      { id: 1, title: "Chapter 01: World History", description: "Covers the writing and reading correct grammer." },
+      { id: 2, title: "Chapter 02: Civilizations", description: "Disscusses about deep old English and English literature." },
+      { id: 3, title: "Chapter 03: Sri Lankan Ancient Kingdoms", description: "To improve the writing skills." },
     ],
   },
   {
@@ -28,7 +28,7 @@ const resources = [
   },
 ]
 
-export default function MathsResources() {
+export default function HistoryResources() {
   const [selectedTopic, setSelectedTopic] = useState(null)
   const [selectedSubTopic, setSelectedSubTopic] = useState(null)
 
