@@ -131,7 +131,7 @@ export default function ProfilePage() {
             <h1 className="text-4xl font-bold text-gray-800">
                 User Profile
             </h1>
-            <UserProfile
+            <ProfileCard
                 src="/img/music.png"
                 alt="Profile Picture"
                 size={128}
