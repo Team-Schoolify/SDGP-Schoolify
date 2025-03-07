@@ -64,6 +64,20 @@ export default function TermMarksPage() {
               </span>
             </div>
 
+            {/* Two Lines Below Average */}
+            <div className="mt-4 border-t-2 border-gray-700 w-full"></div>
+            <div className="mt-2 border-t-2 border-gray-700 w-full"></div>
+          </CardBody>
+          <CardFooter />
+        </Card>
+      ) : (
+        <p className="text-red-500 font-semibold">Loading marks...</p>
+      )}
+    </div>
+  );
+}
+
+
 
 
 
