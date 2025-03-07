@@ -1,17 +1,17 @@
 "use client"
 
-import { ArrowRight, X } from "lucide-react"
 import { useState } from "react"
 import Link from "next/link"
+import { ArrowRight, X } from "lucide-react"
 
 const resources = [
   {
     id: 1,
     title: "Learning Materials",
     subTopics: [
-      { id: 1, title: " Chapter 01: ", description: "Explains Newton's first, second, and third laws." },
-      { id: 2, title: " Chapter 02: ", description: "Covers the effects of gravity and objects in free fall." },
-      { id: 3, title: " Chapter 03: ", description: "Discusses how friction and air resistance affect motion." },
+      { id: 1, title: "Chapter 01: Motion", description: "Explains Newton's first, second, and third laws." },
+      { id: 2, title: "Chapter 02: Gravity", description: "Covers the effects of gravity and objects in free fall." },
+      { id: 3, title: "Chapter 03: Friction", description: "Discusses how friction and air resistance affect motion." },
     ],
   },
   {
@@ -52,7 +52,7 @@ export default function ScienceResources() {
                 <button
                   key={resource.id}
                   onClick={() => setSelectedTopic(resource)}
-                  className="group relative block w-full overflow-hidden rounded-xl bg-blue-400 p-6 text-left transition-all duration-300 hover:bg-blue-500 hover:shadow-lg hover:-translate-y-1"
+                  className="group relative block w-full overflow-hidden rounded-xl bg-green-400 p-6 text-left transition-all duration-300 hover:bg-green-500 hover:shadow-lg hover:-translate-y-1"
                 >
                   <div className="flex items-center justify-between">
                     <h2 className="text-lg font-semibold text-white md:text-xl">{resource.title}</h2>
@@ -88,7 +88,7 @@ export default function ScienceResources() {
                       <button
                         key={subTopic.id}
                         onClick={() => setSelectedSubTopic(subTopic)}
-                        className="block w-full rounded-xl bg-blue-300 p-4 text-left transition-all duration-300 hover:bg-blue-400 hover:shadow-lg"
+                        className="block w-full rounded-xl bg-green-300 p-4 text-left transition-all duration-300 hover:bg-green-400 hover:shadow-lg"
                       >
                         <h3 className="text-lg font-semibold text-white">{subTopic.title}</h3>
                       </button>
