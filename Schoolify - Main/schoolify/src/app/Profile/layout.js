@@ -3,8 +3,6 @@ import "@/app/globals.css";
 import {Providers} from "@/app/providers";
 import MainNavbar from "@/app/components/MainNavbar";
 import {FooterSection} from "@/app/components/FooterSection";
-import {ProfileParent} from "@/app/main/parent/profileParent";
-import NotificationBellParent from "@/app/main/parent/NotificationBellParent";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -17,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-    title: "Gradebook",
-    description: "This is Schoolify Website",
+    title: "Profile",
+    description: "This is Profile Page of Schoolify Website",
 };
 
 export default function RootLayout({ children }) {
