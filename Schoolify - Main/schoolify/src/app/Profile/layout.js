@@ -29,8 +29,6 @@ export default function RootLayout({ children }) {
                   text-white rounded-full fixed
                   bottom-4 right-6 shadow-lg dark:bg-white dark:text-black
                   flex gap-4 items-center sm:flex-row flex-col z-50">
-                    <NotificationBellParent/>
-                    <ProfileParent/>
                 </div>
                 <FooterSection/>
             </Providers>
