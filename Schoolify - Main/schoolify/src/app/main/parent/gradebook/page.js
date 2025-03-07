@@ -1,12 +1,9 @@
 "use client";
 
-import React from "react";
-import ReportSheetOfStudent from "@/app/main/parent/gradebook/ReportSheetOfStudent";
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { Card } from "@heroui/card";
 
-export default function Page() {
-    return (
-        <div className="min-h-screen">
-            <ReportSheetOfStudent/>
-\        </div>
-    );
-}
+export default function GradebookPage() {
+    const router = useRouter();
+    const [terms, setTerms] = useState([]);
