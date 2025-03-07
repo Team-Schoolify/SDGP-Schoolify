@@ -21,3 +21,17 @@ export default function GradebookPage() {
     };
     fetchTerms();
   }, []);
+
+  // Handle term selection and redirect
+  const handleSelectTerm = (year, term) => {
+    setTimeout(() => {
+      router.push(`/main/parent/gradebook/${year}/term/${term}`);
+    }, 100);
+  };
+
+
+
+
+  
+
+
