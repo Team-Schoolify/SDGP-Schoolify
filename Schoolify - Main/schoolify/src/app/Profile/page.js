@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { ProfileCard } from "./ProfileCard";
 
 const profile = {
     id: 1,
@@ -128,9 +129,14 @@ export default function ProfilePage() {
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100">
             <h1 className="text-4xl font-bold text-gray-800">
-                Welcome to Profile Page of Students!
+                User Profile
             </h1>
-
+            <UserProfile
+                src="/img/music.png"
+                alt="Profile Picture"
+                size={128}
+                borderColor="border-gray-200"
+            />
         </div>
     );
 }
