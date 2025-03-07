@@ -29,6 +29,34 @@ export default function GradebookPage() {
     }, 100);
   };
 
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-200 p-8">
+      <h1 className="text-4xl font-bold text-gray-800 mb-6 text-center">
+        Select Year & Term
+      </h1>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {terms.map(({ year, term }) => (
+          <Card
+            key={`${year}-${term}`}
+            className="bg-white shadow-lg rounded-lg p-6 w-56 text-center cursor-pointer transition-transform duration-200 hover:scale-[1.05] border border-gray-300"
+          >
+            <a
+              href={`/main/parent/gradebook/${year}/term/${term}`}
+              className="block w-full h-full"
+            >
+              <p className="text-gray-900 font-semibold text-lg">
+                {year} - Term {term}
+              </p>
+            </a>
+          </Card>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+
+
 
 
 
