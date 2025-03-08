@@ -19,3 +19,16 @@ let teacherMarks = [
   
     return NextResponse.json(data || []);
   }
+
+  // Add or Update Marks (Teachers only)
+export async function POST(req) {
+    const { year, term, subject, studentName, marks } = await req.json();
+  
+    // Check if entry exists
+    const index = teacherMarks.findIndex(
+      (m) =>
+        m.year === year &&
+        m.term === term &&
+        m.subject === subject &&
+        m.studentName === studentName
+    );
