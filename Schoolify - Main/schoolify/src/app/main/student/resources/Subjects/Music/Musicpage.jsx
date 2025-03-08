@@ -9,8 +9,10 @@ const resources = [
     id: 1,
     title: "Learning Materials",
     subTopics: [
-        { id: 1, title: "Chapter 01: Business Studies", description: "Covers the all world history like World Wars, Civil Wars." },
-        { id: 2, title: "Chapter 02: Economics", description: "Disscusses about every civilizations." },
+        { id: 1, title: "Chapter 01: Introduction", description: "Covers the basics of music." },
+        { id: 2, title: "Chapter 02: Instruments", description: "Covers the every kind of instruments." },
+        { id: 3, title: "Chapter 03: Music Theory", description: "Covers music theories." },
+        { id: 4, title: "Chapter 04: Music Genres", description: "Disscusses about every music genres." },
     ],
   },
   {
