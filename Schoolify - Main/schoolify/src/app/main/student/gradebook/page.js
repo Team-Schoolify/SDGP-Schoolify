@@ -4,8 +4,8 @@ import React from "react";
 import { Card, CardHeader, CardBody, CardFooter } from "@heroui/card";
 
 export default function GradebookPage() {
-    const reportData = [
-      {
+  const reportData = [
+    {
         year: "2023",
         studentName: "John Doe",
         grade: "10",
@@ -66,26 +66,44 @@ export default function GradebookPage() {
     ];
 
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center bg-gray-200 p-8">
-          <h1 className="text-4xl font-bold text-gray-800 mb-6 text-center">
-            Student Report Books
-          </h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {reportData.map((report, index) => {
-              const totalMarks = report.subjects.reduce(
-                (sum, subject) => sum + subject.score,
-                0
-              );
-              const averageMarks = (totalMarks / report.subjects.length).toFixed(2);
+      <div className="min-h-screen flex flex-col items-center justify-center bg-gray-200 p-8">
+        <h1 className="text-4xl font-bold text-gray-800 mb-6 text-center">
+          Student Report Books
+        </h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {reportData.map((report, index) => {
+            const totalMarks = report.subjects.reduce(
+              (sum, subject) => sum + subject.score,
+              0
+            );
+            const averageMarks = (totalMarks / report.subjects.length).toFixed(2);
 
-              return (
-                <Card
-                  key={index}
-                  className="bg-white shadow-xl rounded-lg p-6 w-96 border border-gray-300"
-                >
-                  <CardHeader className="text-center font-bold text-lg text-gray-900">
-                    Report Book - {report.year}
-                    </CardHeader>
+            return (
+              <Card
+                key={index}
+                className="bg-white shadow-xl rounded-lg p-6 w-96 border border-gray-300"
+              >
+                <CardHeader className="text-center font-bold text-lg text-gray-900">
+                  Report Book - {report.year}
+                </CardHeader>
+                <CardBody className="text-gray-800">
+                  <p className="mb-2">
+                    <strong>Name:</strong> {report.studentName}
+                  </p>
+                  <p className="mb-2">
+                        <strong>Grade:</strong> {report.grade}
+                      </p>
+                      <ul className="space-y-2">
+                        {report.subjects.map((subject, idx) => (
+                          <li key={idx} className="flex justify-between">
+                            <span>{subject.name}</span>
+                            <span className="font-semibold">{subject.score}</span>
+                          </li>
+                        ))}
+                      </ul>
+
+
+                        
                        
                          
 
