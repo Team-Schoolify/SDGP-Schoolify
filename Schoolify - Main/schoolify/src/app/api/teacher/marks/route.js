@@ -32,3 +32,17 @@ export async function POST(req) {
         m.subject === subject &&
         m.studentName === studentName
     );
+
+    if (index !== -1) {
+        // Update existing marks
+        teacherMarks[index].marks = marks;
+      } else {
+        // Create new entry
+        teacherMarks.push({ year, term, subject, studentName, marks });
+      }
+    
+      return NextResponse.json({
+        success: true,
+        message: "Marks updated successfully!",
+      });
+    }
