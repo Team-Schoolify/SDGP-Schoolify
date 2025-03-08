@@ -19,3 +19,18 @@ export default function GradebookPage() {
           { name: "ICT", score: 90 },
         ],
       },
+      {
+        year: "2024",
+        studentName: "Jane Smith",
+        grade: "11",
+        subjects: [
+          { name: "Maths", score: 86 },
+          { name: "Science", score: 80 },
+          { name: "English Language", score: 90 },
+          { name: "Tamil", score: 82 },
+          { name: "History", score: 64 },
+          { name: "Western Music", score: 79 },
+          { name: "ICT", score: 85 },
+        ],
+      },
+    ];
