@@ -78,6 +78,12 @@ export default function GradebookPage() {
               );
               const averageMarks = (totalMarks / report.subjects.length).toFixed(2);
 
+              return (
+                <Card
+                  key={index}
+                  className="bg-white shadow-xl rounded-lg p-6 w-96 border border-gray-300"
+                >
+
 
     
 
