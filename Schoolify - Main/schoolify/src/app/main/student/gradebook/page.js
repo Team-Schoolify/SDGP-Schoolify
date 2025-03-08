@@ -83,6 +83,15 @@ export default function GradebookPage() {
                   key={index}
                   className="bg-white shadow-xl rounded-lg p-6 w-96 border border-gray-300"
                 >
+                  <CardHeader className="text-center font-bold text-lg text-gray-900">
+                    Report Book - {report.year}
+                    </CardHeader>
+                       
+                         
+
+                    
+
+
 
 
     
