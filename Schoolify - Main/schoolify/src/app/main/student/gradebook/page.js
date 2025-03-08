@@ -34,3 +34,50 @@ export default function GradebookPage() {
         ],
       },
     ];
+
+    {
+        year: "2024",
+        studentName: "Jane Smith",
+        grade: "11",
+        subjects: [
+          { name: "Maths", score: 86 },
+          { name: "Science", score: 80 },
+          { name: "English Language", score: 90 },
+          { name: "Tamil", score: 82 },
+          { name: "History", score: 64 },
+          { name: "Western Music", score: 79 },
+          { name: "ICT", score: 85 },
+        ],
+      },
+      {
+        year: "2024",
+        studentName: "Jane Smith",
+        grade: "11",
+        subjects: [
+          { name: "Maths", score: 86 },
+          { name: "Science", score: 80 },
+          { name: "English Language", score: 90 },
+          { name: "Tamil", score: 82 },
+          { name: "History", score: 64 },
+          { name: "Western Music", score: 79 },
+          { name: "ICT", score: 85 },
+        ],
+      },
+    ];
+
+    return (
+        <div className="min-h-screen flex flex-col items-center justify-center bg-gray-200 p-8">
+          <h1 className="text-4xl font-bold text-gray-800 mb-6 text-center">
+            Student Report Books
+          </h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {reportData.map((report, index) => {
+              const totalMarks = report.subjects.reduce(
+                (sum, subject) => sum + subject.score,
+                0
+              );
+              const averageMarks = (totalMarks / report.subjects.length).toFixed(2);
+
+
+    
+
