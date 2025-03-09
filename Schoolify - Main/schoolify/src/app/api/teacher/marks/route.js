@@ -22,6 +22,12 @@ export async function GET(req) {
   return NextResponse.json(data || []);
 }
 
+// Add or Update Marks (Teachers only)
+export async function POST(req) {
+  const { year, term, subject, studentName, marks } = await req.json();
+
+
+
 
 
 
