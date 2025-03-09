@@ -1,3 +1,5 @@
+import { NextResponse } from "next/server";
+
 // Simulated teacher-entered marks database (replace with a real database)
 let teacherMarks = [
     { year: 2023, term: 1, subject: "Maths", studentName: "John Doe", marks: 75 },
