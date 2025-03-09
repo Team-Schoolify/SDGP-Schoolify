@@ -43,6 +43,14 @@ export async function POST(req) {
     teacherMarks.push({ year, term, subject, studentName, marks });
   }
 
+  return NextResponse.json({
+    success: true,
+    message: "Marks updated successfully!",
+  });
+}
+
+
+
 
 
 
@@ -57,39 +65,4 @@ export async function POST(req) {
   
   
   
-    const data = teacherMarks.filter(
-      (m) =>
-        m.year.toString() === year &&
-        m.term.toString() === term &&
-        m.subject === subject
-    );
-  
-    return NextResponse.json(data || []);
-  }
-
-  // Add or Update Marks (Teachers only)
-export async function POST(req) {
-    const { year, term, subject, studentName, marks } = await req.json();
-  
-    // Check if entry exists
-    const index = teacherMarks.findIndex(
-      (m) =>
-        m.year === year &&
-        m.term === term &&
-        m.subject === subject &&
-        m.studentName === studentName
-    );
-
-    if (index !== -1) {
-        // Update existing marks
-        teacherMarks[index].marks = marks;
-      } else {
-        // Create new entry
-        teacherMarks.push({ year, term, subject, studentName, marks });
-      }
     
-      return NextResponse.json({
-        success: true,
-        message: "Marks updated successfully!",
-      });
-    }
