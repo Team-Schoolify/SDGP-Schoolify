@@ -5,7 +5,7 @@ import DrawerComponentParentAndStudent from "@/app/components/DrawerComponentPar
 
 export default function Page() {
     return (
-        <div>
+        <div className="min-h-screen">
             <DrawerComponentParentAndStudent/>
         </div>
     );

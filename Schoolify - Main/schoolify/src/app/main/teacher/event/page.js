@@ -5,7 +5,7 @@ import DrawerComponent from "./DrawerComponent";
 
 export default function Page() {
     return (
-        <div>
+        <div className="min-h-screen">
             <DrawerComponent/>
         </div>
     );
