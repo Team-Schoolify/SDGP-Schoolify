@@ -9,9 +9,9 @@ const resources = [
     id: 1,
     title: "Learning Materials",
     subTopics: [
-      { id: 1, title: "Chapter 01: Motion", description: "Explains Newton's first, second, and third laws." },
-      { id: 2, title: "Chapter 02: Gravity", description: "Covers the effects of gravity and objects in free fall." },
-      { id: 3, title: "Chapter 03: Friction", description: "Discusses how friction and air resistance affect motion." },
+      { id: 1, title: "Chapter 01: Grammer", description: "Covers the writing and reading correct grammer." },
+      { id: 2, title: "Chapter 02: Literature", description: "Disscusses about deep old English and English literature." },
+      { id: 3, title: "Chapter 03: Writing", description: "To improve the writing skills." },
     ],
   },
   {
@@ -31,7 +31,7 @@ const resources = [
   },
 ]
 
-export default function ScienceResources() {
+export default function EngResources() {
   const [selectedTopic, setSelectedTopic] = useState(null)
   const [selectedSubTopic, setSelectedSubTopic] = useState(null)
 

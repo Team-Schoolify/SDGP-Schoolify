@@ -9,9 +9,10 @@ const resources = [
     id: 1,
     title: "Learning Materials",
     subTopics: [
-      { id: 1, title: "Chapter 01: Motion", description: "Explains Newton's first, second, and third laws." },
-      { id: 2, title: "Chapter 02: Gravity", description: "Covers the effects of gravity and objects in free fall." },
-      { id: 3, title: "Chapter 03: Friction", description: "Discusses how friction and air resistance affect motion." },
+        { id: 1, title: "Chapter 01: World History", description: "Covers the all world history like World Wars, Civil Wars." },
+        { id: 2, title: "Chapter 02: Civilizations", description: "Disscusses about every civilizations." },
+        { id: 3, title: "Chapter 03: Sri Lankan Ancient Kingdoms", description: "Covers the Sri Lankan kings, their kingdoms and insidents." },
+        { id: 4, title: "Chapter 04: Sri Lankan Political System", description: "Covers the Sri Lankan political parties, PrimeMinisters and Presidents." },
     ],
   },
   {
@@ -31,7 +32,7 @@ const resources = [
   },
 ]
 
-export default function ScienceResources() {
+export default function HistoryResources() {
   const [selectedTopic, setSelectedTopic] = useState(null)
   const [selectedSubTopic, setSelectedSubTopic] = useState(null)
 
