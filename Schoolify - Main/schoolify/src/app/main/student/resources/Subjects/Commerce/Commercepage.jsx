@@ -30,7 +30,7 @@ const resources = [
   },
 ]
 
-export default function HistoryResources() {
+export default function CommerceResources() {
   const [selectedTopic, setSelectedTopic] = useState(null)
   const [selectedSubTopic, setSelectedSubTopic] = useState(null)
 
