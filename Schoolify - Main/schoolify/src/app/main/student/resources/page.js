@@ -7,14 +7,14 @@ const subjects = [
     id: 1,
     name: "Mathematics",
     description: "Algebra, Geometry, Calculus and more",
-    href: "/Subjects/Mathematics",
+    href: "/main/student/resources/Subjects/Mathenatics",
     color: "bg-blue-500",
   },
   {
     id: 2,
     name: "Science",
     description: "Physics, Chemistry, Biology",
-    href: "/Subjects/Science/Sciencepage",
+    href: "/main/student/resources/Subjects/Science",
     color: "bg-green-500",
   },
   {
