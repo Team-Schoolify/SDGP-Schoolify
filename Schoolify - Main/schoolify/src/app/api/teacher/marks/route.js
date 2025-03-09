@@ -19,6 +19,11 @@ export async function GET(req) {
       m.subject === subject
   );
 
+  return NextResponse.json(data || []);
+}
+
+
+
 
 
 
