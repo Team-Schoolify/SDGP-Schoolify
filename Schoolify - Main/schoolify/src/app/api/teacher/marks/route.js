@@ -12,6 +12,13 @@ export async function GET(req) {
   const term = searchParams.get("term");
   const subject = searchParams.get("subject");
 
+  const data = teacherMarks.filter(
+    (m) =>
+      m.year.toString() === year &&
+      m.term.toString() === term &&
+      m.subject === subject
+  );
+
 
 
 
