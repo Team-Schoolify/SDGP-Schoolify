@@ -39,6 +39,10 @@ export async function POST(req) {
     // Update existing marks
     teacherMarks[index].marks = marks;
   } else {
+    // Create new entry
+    teacherMarks.push({ year, term, subject, studentName, marks });
+  }
+
 
 
 
