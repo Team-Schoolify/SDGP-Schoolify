@@ -3,8 +3,6 @@ import "@/app/globals.css";
 import {Providers} from "@/app/providers";
 import MainNavbar from "@/app/components/MainNavbar";
 import {FooterSection} from "@/app/components/FooterSection";
-import {ProfileParent} from "@/app/main/parent/profileParent";
-import NotificationBellParent from "@/app/main/parent/NotificationBellParent";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -17,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-    title: "Gradebook",
-    description: "This is the Gradebook page of Schoolify.",
+    title: "Profile",
+    description: "This is Profile Page of Schoolify Website",
 };
 
 export default function RootLayout({ children }) {
@@ -31,8 +29,6 @@ export default function RootLayout({ children }) {
                   text-white rounded-full fixed
                   bottom-4 right-6 shadow-lg dark:bg-white dark:text-black
                   flex gap-4 items-center sm:flex-row flex-col z-50">
-                    <NotificationBellParent/>
-                    <ProfileParent/>
                 </div>
                 <FooterSection/>
             </Providers>
