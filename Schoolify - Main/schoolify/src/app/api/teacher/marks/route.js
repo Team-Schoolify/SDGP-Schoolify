@@ -35,6 +35,13 @@ export async function POST(req) {
       m.studentName === studentName
   );
 
+  if (index !== -1) {
+    // Update existing marks
+    teacherMarks[index].marks = marks;
+  } else {
+
+
+
 
 
 
