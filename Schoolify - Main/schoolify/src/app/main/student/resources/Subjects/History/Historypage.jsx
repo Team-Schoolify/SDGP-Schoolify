@@ -18,8 +18,11 @@ const resources = [
   {
     id: 2,
     title: "Past Papers",
-    content:
-      "Atomic structure refers to the organization and composition of atoms, including protons, neutrons, and electrons, which form the basic building blocks of matter.",
+    subTopics: [
+      { id: 1, title: "First Term" },
+      { id: 2, title: "Second Term" },
+      { id: 3, title: "Third Term" },
+    ],
   },
   {
     id: 3,
