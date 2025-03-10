@@ -88,7 +88,7 @@ const AttendanceParent = () => {
             }
 
             setAttendance(data || null);
-            setTeacherId(data.teacher_id || null);
+            
         };
 
         fetchAttendance();
