@@ -16,10 +16,13 @@ const AttendanceStudent = () => {
             const storedSchoolId = localStorage.getItem("school_id");
             const storedStudentId = localStorage.getItem("student_id");
 
-            setSchoolId(storedSchoolId);
+            setSchoolId(storedSchoolId)  ;
             setStudentId(storedStudentId);
         }
         setCurrentDate(new Date().toISOString().split("T")[0]);
+        if (!studentId || !schoolId || !currentDate) return;
+        
+
     }, []);
 
     useEffect(() => {
