@@ -20,7 +20,7 @@ const AttendanceStudent = () => {
             setStudentId(storedStudentId);
         }
         setCurrentDate(new Date().toISOString().split("T")[0]);
-        if (!studentId || !schoolId || !currentDate) return;
+        
         
 
     }, []);
@@ -44,6 +44,7 @@ const AttendanceStudent = () => {
 
             setAttendance(data || null);
             setTeacherId(data.teacher_id || null);
+            
         };
 
         fetchAttendance();
