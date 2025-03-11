@@ -22,7 +22,7 @@ const AttendanceParent = () => {
             setParentId(storedParentId);
         }
         setCurrentDate(new Date().toISOString().split("T")[0]);
-        if (!parentId || !schoolId || !currentDate) return;  
+        
 
 
     }, []);
