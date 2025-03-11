@@ -19,13 +19,17 @@ const AttendanceMark = () => {
     const [students, setStudents] = useState([]);
     const [currentDate, setCurrentDate] = useState("");
     const [attendance, setAttendance] = useState({});
+    
 
     useEffect(() => {
         if (typeof window !== "undefined") {
             const storedSchoolId = localStorage.getItem("school_id");
             const storedTeacherId = localStorage.getItem("teacher_id");
+            const [attendance, setAttendance] = useState(new Map());
+            const [submitting, setSubmitting] = useState(false);
             setTeacherId(storedTeacherId);
             setSchoolId(storedSchoolId);
+            setCurrentDate(new Date().toISOString().split("T")[0]);
         }
     }, []);
 
@@ -45,6 +49,9 @@ const AttendanceMark = () => {
             }
 
             setGrade(data?.grade || "N/A"); // Set grade or default value
+           
+            
+            
         };
 
         fetchGradeFromTeacher();
