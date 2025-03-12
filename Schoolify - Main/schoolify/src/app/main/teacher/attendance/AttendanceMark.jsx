@@ -25,11 +25,14 @@ const AttendanceMark = () => {
         if (typeof window !== "undefined") {
             const storedSchoolId = localStorage.getItem("school_id");
             const storedTeacherId = localStorage.getItem("teacher_id");
+
             const [attendance, setAttendance] = useState(new Map());
-            const [submitting, setSubmitting] = useState(false);
+              const [submitting, setSubmitting] = useState(false);
+        
             setTeacherId(storedTeacherId);
             setSchoolId(storedSchoolId);
             setCurrentDate(new Date().toISOString().split("T")[0]);
+              
         }
     }, []);
 
