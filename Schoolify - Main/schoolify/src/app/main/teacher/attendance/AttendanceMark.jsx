@@ -26,9 +26,7 @@ const AttendanceMark = () => {
             const storedSchoolId = localStorage.getItem("school_id");
             const storedTeacherId = localStorage.getItem("teacher_id");
 
-            const [attendance, setAttendance] = useState(new Map());
-              const [submitting, setSubmitting] = useState(false);
-        
+           
             setTeacherId(storedTeacherId);
             setSchoolId(storedSchoolId);
             setCurrentDate(new Date().toISOString().split("T")[0]);
@@ -74,6 +72,8 @@ const AttendanceMark = () => {
 
             if (error) {
                 console.error("Error fetching students:", error);
+                setState((prev) => ({ ...prev, students: studentData }));
+                    setAttendance(new Map(studentData.map((s) => [s.student_id, false])));
                 return;
             }
 
