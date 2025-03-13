@@ -57,7 +57,7 @@ export default function SubjectCardsTeacher() {
             ],
             "Arts Stream": [
                 { title: "Arts", img: "/img/Subjects/arts.jpg" },
-                { title: "Political Science", img: "/img/Subjects/political.jpg" },
+                { title: "Political Science", img: "/img/Subjects/politics.jpg" },
                 { title: "History", img: "/img/Subjects/history.jpg" },
             ],
         },
