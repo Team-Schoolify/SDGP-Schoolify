@@ -3,6 +3,7 @@ import React from 'react';
 import AdminParentForm from "@/app/main/admin/parent/AdminParentForm";
 import DeleteParentForm from "@/app/main/admin/parent/DeleteParentForm";
 import UpdateParentForm from "@/app/main/admin/parent/UpadateParentForm";
+import ParentList from "@/app/main/admin/parent/ParentList";
 
 export default function LoginPage() {
 
@@ -17,7 +18,7 @@ export default function LoginPage() {
                 <UpdateParentForm/>
             </div>
         </div>
-        {/*<StudentList/>*/}
+        <ParentList/>
     </div>
 )
     ;

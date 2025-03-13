@@ -76,7 +76,8 @@ export default function StudentList() {
         let filteredStudents = [...students];
         if (filterValue) {
             filteredStudents = filteredStudents.filter((student) =>
-                student.student_name.toLowerCase().includes(filterValue.toLowerCase())
+                student.student_name.toLowerCase().includes(filterValue.toLowerCase()) ||
+                student.student_id.toLowerCase().includes(filterValue.toLowerCase())
             );
         }
         return filteredStudents;
@@ -96,8 +97,7 @@ export default function StudentList() {
                 <Input
                     isClearable
                     classNames={{ base: "w-full sm:max-w-[44%]", inputWrapper: "border-1", input: "text-black" }}
-
-                    placeholder="Search by name..."
+                    placeholder="Search by ID or name..."
                     size="sm"
                     startContent={<SearchIcon className="text-default-300" />}
                     value={filterValue}
@@ -127,7 +127,7 @@ export default function StudentList() {
                 <Table
                     aria-label="Student List"
                     className="w-full mt-4"
-                    defaultSelectedKeys={["2"]}
+                    defaultSelectedKeys={"2"}
                     selectionMode="single"
                     color="primary"
                 >
