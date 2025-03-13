@@ -63,6 +63,8 @@ export default function AdminStudentForm() {
             } else {
                 alert("✅ Student added successfully!");
                 router.refresh();
+                window.location.reload();
+
             }
         } catch (err) {
             console.error("❌ Unexpected error:", err);

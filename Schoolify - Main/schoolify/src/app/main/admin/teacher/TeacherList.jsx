@@ -13,8 +13,8 @@ import {
 } from "@heroui/react";
 import { supabase } from "@/app/lib/supabaseClient";
 
-export default function StudentList() {
-    const [students, setStudents] = useState([]);
+export default function TeacherList() {
+    const [teachers, setTeachers] = useState([]);
     const [loading, setLoading] = useState(false);
     const [filterValue, setFilterValue] = useState("");
     const [page, setPage] = useState(1);
@@ -51,36 +51,36 @@ export default function StudentList() {
     };
 
     useEffect(() => {
-        fetchStudents();
+        fetchTeachers();
     }, []);
 
-    const fetchStudents = async () => {
+    const fetchTeachers = async () => {
         setLoading(true);
         const { data, error } = await supabase
-            .from("student")
-            .select("student_id, student_name, student_email, student_grade, subject_scheme, school_id")
-            .order("student_id", { ascending: true });
+            .from("teacher")
+            .select("teacher_id, teacher_name, teacher_email, grade, subject, school_id")
+            .order("teacher_id", { ascending: true });
         if (error) {
-            console.error("Error fetching students:", error.message);
-            alert(`Failed to load students: ${error.message}`);
+            console.error("Error fetching teachers:", error.message);
+            alert(`Failed to load teachers: ${error.message}`);
         } else {
-            setStudents(data.map(student => ({
-                ...student,
-                student_id: `STU-${String(student.student_id).padStart(4, '0')}`
+            setTeachers(data.map(teacher => ({
+                ...teacher,
+                teacher_id: `TEA-${String(teacher.teacher_id).padStart(4, '0')}`
             })));
         }
         setLoading(false);
     };
 
     const filteredItems = useMemo(() => {
-        let filteredStudents = [...students];
+        let filteredTeachers = [...teachers];
         if (filterValue) {
-            filteredStudents = filteredStudents.filter((student) =>
-                student.student_name.toLowerCase().includes(filterValue.toLowerCase())
+            filteredTeachers = filteredTeachers.filter((teacher) =>
+                teacher.teacher_name.toLowerCase().includes(filterValue.toLowerCase())
             );
         }
-        return filteredStudents;
-    }, [students, filterValue]);
+        return filteredTeachers;
+    }, [teachers, filterValue]);
 
     const paginatedItems = useMemo(() => {
         const start = (page - 1) * rowsPerPage;
@@ -90,9 +90,9 @@ export default function StudentList() {
 
     return (
         <div className="grid grid-cols-1 mt-16">
-            <div className="text-black text-3xl font-bold">Student List</div>
+            <div className="text-black text-3xl font-bold">Teacher List</div>
             <div className="flex justify-between items-center mt-5">
-                <span className="text-default-400 text-small">Total {filteredItems.length} students</span>
+                <span className="text-default-400 text-small">Total {filteredItems.length} teachers</span>
                 <Input
                     isClearable
                     classNames={{ base: "w-full sm:max-w-[44%]", inputWrapper: "border-1", input: "text-black" }}
@@ -136,18 +136,18 @@ export default function StudentList() {
                         <TableColumn key="student_name">Name</TableColumn>
                         <TableColumn key="school_id">School Id</TableColumn>
                         <TableColumn key="student_email">Email</TableColumn>
-                        <TableColumn key="student_grade">Grade</TableColumn>
-                        <TableColumn align="center" key="subject_scheme">Subject Scheme</TableColumn>
+                        <TableColumn key="grade">Grade</TableColumn>
+                        <TableColumn key="subject">Subject Scheme</TableColumn>
                     </TableHeader>
                     <TableBody>
-                        {paginatedItems.map((student) => (
-                            <TableRow key={student.student_id}>
-                                <TableCell>{student.student_id}</TableCell>
-                                <TableCell>{student.student_name}</TableCell>
-                                <TableCell>{student.school_id}</TableCell>
-                                <TableCell>{student.student_email}</TableCell>
-                                <TableCell>{student.student_grade}</TableCell>
-                                <TableCell>{student.subject_scheme}</TableCell>
+                        {paginatedItems.map((teacher) => (
+                            <TableRow key={teacher.teacher_id}>
+                                <TableCell>{teacher.teacher_id}</TableCell>
+                                <TableCell>{teacher.teacher_name}</TableCell>
+                                <TableCell>{teacher.school_id}</TableCell>
+                                <TableCell>{teacher.teacher_email}</TableCell>
+                                <TableCell>{teacher.grade}</TableCell>
+                                <TableCell>{teacher.subject}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

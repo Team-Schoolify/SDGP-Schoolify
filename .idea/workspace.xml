@@ -6,10 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="26e29180-a7b6-4d83-9617-8c4b38ae8cd0" name="Changes" comment="Backend for event">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/admin/parent/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/admin/parent/page.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/admin/student/AdminStudentForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/admin/student/AdminStudentForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/admin/student/StudentList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/admin/student/StudentList.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/admin/student/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/admin/student/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/admin/teacher/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/admin/teacher/page.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +140,8 @@
       <workItem from="1741514270480" duration="2444000" />
       <workItem from="1741696990377" duration="13000" />
       <workItem from="1741800812757" duration="4646000" />
-      <workItem from="1741875151695" duration="5567000" />
+      <workItem from="1741875151695" duration="5649000" />
+      <workItem from="1741882928751" duration="4337000" />
     </task>
     <task id="LOCAL-00001" summary="Attendance changed for the test commit">
       <option name="closed" value="true" />
