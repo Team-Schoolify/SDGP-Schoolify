@@ -125,11 +125,11 @@ export default function AdminStudentForm() {
                 />
                 <Input
                     isRequired
-                    label="Subject Schedule ID"
+                    label="Subject Scheme ID"
                     labelPlacement={"outside"}
                     name="subject_scheme"
                     type="number"
-                    placeholder="Enter subject schedule ID"
+                    placeholder="Enter subject scheme ID"
                     min={1}
                     max={6}
                 />
