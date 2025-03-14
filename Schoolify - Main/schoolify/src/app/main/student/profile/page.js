@@ -1,8 +1,11 @@
+"use client";
+
+
 import React from 'react';
-import pool from '../lib/db';
-import PersonalDetails from '../PersonalDetails';
-import GuardianDetails from '../GuardianDetails';
-// import styles from '../../styles/Profile.module.css';
+import pool from '../lib/auth/db';
+import PersonalDetails from '../profile/PersonalDetails';
+// import GuardianDetails from '../profile/GuardianDetails';
+import styles from '../styles/Profile.module.css';
 
 export default async function ProfilePage() {
   // Replace this with your actual user identification logic
