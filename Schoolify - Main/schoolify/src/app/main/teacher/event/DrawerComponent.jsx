@@ -28,9 +28,9 @@ import { Time, today, getLocalTimeZone } from "@internationalized/date";
 import {supabase} from "@/app/lib/supabaseClient";
 
 
-export default function DrawerComponent() {
+export default function DrawerComponent({ isOpen, onOpenChange }) {
     // Disclosure hooks for main and nested drawers
-    const {isOpen, onOpen, onOpenChange} = useDisclosure();
+    // const {isOpen, onOpen, onOpenChange} = useDisclosure();
     const {isOpen: isNestedOpen, onOpen: onNestedOpen, onOpenChange: onNestedOpenChange} = useDisclosure();
     const { isOpen: isViewAllOpen, onOpen: onViewAllOpen, onOpenChange: onViewAllChange } = useDisclosure();
     const { isOpen: isEventDetailOpen, onOpen: onEventDetailOpen, onOpenChange: onEventDetailChange } = useDisclosure();
@@ -50,7 +50,7 @@ export default function DrawerComponent() {
     const [events, setEvents] = useState([]);
 
     // State for More Details 
-    const [selectedEvent, setSelectedEvent] = useState(null)
+    const [selectedEvent, setSelectedEvent] = useState(null);
 
     // Handle radio button change for time selection
     const handleOptionChange = (value) => {
@@ -62,39 +62,6 @@ export default function DrawerComponent() {
         }
 
     };
-
-    // Handle form submission to save a new event
-    // const handleSaveEvent = (e) => {
-    //     if (e && e.preventDefault) {
-    //         e.preventDefault(); // Ensure it's an event object before calling this
-    //     }
-    //
-    //     const newEvent = {
-    //     title: eventTitle,
-    //     date: eventDate,
-    //
-    //     // Format time based on the option selected
-    //     time: selectedOption === "all-day" ? "All Day" : `${startTime.toString()} - ${endTime.toString()}`,
-    //     location,
-    //     description,
-    //     };
-    //
-    //     // Add the new event to the events list
-    //     setEvents([...events, newEvent]);
-    //
-    //     // Reset form fields after saving
-    //     setEventTitle("");
-    //     setEventDate(today(getLocalTimeZone()));
-    //     setLocation("");
-    //     setDescription("");
-    //     setSelectedOption("all-day");
-    //     setStartTime(new Time(0, 0));
-    //     setEndTime(new Time(23, 59));
-    //
-    //     // Close the nested drawer
-    //     onNestedOpenChange(false);
-    //
-    // };
 
     const handleSaveEvent = async (e) => {
         if (e && e.preventDefault) {
@@ -201,7 +168,7 @@ export default function DrawerComponent() {
   
     return (
       <>
-        <Button onPress={onOpen}>Open Drawer</Button>
+        {/*<Button onPress={onOpen}>Open Drawer</Button>*/}
 
         <Drawer isOpen={isOpen} size="md" onOpenChange={onOpenChange}>
 
@@ -232,63 +199,6 @@ export default function DrawerComponent() {
                     
                 </div>
                 <hr/>
-
-                {/*<DrawerBody className="flex flex-col gap-4 overflow-y-scroll max-h-[50vh] px-5 scrollbar-hide">*/}
-                {/*    */}
-                {/*    <div className="flex flex-col gap-2">*/}
-
-                {/*        {events.length === 0 ? (*/}
-                {/*            <p className="text-sm text-gray-500">No upcoming events</p>*/}
-
-                {/*        ) : (*/}
-
-                {/*            events.map((event, index) => (*/}
-
-                {/*                <Card key={index} className="w-full p-1" classNames={{ header: "text-sm", body: "text-sm" }}>*/}
-
-                {/*                    <CardHeader */}
-                {/*                        className="pr-1 pb-2 pt-1 font-medium flex justify-between items-center">*/}
-                {/*                        {event.title}*/}
-                {/*                    </CardHeader>*/}
-
-                {/*                    <Divider />*/}
-                {/*                    */}
-                {/*                    <CardBody className="pb-0">*/}
-                {/*                        Date: {event.date.toString()} <br/>*/}
-                {/*                        Time: {event.time}*/}
-                {/*                    </CardBody>*/}
-                {/*                    */}
-                {/*                    <CardFooter className="flex justify-end gap-2">*/}
-
-                {/*                        /!* More Details Button *!/*/}
-                {/*                        <Button */}
-                {/*                            color="none"*/}
-                {/*                            variant="ghost"*/}
-                {/*                            size="sm" */}
-                {/*                            onPress={() => handleViewMore(event)}*/}
-                {/*                            >*/}
-                {/*                            More Details*/}
-                {/*                        </Button>*/}
-
-                {/*                        /!* Delete Button *!/*/}
-                {/*                        <Button */}
-                {/*                            color="none"*/}
-                {/*                            variant="ghost"*/}
-                {/*                            size="sm" */}
-                {/*                            onPress={() => handleDeleteEvent(index)}*/}
-                {/*                            >*/}
-                {/*                            Delete*/}
-                {/*                        </Button>*/}
-                {/*                    */}
-                {/*                    </CardFooter>*/}
-
-                {/*                </Card>*/}
-                {/*            ))*/}
-                {/*        )}*/}
-
-                {/*    </div>*/}
-
-                {/*</DrawerBody>*/}
 
                   <DrawerBody className="flex flex-col gap-4 overflow-y-scroll max-h-[50vh] px-5 scrollbar-hide">
                       <div className="flex flex-col gap-2">

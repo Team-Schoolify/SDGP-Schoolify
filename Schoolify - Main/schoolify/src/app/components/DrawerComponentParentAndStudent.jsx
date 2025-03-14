@@ -22,9 +22,9 @@ import { today, getLocalTimeZone } from "@internationalized/date";
 import { supabase } from "@/app/lib/supabaseClient";
 
 
-export default function DrawerComponentParentAndStudent() {
+export default function DrawerComponentParentAndStudent({ isOpen, onOpenChange }) {
     // Disclosure hooks for main and nested drawers
-    const { isOpen, onOpen, onOpenChange } = useDisclosure();
+    // const { isOpen, onOpen, onOpenChange } = useDisclosure();
     const { isOpen: isViewAllOpen, onOpen: onViewAllOpen, onOpenChange: onViewAllChange } = useDisclosure();
     const { isOpen: isEventDetailOpen, onOpen: onEventDetailOpen, onOpenChange: onEventDetailChange } = useDisclosure();
 
@@ -56,7 +56,7 @@ export default function DrawerComponentParentAndStudent() {
   
     return (
       <>
-        <Button onPress={onOpen}>Open Drawer</Button>
+        {/*<Button onPress={onOpen}>Open Drawer</Button>*/}
 
         <Drawer isOpen={isOpen} size="md" onOpenChange={onOpenChange}>
 

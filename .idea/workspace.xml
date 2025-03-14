@@ -5,7 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="26e29180-a7b6-4d83-9617-8c4b38ae8cd0" name="Changes" comment="Backend for event">
-      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/teacher/resources/SubjectCardsTeacher.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/teacher/resources/SubjectCardsTeacher.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/public/img/commerce.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/public/img/english.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/public/img/history.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/public/img/ict.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/public/img/mathematics.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/public/img/music.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/public/img/science.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/public/img/sinhala.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/components/DrawerComponentParentAndStudent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/components/DrawerComponentParentAndStudent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/components/MainNavbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/components/MainNavbar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/login/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/login/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/parent/NotificationBellParent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/parent/NotificationBellParent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/parent/appointment/layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/parent/appointment/layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/parent/attendance/layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/parent/attendance/layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/parent/dashboard/layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/parent/dashboard/layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/parent/gradebook/layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/parent/gradebook/layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/student/NotificationBellStudent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/student/NotificationBellStudent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/student/assignments/layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/student/assignments/layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/student/attendance/layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/student/attendance/layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/student/dashboard/layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/student/dashboard/layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/student/gradebook/layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/student/gradebook/layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/student/resources/layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/student/resources/layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/teacher/event/DrawerComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/teacher/event/DrawerComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/teacher/profileAndNotificationTeacher.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/teacher/profileAndNotificationTeacher.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +88,7 @@
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/components" />
+      <recent name="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/components/ui" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -138,7 +163,10 @@
       <workItem from="1741875151695" duration="5649000" />
       <workItem from="1741882928751" duration="6719000" />
       <workItem from="1741889794319" duration="3865000" />
-      <workItem from="1741898992775" duration="2558000" />
+      <workItem from="1741898992775" duration="2953000" />
+      <workItem from="1741937457342" duration="4766000" />
+      <workItem from="1741943627432" duration="826000" />
+      <workItem from="1741948302764" duration="5680000" />
     </task>
     <task id="LOCAL-00001" summary="Attendance changed for the test commit">
       <option name="closed" value="true" />

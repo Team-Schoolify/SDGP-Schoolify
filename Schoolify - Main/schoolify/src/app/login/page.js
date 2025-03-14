@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { BackgroundLines } from "@/app/components/ui/background-lines";
-import { Button, Input, Checkbox, Link, Form, Divider } from "@nextui-org/react";
+import { Button, Input, Checkbox, Link, Form, Divider, Image } from "@nextui-org/react";
 import { Icon } from "@iconify/react";
 import { AcmeIcon } from "./AcmeIcon";
 import NextLink from "next/link";
@@ -98,126 +98,142 @@ export default function LoginPage() {
             `}</style>
 
             {/* Background Lines */}
-            <BackgroundLines className="absolute inset-0 z-0 bg-black" />
+            <BackgroundLines className="fixed inset-0 w-full h-full z-0 bg-black"/>
+            {/*<div className="w-full bg-red-700 z-50 grid sm:grid-cols-2">*/}
+            <div
+                className="grid sm:grid-cols-2 w-full px-12 py-8 rounded-2xl shadow-lg">
+                {/* Login Content */}
+                <div>
+                    <div
+                        className=" relative z-10 flex flex-col items-center w-full max-w-md px-6 py-8 bg-black border-1 border-gray-600 rounded-2xl shadow-lg">
+                        {/* Welcome Section */}
+                        <div className="flex flex-col items-center mb-6">
+                            <img src="/img/logos/logowhite.png" alt="logo" className="w-16"/>
+                            <p className="text-lg sm:text-xl font-medium text-white">Welcome To SchooliFy</p>
+                            <p className="text-sm sm:text-base text-gray-400">
+                                Log in to your account to continue
+                            </p>
+                        </div>
 
-            {/* Login Content */}
-            <div className="relative z-10 flex flex-col items-center w-full max-w-md px-6 py-8 bg-black border-1 border-gray-600 rounded-lg shadow-lg">
-                {/* Welcome Section */}
-                <div className="flex flex-col items-center mb-6">
-                    <AcmeIcon size={60} />
-                    <p className="text-lg sm:text-xl font-medium text-white">Welcome Back</p>
-                    <p className="text-sm sm:text-base text-gray-400">
-                        Log in to your account to continue
-                    </p>
+                        {/* Sign In Card */}
+                        <div className="w-full">
+                            <div className="flex flex-col gap-1 mb-4">
+                                <h1 className="text-lg sm:text-xl font-medium text-white">
+                                    Sign in to your account
+                                </h1>
+                                <p className="text-sm text-gray-400">to continue to SchooliFy</p>
+                            </div>
+
+                            <Form
+                                className="flex flex-col gap-3"
+                                validationBehavior="native"
+                                onSubmit={handleSubmit}
+                            >
+                                <Select
+                                    isRequired
+                                    className="w-full"
+                                    defaultSelectedKeys={["student"]}
+                                    label="Your Role"
+                                    placeholder="Select your role"
+                                    variant="bordered"
+                                    fullWidth={true}
+                                    selectedKeys={new Set([role])} // Pass current role as a Set
+                                    onSelectionChange={(keys) => {
+                                        // Extract the first value from the Set
+                                        const selectedRole = Array.from(keys)[0];
+                                        setRole(selectedRole); // Update role as a string
+                                    }}
+                                >
+                                    {schoolRole.map((schoolRole) => (
+                                        <SelectItem key={schoolRole.key}>{schoolRole.label}</SelectItem>
+                                    ))}
+                                </Select>
+                                <Input
+                                    isRequired
+                                    label="Email Address"
+                                    labelPlacement={"outside"}
+                                    name="email"
+                                    placeholder="Enter your email"
+                                    type="email"
+                                    variant="bordered"
+                                />
+
+                                <Input
+                                    isRequired
+                                    endContent={
+                                        <button type="button" onClick={toggleVisibility}>
+                                            {isVisible ? (
+                                                <Icon
+                                                    className="pointer-events-none text-2xl text-gray-400"
+                                                    icon="solar:eye-closed-linear"
+                                                />
+                                            ) : (
+                                                <Icon
+                                                    className="pointer-events-none text-2xl text-gray-400"
+                                                    icon="solar:eye-bold"
+                                                />
+                                            )}
+                                        </button>
+                                    }
+                                    label="Password"
+                                    name="password"
+                                    placeholder="Enter your password"
+                                    type={isVisible ? "text" : "password"}
+                                    variant="bordered"
+                                />
+
+                                <div className="flex w-full items-center justify-between px-1 py-2">
+                                    <Checkbox name="remember" size="sm" className="text-gray-400">
+                                        Remember me
+                                    </Checkbox>
+                                    <Link className="text-sm text-gray-400" href="#" size="sm">
+                                        Forgot password?
+                                    </Link>
+                                </div>
+                                <Button
+                                    className="w-full"
+                                    color="primary"
+                                    type="submit"
+                                >
+                                    Sign In
+                                </Button>
+                            </Form>
+                            {/*<div className="flex items-center gap-4 py-2">*/}
+                            {/*    <Divider className="flex-1" />*/}
+                            {/*    <p className="shrink-0 text-xs sm:text-sm text-gray-400">OR</p>*/}
+                            {/*    <Divider className="flex-1" />*/}
+                            {/*</div>*/}
+                            {/*<div className="flex flex-col gap-2">*/}
+                            {/*    <Button*/}
+                            {/*        startContent={*/}
+                            {/*            <Icon*/}
+                            {/*                icon="flat-color-icons:google"*/}
+                            {/*                width={24}*/}
+                            {/*            />*/}
+                            {/*        }*/}
+                            {/*        variant="bordered"*/}
+                            {/*    >*/}
+                            {/*        Continue with Google*/}
+                            {/*    </Button>*/}
+                            {/*</div>*/}
+                            {/*<p className="text-center text-sm text-gray-400">*/}
+                            {/*    Need to create an account?&nbsp;*/}
+                            {/*    <Link href="#" size="sm" className="text-blue-500">*/}
+                            {/*        Sign Up*/}
+                            {/*    </Link>*/}
+                            {/*</p>*/}
+                        </div>
+                    </div>
                 </div>
 
-                {/* Sign In Card */}
-                <div className="w-full">
-                    <div className="flex flex-col gap-1 mb-4">
-                        <h1 className="text-lg sm:text-xl font-medium text-white">
-                            Sign in to your account
-                        </h1>
-                        <p className="text-sm text-gray-400">to continue to Acme</p>
-                    </div>
+                <div className="hidden sm:flex justify-center items-center">
+                    <Image
+                        isBlurred
+                        alt="HeroUI Album Cover"
+                        className="object-contain w-full"
+                        src="/img/aboutus.png"
+                    />
 
-                    <Form
-                        className="flex flex-col gap-3"
-                        validationBehavior="native"
-                        onSubmit={handleSubmit}
-                    >
-                        <Select
-                            isRequired
-                            className="max-w-xs"
-                            defaultSelectedKeys={["student"]}
-                            label="Your Role"
-                            placeholder="Select your role"
-                            variant="bordered"
-                            fullWidth={true}
-                            selectedKeys={new Set([role])} // Pass current role as a Set
-                            onSelectionChange={(keys) => {
-                                // Extract the first value from the Set
-                                const selectedRole = Array.from(keys)[0];
-                                setRole(selectedRole); // Update role as a string
-                            }}
-                            >
-                            {schoolRole.map((schoolRole) => (
-                                <SelectItem key={schoolRole.key}>{schoolRole.label}</SelectItem>
-                            ))}
-                        </Select>
-                        <Input
-                            isRequired
-                            label="Email Address"
-                            labelPlacement={"outside"}
-                            name="email"
-                            placeholder="Enter your email"
-                            type="email"
-                            variant="bordered"
-                        />
-
-                        <Input
-                            isRequired
-                            endContent={
-                                <button type="button" onClick={toggleVisibility}>
-                                    {isVisible ? (
-                                        <Icon
-                                            className="pointer-events-none text-2xl text-gray-400"
-                                            icon="solar:eye-closed-linear"
-                                        />
-                                    ) : (
-                                        <Icon
-                                            className="pointer-events-none text-2xl text-gray-400"
-                                            icon="solar:eye-bold"
-                                        />
-                                    )}
-                                </button>
-                            }
-                            label="Password"
-                            name="password"
-                            placeholder="Enter your password"
-                            type={isVisible ? "text" : "password"}
-                            variant="bordered"
-                        />
-
-                        <div className="flex w-full items-center justify-between px-1 py-2">
-                            <Checkbox name="remember" size="sm" className="text-gray-400">
-                                Remember me
-                            </Checkbox>
-                            <Link className="text-sm text-gray-400" href="#" size="sm">
-                                Forgot password?
-                            </Link>
-                        </div>
-                        <Button
-                            className="w-full"
-                            color="primary"
-                            type="submit"
-                        >
-                            Sign In
-                        </Button>
-                    </Form>
-                    <div className="flex items-center gap-4 py-2">
-                        <Divider className="flex-1" />
-                        <p className="shrink-0 text-xs sm:text-sm text-gray-400">OR</p>
-                        <Divider className="flex-1" />
-                    </div>
-                    {/*<div className="flex flex-col gap-2">*/}
-                    {/*    <Button*/}
-                    {/*        startContent={*/}
-                    {/*            <Icon*/}
-                    {/*                icon="flat-color-icons:google"*/}
-                    {/*                width={24}*/}
-                    {/*            />*/}
-                    {/*        }*/}
-                    {/*        variant="bordered"*/}
-                    {/*    >*/}
-                    {/*        Continue with Google*/}
-                    {/*    </Button>*/}
-                    {/*</div>*/}
-                    {/*<p className="text-center text-sm text-gray-400">*/}
-                    {/*    Need to create an account?&nbsp;*/}
-                        <Link href="#" size="sm" className="text-blue-500">
-                            Sign Up
-                        </Link>
-                    {/*</p>*/}
                 </div>
             </div>
         </div>
