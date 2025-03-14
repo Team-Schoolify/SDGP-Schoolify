@@ -1,8 +1,11 @@
 import React from 'react';
 import styles from '../styles/Profile.module.css';
+import React, { useEffect, useState } from 'react';
 
 const GuardianDetails = ({ data }) => {
   if (!data) return null;
+
+ 
 
   return (
     <div className={styles.detailsCard}>
