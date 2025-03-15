@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="26e29180-a7b6-4d83-9617-8c4b38ae8cd0" name="Changes" comment="Backend for event">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/jest.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/jest.config.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/jest.setup.js" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/jest.setup.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,7 +151,7 @@
       <workItem from="1741992996391" duration="5940000" />
       <workItem from="1742024630892" duration="1949000" />
       <workItem from="1742026592586" duration="9492000" />
-      <workItem from="1742045826425" duration="5852000" />
+      <workItem from="1742045826425" duration="9730000" />
     </task>
     <task id="LOCAL-00001" summary="Attendance changed for the test commit">
       <option name="closed" value="true" />
