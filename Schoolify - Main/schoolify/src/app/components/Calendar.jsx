@@ -1,7 +1,7 @@
 "use client";
 import React from 'react'
 import {Badge, Button, useDisclosure} from "@heroui/react";
-import DrawerComponentParentAndStudent from "@/app/components/DrawerComponentParentAndStudent";
+import DrawerComponentParentAndStudent from "../components/DrawerComponentParentAndStudent";
 
 const Calendar = () => {
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
