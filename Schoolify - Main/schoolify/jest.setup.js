@@ -7,3 +7,11 @@
 // jest.useFakeTimers();
 
 // Add any global mocks or setup configuration needed for your tests.
+
+// jest.setup.js
+process.env.NEXT_PUBLIC_SUPABASE_URL = 'http://localhost';
+process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY = 'dummy-key';
+
+if (typeof window !== 'undefined') {
+    window.scrollTo = () => {};
+}
