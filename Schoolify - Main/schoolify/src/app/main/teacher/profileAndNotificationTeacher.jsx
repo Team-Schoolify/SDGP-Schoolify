@@ -13,6 +13,7 @@ import {
 } from "@heroui/react";
 import {supabase} from "@/app/lib/supabaseClient";
 import DrawerComponent from "@/app/main/teacher/event/DrawerComponent";
+import { useRouter } from "next/navigation";
 
 export const ProfileAndNotificationTeacher = () => {
     const [teacherId, setTeacherId] = useState(null); // Store school_id in state
@@ -20,6 +21,8 @@ export const ProfileAndNotificationTeacher = () => {
     const [school, setSchool] = useState(null);
     const [schoolId, setSchoolId] = useState(null);
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
+    const router = useRouter(); // ✅ Initialize Next.js router
+
 
     const NotificationIcon = ({size, height, width, ...props}) => {
         return (
@@ -59,6 +62,11 @@ export const ProfileAndNotificationTeacher = () => {
             </svg>
         );
     };
+
+    const handleAvatarClick = () => {
+        router.push("/main/teacher/profile?role=teacher");
+    };
+
 
     useEffect(() => {
         if (typeof window !== "undefined") {
@@ -144,9 +152,15 @@ export const ProfileAndNotificationTeacher = () => {
             </>
 
             <Popover placement="top" showArrow={true} backdrop="blur">
-                <PopoverTrigger>
-                    <Avatar className="cursor-pointer" isBordered color="success"  src={teacher?.photo || "https://i.pravatar.cc/150"} />
-                </PopoverTrigger>
+                {/*<PopoverTrigger>*/}
+                    <Avatar
+                        className="cursor-pointer"
+                        isBordered
+                        color="success"
+                        src={teacher?.photo || "https://i.pravatar.cc/150"}
+                        onClick={handleAvatarClick}
+                    />
+                {/*</PopoverTrigger>*/}
                 <PopoverContent>
                     <div className="p-5 flex flex-col text-left gap-y-3">
                         <Avatar isBordered color="success" size="lg"
@@ -158,37 +172,6 @@ export const ProfileAndNotificationTeacher = () => {
                 </PopoverContent>
             </Popover>
         </div>
-
-
-        {/*<Drawer isOpen={isOpen} size="sm" onClose={onClose}>*/}
-        {/*    <DrawerContent>*/}
-        {/*        {(onClose) => (*/}
-        {/*            <>*/}
-        {/*                <DrawerHeader className="flex flex-col gap-1">Drawer Title</DrawerHeader>*/}
-        {/*                <DrawerBody>*/}
-        {/*                    <p>*/}
-        {/*                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pulvinar risus non*/}
-        {/*                        risus hendrerit venenatis. Pellentesque sit amet hendrerit risus, sed porttitor*/}
-        {/*                        quam.*/}
-        {/*                    </p>*/}
-        {/*                    <p>*/}
-        {/*                        Magna exercitation reprehenderit magna aute tempor cupidatat consequat elit dolor*/}
-        {/*                        adipisicing. Mollit dolor eiusmod sunt ex incididunt cillum quis. Velit duis sit*/}
-        {/*                        officia eiusmod Lorem aliqua enim laboris do dolor eiusmod.*/}
-        {/*                    </p>*/}
-        {/*                </DrawerBody>*/}
-        {/*                <DrawerFooter>*/}
-        {/*                    <Button color="danger" variant="light" onPress={onClose}>*/}
-        {/*                        Close*/}
-        {/*                    </Button>*/}
-        {/*                    <Button color="primary" onPress={onClose}>*/}
-        {/*                        Action*/}
-        {/*                    </Button>*/}
-        {/*                </DrawerFooter>*/}
-        {/*            </>*/}
-        {/*        )}*/}
-        {/*    </DrawerContent>*/}
-        {/*</Drawer>*/}
     </>
     )
 }

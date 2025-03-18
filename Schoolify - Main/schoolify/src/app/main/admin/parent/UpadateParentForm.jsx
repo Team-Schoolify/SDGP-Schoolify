@@ -55,7 +55,8 @@ export default function UpdateParentForm() {
 
     return (
         <div className="flex items-center justify-center sm:mt-14 mt-5">
-            <Form className="w-full max-w-md flex flex-col gap-4 bg-black p-8 rounded-xl" onSubmit={handleUpdate}>
+            <Form className="w-full max-w-md flex flex-col gap-4 bg-black p-8 rounded-xl" onSubmit={handleUpdate}
+                  validationBehavior="native">
                 <Input
                     isRequired
                     label="Parent ID"

@@ -55,69 +55,45 @@ import {supabase} from "@/app/lib/supabaseClient";
 import {useEffect, useState} from "react";
 
 
-export default function StudentProfile() {
-    const [studentId, setStudentId] = useState(null); // Store school_id in state
-    const [student, setStudent] = useState(null);
-    const [parent, setParent] = useState(null);
+export default function TeacherProfile() {
+    const [teacherId, setTeacherId] = useState(null); // Store school_id in state
+    const [teacher, setTeacher] = useState(null);
     const [school, setSchool] = useState(null);
     const [schoolId, setSchoolId] = useState(null);
     const router = useRouter();
 
     useEffect(() => {
         if (typeof window !== "undefined") {
-            const storedStudentId = localStorage.getItem("student_id");
+            const storedTeacherId = localStorage.getItem("teacher_id");
             const storedSchoolId = localStorage.getItem("school_id");
-            setStudentId(storedStudentId);
+            setTeacherId(storedTeacherId);
             setSchoolId(storedSchoolId);
             console.log(school, "sadasdasdasdasd");
         }
     }, []);
 
     useEffect(() => {
-        const fetchStudents = async () => {
-            if (!studentId) return; // Prevent fetching if school_id is not available
+        const fetchTeacher = async () => {
+            if (!teacherId) return; // Prevent fetching if school_id is not available
 
             const { data, error } = await supabase
-                .from("student")
-                .select("student_id, student_name, student_email, student_grade, photo, school_id, gender")
-                .eq("student_id", studentId);
+                .from("teacher")
+                .select("teacher_id, teacher_name, teacher_email, grade, photo, school_id, subject, link")
+                .eq("teacher_id", teacherId);
 
 
             if (error) {
-                console.error("Error fetching students:", error);
+                console.error("Error fetching teachers:", error);
             } else if (data && data.length > 0) {
-                setStudent(data[0]); // ✅ Extract first object from array
-                console.log("Updated student object:", data[0]); // ✅ Debugging log
+                setTeacher(data[0]); // ✅ Extract first object from array
+                console.log("Updated teacher object:", data[0]); // ✅ Debugging log
             } else {
-                console.warn("No student data found.");
+                console.warn("No teacher data found.");
             }
         };
 
-        fetchStudents();
-    }, [studentId]); // Runs only when schoolId is available
-
-    useEffect(() => {
-        const fetchParents = async () => {
-            if (!studentId) return; // Prevent fetching if school_id is not available
-
-            const { data, error } = await supabase
-                .from("parent")
-                .select("parent_id, parent_name, parent_email, photo, contact, address")
-                .eq("student_id", studentId);
-
-
-            if (error) {
-                console.error("Error fetching parents:", error);
-            } else if (data && data.length > 0) {
-                setParent(data[0]); // ✅ Extract first object from array
-                console.log("Updated parents object:", data[0]); // ✅ Debugging log
-            } else {
-                console.warn("No parent data found.");
-            }
-        };
-
-        fetchParents();
-    }, [studentId]); // Runs only when schoolId is available
+        fetchTeacher();
+    }, [teacherId]); // Runs only when schoolId is available
 
     useEffect(() => {
         const fetchSchool = async () => {
@@ -158,36 +134,21 @@ export default function StudentProfile() {
                     isBordered
                     color="success"
                     className="w-32 h-32"
-                    src={student?.photo || "https://images.unsplash.com/photo-1564156280315-1d42b4651629?q=80&w=2584&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}
+                    src={teacher?.photo || "https://images.unsplash.com/photo-1564156280315-1d42b4651629?q=80&w=2584&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}
                 />
-                <h2 className="text-4xl font-bold mt-4">{student?.student_name || "asda"}</h2>
+                <h2 className="text-4xl font-bold mt-4">{teacher?.teacher_name || "asda"}</h2>
             </div>
-            <CardBody className="grid sm:grid-cols-2 gap-12">
+            <CardBody className="grid sm:grid-cols-1 sm:px-36">
                 {/* Student Basic Information */}
                 <div className="text-lg leading-relaxed">
                     <h3 className="text-2xl font-semibold mb-6">Basic Information</h3>
                     <div className="border-none py-4 bg-white shadow-sm">
                         <div className="grid sm:grid-cols-[200px_1fr] px-4">
-                            <p className="font-semibold py-4 border-b">Full Name:</p> <p className="py-4 border-b">{student?.student_name || "asda"}</p>
-                            <p className="font-semibold py-4 border-b">Email:</p> <p className="py-4 border-b">{student?.student_email || "asda"}</p>
-                            <p className="font-semibold py-4 border-b">Gender:</p> <p className="py-4 border-b">{student?.gender || "asda"}</p>
-                            {/*<p className="font-semibold py-4 border-b">Date of Birth:</p> <p className="py-4 border-b">{student?.date_of_birth || "asda"}</p>*/}
-                            <p className="font-semibold py-4 border-b">School:</p> <p className="py-4 border-b">{school?.name || "asda"}</p>
-                            <p className="font-semibold py-4">Education Level:</p> <p className="py-4">Grade {student?.student_grade || "asda"}</p>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Guardian Information */}
-                <div className="text-lg leading-relaxed">
-                    <h3 className="text-2xl font-semibold mb-6">Guardian Information</h3>
-                    <div className="border-none p-4 bg-white shadow-sm">
-                        <div className="grid sm:grid-cols-[200px_1fr]">
-                            <p className="font-semibold py-4 border-b">Guardian Name:</p> <p className="py-4 border-b">{parent?.parent_name || "asda"}</p>
-                            <p className="font-semibold py-4 border-b">Relationship:</p> <p className="py-4 border-b">Mother/Father</p>
-                            <p className="font-semibold py-4 border-b">Contact:</p> <p className="py-4 border-b">+1234567890</p>
-                            <p className="font-semibold py-4 border-b">Email:</p> <p className="py-4 border-b">{parent?.parent_email || "asda"}</p>
-                            <p className="font-semibold py-4">Address:</p> <p className="py-4">123 Main Street, Cityville</p>
+                            <p className="font-semibold py-4 border-b">Full Name:</p> <p className="py-4 border-b">{teacher?.teacher_name || "asda"}</p>
+                            <p className="font-semibold py-4 border-b">Email:</p> <p className="py-4 border-b">{teacher?.teacher_email || "asda"}</p>
+                            <p className="font-semibold py-4 border-b">Gender:</p> <p className="py-4 border-b">{teacher?.link || "asda"}</p>
+                            <p className="font-semibold py-4 border-b">Date of Birth:</p> <p className="py-4 border-b">{teacher?.subject || "asda"}</p>
+                            <p className="font-semibold py-4">Education Level:</p> <p className="py-4">Grade {teacher?.grade || "asda"}</p>
                         </div>
                     </div>
                 </div>

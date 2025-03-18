@@ -38,7 +38,8 @@ export default function DeleteTeacherForm( { onDelete } ) {
 
             <Form
                 className="w-full max-w-md flex flex-col gap-4 bg-black p-8 rounded-xl"
-                onSubmit={handleDelete}>
+                onSubmit={handleDelete}
+                validationBehavior="native">
                 <Input
                     isRequired
                     label="Teacher ID"

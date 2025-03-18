@@ -55,8 +55,9 @@ import {supabase} from "@/app/lib/supabaseClient";
 import {useEffect, useState} from "react";
 
 
-export default function StudentProfile() {
-    const [studentId, setStudentId] = useState(null); // Store school_id in state
+export default function ParentProfile() {
+    const [parentId, setParentId] = useState(null); // Store school_id in state
+    const [studentId, setStudentId] = useState(null);
     const [student, setStudent] = useState(null);
     const [parent, setParent] = useState(null);
     const [school, setSchool] = useState(null);
@@ -65,13 +66,39 @@ export default function StudentProfile() {
 
     useEffect(() => {
         if (typeof window !== "undefined") {
-            const storedStudentId = localStorage.getItem("student_id");
+            const storedParentId = localStorage.getItem("parent_id");
             const storedSchoolId = localStorage.getItem("school_id");
-            setStudentId(storedStudentId);
+            setParentId(storedParentId);
             setSchoolId(storedSchoolId);
             console.log(school, "sadasdasdasdasd");
         }
     }, []);
+
+    useEffect(() => {
+        const fetchParents = async () => {
+            if (!parentId) return; // Prevent fetching if school_id is not available
+
+            const { data, error } = await supabase
+                .from("parent")
+                .select("parent_id, parent_name, parent_email, photo, contact, address, student_id")
+                .eq("parent_id", parentId);
+
+
+            if (error) {
+                console.error("Error fetching parents:", error);
+            } else if (data && data.length > 0) {
+                setParent(data[0]); // ✅ Extract first object from array
+                setStudentId(data[0].student_id);
+                console.log("Updated parents object:", data[0]); // ✅ Debugging log
+            } else {
+                console.warn("No parent data found.");
+            }
+
+        };
+
+        fetchParents();
+    }, [parentId]); // Runs only when schoolId is available
+
 
     useEffect(() => {
         const fetchStudents = async () => {
@@ -94,29 +121,6 @@ export default function StudentProfile() {
         };
 
         fetchStudents();
-    }, [studentId]); // Runs only when schoolId is available
-
-    useEffect(() => {
-        const fetchParents = async () => {
-            if (!studentId) return; // Prevent fetching if school_id is not available
-
-            const { data, error } = await supabase
-                .from("parent")
-                .select("parent_id, parent_name, parent_email, photo, contact, address")
-                .eq("student_id", studentId);
-
-
-            if (error) {
-                console.error("Error fetching parents:", error);
-            } else if (data && data.length > 0) {
-                setParent(data[0]); // ✅ Extract first object from array
-                console.log("Updated parents object:", data[0]); // ✅ Debugging log
-            } else {
-                console.warn("No parent data found.");
-            }
-        };
-
-        fetchParents();
     }, [studentId]); // Runs only when schoolId is available
 
     useEffect(() => {
@@ -158,14 +162,28 @@ export default function StudentProfile() {
                     isBordered
                     color="success"
                     className="w-32 h-32"
-                    src={student?.photo || "https://images.unsplash.com/photo-1564156280315-1d42b4651629?q=80&w=2584&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}
+                    src={parent?.photo || "https://images.unsplash.com/photo-1564156280315-1d42b4651629?q=80&w=2584&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}
                 />
-                <h2 className="text-4xl font-bold mt-4">{student?.student_name || "asda"}</h2>
+                <h2 className="text-4xl font-bold mt-4">{parent?.parent_name || "asda"}</h2>
             </div>
             <CardBody className="grid sm:grid-cols-2 gap-12">
-                {/* Student Basic Information */}
+                {/* Guardian Information */}
                 <div className="text-lg leading-relaxed">
                     <h3 className="text-2xl font-semibold mb-6">Basic Information</h3>
+                    <div className="border-none p-4 bg-white shadow-sm">
+                        <div className="grid sm:grid-cols-[200px_1fr]">
+                            <p className="font-semibold py-4 border-b">Guardian Name:</p> <p className="py-4 border-b">{parent?.parent_name || "asda"}</p>
+                            <p className="font-semibold py-4 border-b">Relationship:</p> <p className="py-4 border-b">Mother/Father</p>
+                            <p className="font-semibold py-4 border-b">Contact:</p> <p className="py-4 border-b">+1234567890</p>
+                            <p className="font-semibold py-4 border-b">Email:</p> <p className="py-4 border-b">{parent?.parent_email || "asda"}</p>
+                            <p className="font-semibold py-4">Address:</p> <p className="py-4">123 Main Street, Cityville</p>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Student Basic Information */}
+                <div className="text-lg leading-relaxed">
+                    <h3 className="text-2xl font-semibold mb-6">Child's Information</h3>
                     <div className="border-none py-4 bg-white shadow-sm">
                         <div className="grid sm:grid-cols-[200px_1fr] px-4">
                             <p className="font-semibold py-4 border-b">Full Name:</p> <p className="py-4 border-b">{student?.student_name || "asda"}</p>
@@ -178,19 +196,7 @@ export default function StudentProfile() {
                     </div>
                 </div>
 
-                {/* Guardian Information */}
-                <div className="text-lg leading-relaxed">
-                    <h3 className="text-2xl font-semibold mb-6">Guardian Information</h3>
-                    <div className="border-none p-4 bg-white shadow-sm">
-                        <div className="grid sm:grid-cols-[200px_1fr]">
-                            <p className="font-semibold py-4 border-b">Guardian Name:</p> <p className="py-4 border-b">{parent?.parent_name || "asda"}</p>
-                            <p className="font-semibold py-4 border-b">Relationship:</p> <p className="py-4 border-b">Mother/Father</p>
-                            <p className="font-semibold py-4 border-b">Contact:</p> <p className="py-4 border-b">+1234567890</p>
-                            <p className="font-semibold py-4 border-b">Email:</p> <p className="py-4 border-b">{parent?.parent_email || "asda"}</p>
-                            <p className="font-semibold py-4">Address:</p> <p className="py-4">123 Main Street, Cityville</p>
-                        </div>
-                    </div>
-                </div>
+
             </CardBody>
         </Card>
     );
