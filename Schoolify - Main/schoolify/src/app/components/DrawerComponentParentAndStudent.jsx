@@ -58,7 +58,7 @@ export default function DrawerComponentParentAndStudent({ isOpen, onOpenChange }
       <>
         {/*<Button onPress={onOpen}>Open Drawer</Button>*/}
 
-        <Drawer isOpen={isOpen} size="md" onOpenChange={onOpenChange}>
+        <Drawer isOpen={isOpen} size="md" onOpenChange={onOpenChange} backdrop="blur">
 
           <DrawerContent>
             {(onClose) => (

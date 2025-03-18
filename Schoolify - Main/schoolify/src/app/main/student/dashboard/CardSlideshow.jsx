@@ -36,35 +36,35 @@ export default function CardSlideshow() {
     const list = [
         {
             title: "Mathematics",
-            img: "/img/mathematics.png",
+            img: "/img/Subjects/mathematics.jpg",
         },
         {
             title: "Science",
-            img: "/img/science.png",
+            img: "/img/Subjects/science.jpg",
         },
         {
             title: "English",
-            img: "/img/english.png",
+            img: "/img/Subjects/english.jpg",
         },
         {
             title: "History",
-            img: "/img/history.png",
+            img: "/img/Subjects/history.jpg",
         },
         {
             title: "ICT",
-            img: "/img/ict.png",
+            img: "/img/Subjects/ict.jpg",
         },
         {
             title: "Sinhala",
-            img: "/img/sinhala.png",
+            img: "/img/Subjects/sinhala.jpg",
         },
         {
             title: "Commerce",
-            img: "/img/commerce.png",
+            img: "/img/Subjects/commerce.jpg",
         },
         {
             title: "Music",
-            img: "/img/music.png",
+            img: "/img/Subjects/arts.jpg",
         },
     ];
 
@@ -88,11 +88,11 @@ export default function CardSlideshow() {
                         {list.map((item, index) => (
                             <CarouselItem key={index} className="pl-1 md:basis-1/2 lg:basis-1/3">
                                 <div className="p-1">
-                                    <Card className="bg-white bg-opacity-40" key={index} isPressable shadow="sm" onPress={onOpen}>
+                                    <Card className="bg-white bg-opacity-40 w-80" key={index} isPressable shadow="sm" onPress={onOpen} >
                                         <CardBody className="overflow-visible p-0">
                                             <Image
                                                 alt={item.title}
-                                                className="w-full object-cover "
+                                                className="w-full h-48 object-cover "
                                                 radius="lg"
                                                 shadow="sm"
                                                 src={item.img}

@@ -122,7 +122,7 @@ const GradeSheet = () => {
 
     return (
         <div className="flex flex-col gap-y-1.5 bg-black w-full p-5 border-1 rounded-3xl">
-            <h1 className="font-bold text-xl">GradeSheet</h1>
+            <h1 className="font-bold text-4xl">GradeSheet</h1>
             <div className="justify-center mt-3 mb-3 ">
                 <Form
                     className="flex flex-col gap-6 text-left items-left w-full"

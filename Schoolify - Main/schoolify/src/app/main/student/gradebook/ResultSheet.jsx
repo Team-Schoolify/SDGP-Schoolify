@@ -75,7 +75,7 @@ const ResultSheet = () => {
 
             {[1, 2, 3].map(term => (
                 <div key={term}>
-                    <h3 className="text-2xl text-black font-semibold">Term {term} Results</h3>
+                    <h3 className="text-2xl text-black font-semibold mb-2">Term {term} Results</h3>
                     {termGrades[term].length > 0 ? (
                         <Table aria-label={`Term ${term} Grade Table`} color="primary" selectionMode="single">
                             <TableHeader>
@@ -96,7 +96,7 @@ const ResultSheet = () => {
                             </TableBody>
                         </Table>
                     ) : (
-                        <p className="text-black">No grades available for Term {term}.</p>
+                        <p className="text-danger font-bold">No grades available for Term {term}.</p>
                     )}
                 </div>
             ))}

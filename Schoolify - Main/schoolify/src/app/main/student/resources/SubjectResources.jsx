@@ -94,7 +94,9 @@ export default function SubjectResources() {
     return (
         <div className="mt-4">
             {/* Subject Cards Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-2 gap-y-6 mt-6 mb-20">
+            <div className="text-black text-4xl font-bold mb-8">Your Subjects</div>
+            <div className="flex justify-center items-center">
+            `<div className="grid grid-cols-1  gap-x-6 gap-y-6 mt-6 mb-20  sm:w-2/3">
                 {availableSubjects.map((subject, index) => (
                     <Card
                         key={index}
@@ -113,11 +115,12 @@ export default function SubjectResources() {
                                 width="100%"
                             />
                         </CardBody>
-                        <CardFooter className="text-small text-black justify-between">
-                            <b>{subject}</b>
+                        <CardFooter className="text-2xl font-semibold text-black justify-between">
+                            {subject}
                         </CardFooter>
                     </Card>
                 ))}
+            </div>`
             </div>
 
             {/* Full-Screen Drawer for Resources */}
