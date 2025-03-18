@@ -5,26 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="26e29180-a7b6-4d83-9617-8c4b38ae8cd0" name="Changes" comment="Backend for event">
-      <change afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/parent/profile/ParentProfile.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/parent/profile/layout.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/parent/profile/page.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/teacher/profile/TeacherProfile.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/teacher/profile/layout.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/teacher/profile/page.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/admin/parent/AdminParentForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/admin/parent/AdminParentForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/admin/parent/DeleteParentForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/admin/parent/DeleteParentForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/admin/parent/UpadateParentForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/admin/parent/UpadateParentForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/admin/student/AdminStudentForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/admin/student/AdminStudentForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/admin/student/DeleteStudentForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/admin/student/DeleteStudentForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/admin/student/UpdateStudentForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/admin/student/UpdateStudentForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/admin/teacher/AdminTeacherForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/admin/teacher/AdminTeacherForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/admin/teacher/DeleteTeacherForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/admin/teacher/DeleteTeacherForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/admin/teacher/UpdateTeacherForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/admin/teacher/UpdateTeacherForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/parent/profileParent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/parent/profileParent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/student/profile/StudentProfile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/student/profile/StudentProfile.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/student/profileStudent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/student/profileStudent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/teacher/profileAndNotificationTeacher.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/teacher/profileAndNotificationTeacher.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/components/MainNavbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/components/MainNavbar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/parent/attendance/AttendanceParent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/parent/attendance/AttendanceParent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/parent/dashboard/layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/parent/dashboard/layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/parent/dashboard/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/parent/dashboard/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/student/dashboard/layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/student/dashboard/layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/student/dashboard/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/student/dashboard/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/teacher/dashboard/layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/teacher/dashboard/layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/teacher/dashboard/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/teacher/dashboard/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/tests/unit/MainNavbar.test.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/tests/unit/MainNavbar.test.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/tests/unit/ProfileAndNotificationTeacher.test.jsx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,24 +48,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Sonal",
-    "last_opened_file_path": "/Users/sonalkethaka/SDGP-Schoolify/Schoolify - Main/schoolify/src/app/main/parent/profile",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "Settings.JavaScript",
-    "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Sonal&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/sonalkethaka/SDGP-Schoolify/Schoolify - Main/schoolify/src/app/main/parent/profile&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;Settings.JavaScript&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/parent/profile" />
@@ -181,7 +172,8 @@
       <workItem from="1742215863760" duration="5638000" />
       <workItem from="1742239488347" duration="25000" />
       <workItem from="1742283231434" duration="7915000" />
-      <workItem from="1742299996102" duration="14282000" />
+      <workItem from="1742299996102" duration="14356000" />
+      <workItem from="1742317312803" duration="5468000" />
     </task>
     <task id="LOCAL-00001" summary="Attendance changed for the test commit">
       <option name="closed" value="true" />

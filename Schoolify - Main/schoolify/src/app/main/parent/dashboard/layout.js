@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
 
             <Providers>
                 <MainNavbar/>
-                <div id="root">{children}</div>
+                <div className="min-h-screen" id="root">{children}</div>
                 <div className="
                   text-white rounded-full fixed
                   bottom-4 right-6 shadow-lg

@@ -254,7 +254,6 @@ const AttendanceParent = () => {
                 Attendance Records
             </h2>
             <div className="grid sm:grid-cols-3 items-center gap-4">
-
                 {attendanceRecords.length > 0 ? (
                     attendanceRecords.map((attendance, index) => (
                         <Card key={index} className="w-80 shadow-lg">
@@ -273,7 +272,7 @@ const AttendanceParent = () => {
                         </Card>
                     ))
                 ) : (
-                    <p className="text-danger font-bold text-lg">No attendance records found for your student.</p>
+                    <p className="text-danger text-center font-bold text-lg">No attendance records found for your student.</p>
                 )}
             </div>
             </div>

@@ -26,26 +26,21 @@ export default function MainNavbar() {
     const roleBasedNavLinks = {
         student: [
             { name: "Dashboard", path: `/main/student/dashboard` },
-            // { name: "Assignments", path: `/main/student/assignments` },
             { name: "Gradebook", path: `/main/student/gradebook` },
             { name: "Attendance", path: `/main/student/attendance` },
-            // { name: "Events", path: `/main/student/event` },
             { name: "Resources", path: `/main/student/resources` },
-            { name: "profile", path: `/main/student/profile` },
         ],
         teacher: [
             { name: "Dashboard", path: `/main/teacher/dashboard` },
             { name: "Resources", path: `/main/teacher/resources` },
             { name: "Gradebook", path: `/main/teacher/gradebook` },
             { name: "Attendance", path: `/main/teacher/attendance` },
-            // { name: "Events", path: `/main/teacher/event` },
             { name: "Appointments", path: `/main/teacher/appointment` },
         ],
         parent: [
             { name: "Dashboard", path: `/main/parent/dashboard` },
             { name: "Gradebook", path: `/main/parent/gradebook` },
             { name: "Attendance", path: `/main/parent/attendance` },
-            // { name: "Events", path: `/main/parent/event` },
             { name: "Appointments", path: `/main/parent/appointment` },
         ],
         admin: [
