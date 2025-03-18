@@ -41,7 +41,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/sonalkethaka/SDGP-Schoolify/Schoolify - Main/schoolify/src/app/main/parent/gradebook",
+    "last_opened_file_path": "/Users/sonalkethaka/SDGP-Schoolify/Schoolify - Main/schoolify/src/app/main/admin/teacher",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -54,10 +54,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/parent/gradebook" />
-      <recent name="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/parent" />
-      <recent name="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/student" />
-      <recent name="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/teacher" />
+      <recent name="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/admin/teacher" />
+      <recent name="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/admin/parent" />
+      <recent name="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/admin/dashboard" />
+      <recent name="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/teacher/resources" />
+      <recent name="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/parent/attendance" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/components" />
@@ -110,7 +111,25 @@
       <workItem from="1740723060967" duration="8470000" />
       <workItem from="1740734993902" duration="1491000" />
       <workItem from="1740739577461" duration="1344000" />
-      <workItem from="1740743801400" duration="11722000" />
+      <workItem from="1740743801400" duration="11406000" />
+      <workItem from="1740813216998" duration="3985000" />
+      <workItem from="1740821330026" duration="2440000" />
+      <workItem from="1740832371106" duration="3982000" />
+      <workItem from="1740838687125" duration="1259000" />
+      <workItem from="1740904965479" duration="129000" />
+      <workItem from="1741012953143" duration="1698000" />
+      <workItem from="1741066912765" duration="81000" />
+      <workItem from="1741068208893" duration="4159000" />
+      <workItem from="1741112252880" duration="51000" />
+      <workItem from="1741165466682" duration="5942000" />
+      <workItem from="1741174963831" duration="9920000" />
+      <workItem from="1741199428318" duration="3000" />
+      <workItem from="1741208954802" duration="91000" />
+      <workItem from="1741275496828" duration="7045000" />
+      <workItem from="1741287040492" duration="849000" />
+      <workItem from="1741293189304" duration="50000" />
+      <workItem from="1741330811076" duration="1119000" />
+      <workItem from="1741334520129" duration="245000" />
     </task>
     <task id="LOCAL-00001" summary="Attendance changed for the test commit">
       <option name="closed" value="true" />

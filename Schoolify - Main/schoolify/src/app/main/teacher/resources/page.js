@@ -1,12 +1,12 @@
 "use client";
 
 import React from "react";
-import AttendanceParent from "@/app/main/parent/attendance/AttendanceParent";
+import SubjectCardsTeacher from "@/app/main/teacher/resources/SubjectCardsTeacher";
 
 export default function Page() {
     return (
         <div className="min-h-screen">
-            <AttendanceParent/>
+            <SubjectCardsTeacher/>
         </div>
     );
 }

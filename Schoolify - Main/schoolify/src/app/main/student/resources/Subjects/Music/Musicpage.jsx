@@ -9,9 +9,10 @@ const resources = [
     id: 1,
     title: "Learning Materials",
     subTopics: [
-      { id: 1, title: "Chapter 01: Motion", description: "Explains Newton's first, second, and third laws." },
-      { id: 2, title: "Chapter 02: Gravity", description: "Covers the effects of gravity and objects in free fall." },
-      { id: 3, title: "Chapter 03: Friction", description: "Discusses how friction and air resistance affect motion." },
+        { id: 1, title: "Chapter 01: Introduction", description: "Covers the basics of music." },
+        { id: 2, title: "Chapter 02: Instruments", description: "Covers the every kind of instruments." },
+        { id: 3, title: "Chapter 03: Music Theory", description: "Covers music theories." },
+        { id: 4, title: "Chapter 04: Music Genres", description: "Disscusses about every music genres." },
     ],
   },
   {
@@ -31,7 +32,7 @@ const resources = [
   },
 ]
 
-export default function ScienceResources() {
+export default function MusicResources() {
   const [selectedTopic, setSelectedTopic] = useState(null)
   const [selectedSubTopic, setSelectedSubTopic] = useState(null)
 
@@ -120,4 +121,3 @@ export default function ScienceResources() {
     </div>
   )
 }
-

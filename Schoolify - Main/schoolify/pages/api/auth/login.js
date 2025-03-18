@@ -9,7 +9,7 @@ export default async function handler(req, res) {
 
     const { email, password, role } = req.body;
 
-    if (!['student', 'parent', 'teacher'].includes(role)) {
+    if (!['student', 'parent', 'teacher', "admin"].includes(role)) {
         return res.status(400).json({ message: 'Invalid role selected' });
     }
 

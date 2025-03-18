@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
     title: "Gradebook",
-    description: "This is Schoolify Website",
+    description: "This is the Gradebook page of Schoolify.",
 };
 
 export default function RootLayout({ children }) {
