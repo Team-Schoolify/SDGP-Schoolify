@@ -1,6 +1,8 @@
 import * as React from "react"
 
-// import { Card, CardContent } from "@/components/ui/card"
+import { useEffect, useState } from "react"
+import { supabase } from "@/lib/supabaseClient"
+
 import {
     Card,
     CardBody,
@@ -8,15 +10,9 @@ import {
     Image,
     Drawer,
     DrawerContent,
-    DrawerHeader,
     DrawerBody,
-    DrawerFooter,
-    Button,
     useDisclosure,
     Link,
-    Tooltip,
-    Avatar,
-    AvatarGroup,
 } from "@nextui-org/react";
 
 
@@ -31,42 +27,58 @@ import {
 export default function CardSlideshow() {
 
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
+    const [events, setEvents] = useState([]);
 
+    useEffect(() => {
+        async function fetchEvents() {
+            const { data, error } = await supabase
+                .from("events")
+                .select("title, image_url");
 
-    const list = [
-        {
-            title: "Mathematics",
-            img: "/img/mathematics.png",
-        },
-        {
-            title: "Science",
-            img: "/img/science.png",
-        },
-        {
-            title: "English",
-            img: "/img/english.png",
-        },
-        {
-            title: "History",
-            img: "/img/history.png",
-        },
-        {
-            title: "ICT",
-            img: "/img/ict.png",
-        },
-        {
-            title: "Sinhala",
-            img: "/img/sinhala.png",
-        },
-        {
-            title: "Commerce",
-            img: "/img/commerce.png",
-        },
-        {
-            title: "Music",
-            img: "/img/music.png",
-        },
-    ];
+            if (error) {
+                console.error("Error fetching events:", error);
+            } else {
+                setEvents(data);
+            }
+        }
+
+        fetchEvents();
+    }, []);
+
+    // const list = [
+    //     {
+    //         title: "Mathematics",
+    //         img: "/img/mathematics.png",
+    //     },
+    //     {
+    //         title: "Science",
+    //         img: "/img/science.png",
+    //     },
+    //     {
+    //         title: "English",
+    //         img: "/img/english.png",
+    //     },
+    //     {
+    //         title: "History",
+    //         img: "/img/history.png",
+    //     },
+    //     {
+    //         title: "ICT",
+    //         img: "/img/ict.png",
+    //     },
+    //     {
+    //         title: "Sinhala",
+    //         img: "/img/sinhala.png",
+    //     },
+    //     {
+    //         title: "Commerce",
+    //         img: "/img/commerce.png",
+    //     },
+    //     {
+    //         title: "Music",
+    //         img: "/img/music.png",
+    //     },
+    // ];
 
     return (
         <>
@@ -95,7 +107,7 @@ export default function CardSlideshow() {
                                                 className="w-full object-cover "
                                                 radius="lg"
                                                 shadow="sm"
-                                                src={item.img}
+                                                src={item.image_url || "/public/img/default-image.jpg"}
                                                 width="100%"
                                             />
                                         </CardBody>
