@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="26e29180-a7b6-4d83-9617-8c4b38ae8cd0" name="Changes" comment="Backend for event">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/teacher/event/DrawerComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/teacher/event/DrawerComponent.jsx" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;SonalKethaka&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/ShadowHunter20001R/SDGP-Schoolify.git&quot;,
+    &quot;accountId&quot;: &quot;a07a62fc-cff8-424c-8dda-2c66163d8589&quot;
+  }
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2smPKy2FsTetOCIVarSBz5G9R3q" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Sonal&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/sonalkethaka/SDGP-Schoolify/Schoolify - Main/schoolify/src/app/main/parent/profile&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;Settings.JavaScript&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/parent/profile" />
+      <recent name="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/teacher/profile" />
+      <recent name="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/student/profile" />
+      <recent name="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/student/chatbot" />
+      <recent name="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/admin/teacher" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/student/chatbot" />
+      <recent name="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/components" />
+      <recent name="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/components/ui" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-WS-243.22562.222" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="26e29180-a7b6-4d83-9617-8c4b38ae8cd0" name="Changes" comment="" />
+      <created>1739057716367</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1739057716367</updated>
+      <workItem from="1739057718126" duration="1371000" />
+      <workItem from="1739098543542" duration="8843000" />
+      <workItem from="1739115779080" duration="5000" />
+      <workItem from="1739179545031" duration="13000" />
+      <workItem from="1739183881680" duration="2082000" />
+      <workItem from="1739187476836" duration="1499000" />
+      <workItem from="1739352100680" duration="1710000" />
+      <workItem from="1739365340068" duration="63000" />
+      <workItem from="1739413980888" duration="200000" />
+      <workItem from="1739414297356" duration="4000" />
+      <workItem from="1739414620072" duration="45000" />
+      <workItem from="1739425008342" duration="10000" />
+      <workItem from="1739533210892" duration="2513000" />
+      <workItem from="1739601414221" duration="9181000" />
+      <workItem from="1739619728572" duration="11968000" />
+      <workItem from="1739659166753" duration="972000" />
+      <workItem from="1739697288374" duration="1844000" />
+      <workItem from="1739734177090" duration="1601000" />
+      <workItem from="1739780749199" duration="53000" />
+      <workItem from="1739907028244" duration="10000" />
+      <workItem from="1739970982963" duration="14000" />
+      <workItem from="1739971158118" duration="80000" />
+      <workItem from="1740127881414" duration="786000" />
+      <workItem from="1740135292431" duration="4032000" />
+      <workItem from="1740143386903" duration="3026000" />
+      <workItem from="1740158318219" duration="1023000" />
+      <workItem from="1740176281323" duration="215000" />
+      <workItem from="1740178010173" duration="20000" />
+      <workItem from="1740334386502" duration="483000" />
+      <workItem from="1740723060967" duration="8470000" />
+      <workItem from="1740734993902" duration="1491000" />
+      <workItem from="1740739577461" duration="1344000" />
+      <workItem from="1740743801400" duration="11406000" />
+      <workItem from="1740813216998" duration="3985000" />
+      <workItem from="1740821330026" duration="2440000" />
+      <workItem from="1740832371106" duration="3982000" />
+      <workItem from="1740838687125" duration="1259000" />
+      <workItem from="1740904965479" duration="129000" />
+      <workItem from="1741012953143" duration="1698000" />
+      <workItem from="1741066912765" duration="81000" />
+      <workItem from="1741068208893" duration="4159000" />
+      <workItem from="1741112252880" duration="51000" />
+      <workItem from="1741165466682" duration="5942000" />
+      <workItem from="1741174963831" duration="9920000" />
+      <workItem from="1741199428318" duration="3000" />
+      <workItem from="1741208954802" duration="91000" />
+      <workItem from="1741275496828" duration="7045000" />
+      <workItem from="1741287040492" duration="849000" />
+      <workItem from="1741293189304" duration="50000" />
+      <workItem from="1741330811076" duration="1119000" />
+      <workItem from="1741334520129" duration="245000" />
+      <workItem from="1741514270480" duration="2444000" />
+      <workItem from="1741696990377" duration="13000" />
+      <workItem from="1741800812757" duration="4646000" />
+      <workItem from="1741875151695" duration="5649000" />
+      <workItem from="1741882928751" duration="6719000" />
+      <workItem from="1741889794319" duration="3865000" />
+      <workItem from="1741898992775" duration="2953000" />
+      <workItem from="1741937457342" duration="4766000" />
+      <workItem from="1741943627432" duration="826000" />
+      <workItem from="1741948302764" duration="5739000" />
+      <workItem from="1741986966034" duration="2165000" />
+      <workItem from="1741989328331" duration="3337000" />
+      <workItem from="1741992685700" duration="302000" />
+      <workItem from="1741992996391" duration="5940000" />
+      <workItem from="1742024630892" duration="1949000" />
+      <workItem from="1742026592586" duration="9492000" />
+      <workItem from="1742045826425" duration="11444000" />
+      <workItem from="1742072277850" duration="683000" />
+      <workItem from="1742073531361" duration="361000" />
+      <workItem from="1742128857886" duration="3036000" />
+      <workItem from="1742151280402" duration="138000" />
+      <workItem from="1742198686943" duration="1902000" />
+      <workItem from="1742215698437" duration="140000" />
+      <workItem from="1742215863760" duration="5638000" />
+      <workItem from="1742239488347" duration="25000" />
+      <workItem from="1742283231434" duration="7915000" />
+      <workItem from="1742299996102" duration="14356000" />
+      <workItem from="1742317312803" duration="5564000" />
+      <workItem from="1742326067363" duration="47000" />
+      <workItem from="1742366725692" duration="3555000" />
+    </task>
+    <task id="LOCAL-00001" summary="Attendance changed for the test commit">
+      <option name="closed" value="true" />
+      <created>1739058406745</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1739058406745</updated>
+    </task>
+    <task id="LOCAL-00002" summary="2025 first feedback day">
+      <option name="closed" value="true" />
+      <created>1739188391697</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1739188391697</updated>
+    </task>
+    <task id="LOCAL-00003" summary="2025 first feedback day">
+      <option name="closed" value="true" />
+      <created>1739188405478</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1739188405478</updated>
+    </task>
+    <task id="LOCAL-00004" summary="added notification and profile section">
+      <option name="closed" value="true" />
+      <created>1739620814503</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1739620814503</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Notification for Parent and Student Done!!!">
+      <option name="closed" value="true" />
+      <created>1739659038487</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1739659038487</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Notification for Parent and Student Done and cleared the code!!!">
+      <option name="closed" value="true" />
+      <created>1739659925236</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1739659925236</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Backend for event">
+      <option name="closed" value="true" />
+      <created>1740147654943</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1740147654943</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Attendance changed for the test commit" />
+    <MESSAGE value="2025 first feedback day" />
+    <MESSAGE value="added notification and profile section" />
+    <MESSAGE value="Notification for Parent and Student Done!!!" />
+    <MESSAGE value="Notification for Parent and Student Done and cleared the code!!!" />
+    <MESSAGE value="Backend for event" />
+    <option name="LAST_COMMIT_MESSAGE" value="Backend for event" />
+  </component>
+</project>

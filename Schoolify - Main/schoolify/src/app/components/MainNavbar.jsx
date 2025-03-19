@@ -16,17 +16,6 @@ import {
 import { usePathname, useSearchParams } from "next/navigation";
 import NextLink from "next/link";
 
-export const AcmeLogo = () => (
-    <svg fill="none" height="36" viewBox="0 0 32 32" width="36">
-        <path
-            clipRule="evenodd"
-            d="M17.6482 10.1305L15.8785 7.02583L7.02979 22.5499H10.5278L17.6482 10.1305ZM19.8798 14.0457L18.11 17.1983L19.394 19.4511H16.8453L15.1056 22.5499H24.7272L19.8798 14.0457Z"
-            fill="currentColor"
-            fillRule="evenodd"
-        />
-    </svg>
-);
-
 export default function MainNavbar() {
     const pathname = usePathname(); // Get the current route
     const searchParams = useSearchParams(); // Get query parameters
@@ -37,26 +26,27 @@ export default function MainNavbar() {
     const roleBasedNavLinks = {
         student: [
             { name: "Dashboard", path: `/main/student/dashboard` },
-            { name: "Assignments", path: `/main/student/assignments` },
             { name: "Gradebook", path: `/main/student/gradebook` },
             { name: "Attendance", path: `/main/student/attendance` },
-            { name: "Events", path: `/main/student/event` },
             { name: "Resources", path: `/main/student/resources` },
         ],
         teacher: [
             { name: "Dashboard", path: `/main/teacher/dashboard` },
-            { name: "Assignments", path: `/main/teacher/assignments` },
+            { name: "Resources", path: `/main/teacher/resources` },
             { name: "Gradebook", path: `/main/teacher/gradebook` },
             { name: "Attendance", path: `/main/teacher/attendance` },
-            { name: "Events", path: `/main/teacher/event` },
             { name: "Appointments", path: `/main/teacher/appointment` },
         ],
         parent: [
             { name: "Dashboard", path: `/main/parent/dashboard` },
             { name: "Gradebook", path: `/main/parent/gradebook` },
             { name: "Attendance", path: `/main/parent/attendance` },
-            { name: "Events", path: `/main/parent/event` },
             { name: "Appointments", path: `/main/parent/appointment` },
+        ],
+        admin: [
+            { name: "Student", path: `/main/admin/student` },
+            { name: "Teacher", path: `/main/admin/teacher` },
+            { name: "Parent", path: `/main/admin/parent` },
         ],
     };
 
@@ -74,9 +64,11 @@ export default function MainNavbar() {
             >
                 {/* Brand */}
                 <NavbarBrand>
-                    <NextLink href={`/main/${role}/dashboard?role=${role}`} className="font-bold text-customWhite flex items-center">
-                        <AcmeLogo />
-                        <p>Schoolify</p>
+                    <NextLink href={`/main/${role}/dashboard?role=${role}`}
+                              className="font-bold text-customWhite flex items-center">
+                        {/*<AcmeLogo />*/}
+                        <img src="/img/logos/logowhite.png" alt="logo" className="w-16"/>
+                        {/*<p>Schoolify</p>*/}
                     </NextLink>
                 </NavbarBrand>
 
