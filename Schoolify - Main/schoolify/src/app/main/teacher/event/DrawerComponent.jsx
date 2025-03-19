@@ -53,6 +53,17 @@ export default function DrawerComponent({ isOpen, onOpenChange }) {
 
     // State for More Details 
     const [selectedEvent, setSelectedEvent] = useState(null);
+    const [schoolId, setSchoolId] = useState(null);
+
+
+    // fetching the school id
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            const storedSchoolId = localStorage.getItem("school_id");
+
+            setSchoolId(storedSchoolId);
+        }
+    }, []);
 
     // Handle radio button change for time selection
     const handleOptionChange = (value) => {
@@ -87,7 +98,8 @@ export default function DrawerComponent({ isOpen, onOpenChange }) {
             end_time: formattedEndTime,
             location: location.trim() || "No location specified",
             description: description.trim() || "No description provided",
-            photo: photo.trim() || "No description provided"
+            photo: photo.trim() || "No description provided",
+            school_id: schoolId
         };
 
         console.log("Inserting new event:", newEvent);
@@ -277,7 +289,6 @@ export default function DrawerComponent({ isOpen, onOpenChange }) {
                                         isRequired 
                                         label="Event Title" 
                                         placeholder="Add an event title" 
-                                        maxLength={45} 
                                         value={eventTitle}
                                         onChange={(e) => setEventTitle(e.target.value)}
                                     />
@@ -318,7 +329,6 @@ export default function DrawerComponent({ isOpen, onOpenChange }) {
                                         isRequired
                                         label="Location" 
                                         placeholder="Add a location" 
-                                        maxLength={45}
                                         value={location}
                                         onChange={(e) => setLocation(e.target.value)} 
                                     />
@@ -327,7 +337,6 @@ export default function DrawerComponent({ isOpen, onOpenChange }) {
                                         isRequired
                                         label="Photo"
                                         placeholder="Add a Poto"
-                                        maxLength={45}
                                         value={photo}
                                         onChange={(e) => setPhoto(e.target.value)}
                                     />

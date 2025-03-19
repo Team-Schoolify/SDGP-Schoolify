@@ -257,7 +257,7 @@ export default function DrawerComponentParentAndStudent({ isOpen, onOpenChange }
                                     alt="Event image"
                                     className="aspect-square w-full hover:scale-110"
                                     height={300}
-                                    src="https://nextuipro.nyc3.cdn.digitaloceanspaces.com/components-images/places/san-francisco.png"
+                                    src={selectedEvent.photo || "https://nextuipro.nyc3.cdn.digitaloceanspaces.com/components-images/places/san-francisco.png"}
                                     />
                                 </div>
                                  
