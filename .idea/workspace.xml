@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="26e29180-a7b6-4d83-9617-8c4b38ae8cd0" name="Changes" comment="Backend for event">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/components/DrawerComponentParentAndStudent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/components/DrawerComponentParentAndStudent.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/teacher/event/DrawerComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/teacher/event/DrawerComponent.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -166,7 +167,9 @@
       <workItem from="1742299996102" duration="14356000" />
       <workItem from="1742317312803" duration="5564000" />
       <workItem from="1742326067363" duration="47000" />
-      <workItem from="1742366725692" duration="3555000" />
+      <workItem from="1742366725692" duration="3622000" />
+      <workItem from="1742374868327" duration="1353000" />
+      <workItem from="1742379448535" duration="4136000" />
     </task>
     <task id="LOCAL-00001" summary="Attendance changed for the test commit">
       <option name="closed" value="true" />
