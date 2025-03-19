@@ -43,7 +43,7 @@ export default function LoginPage() {
     }, []);
 
     if (loading) {
-        return <p className="text-center text-white">Loading...</p>;
+        return <p className="text-center text-black">Loading...</p>;
     }
 
     if (!user) {
