@@ -26,6 +26,7 @@ import {  Drawer,
 import { useDisclosure } from "@heroui/react";
 import { Time, today, getLocalTimeZone } from "@internationalized/date";
 import {supabase} from "@/app/lib/supabaseClient";
+import {Form} from "@nextui-org/react";
 
 
 export default function DrawerComponent({ isOpen, onOpenChange }) {
@@ -45,6 +46,7 @@ export default function DrawerComponent({ isOpen, onOpenChange }) {
     const [eventDate, setEventDate] = useState(today(getLocalTimeZone()));
     const [location, setLocation] = useState("");
     const [description, setDescription] = useState("");
+    const [photo, setPhoto] = useState("");
 
     // State for the list of events
     const [events, setEvents] = useState([]);
@@ -84,7 +86,8 @@ export default function DrawerComponent({ isOpen, onOpenChange }) {
             start_time: formattedStartTime,
             end_time: formattedEndTime,
             location: location.trim() || "No location specified",
-            description: description.trim() || "No description provided"
+            description: description.trim() || "No description provided",
+            photo: photo.trim() || "No description provided"
         };
 
         console.log("Inserting new event:", newEvent);
@@ -106,6 +109,7 @@ export default function DrawerComponent({ isOpen, onOpenChange }) {
 
         // Reset form fields
         setEventTitle("");
+        setPhoto("");
         setEventDate(today(getLocalTimeZone()));
         setLocation("");
         setDescription("");
@@ -264,7 +268,9 @@ export default function DrawerComponent({ isOpen, onOpenChange }) {
                 {(onNestedClose) => (
                     <>
                         <DrawerHeader className="flex flex-col gap-1 justify-center items-center">Add New Event</DrawerHeader>
+
                             <DrawerBody>
+                                <Form validationBehavior="native" className="w-full gap-y-9" onSubmit={handleSaveEvent}>
 
                                 
                                     <Input 
@@ -308,7 +314,8 @@ export default function DrawerComponent({ isOpen, onOpenChange }) {
                                     </div>
                                     
                                     
-                                    <Input 
+                                    <Input
+                                        isRequired
                                         label="Location" 
                                         placeholder="Add a location" 
                                         maxLength={45}
@@ -316,7 +323,17 @@ export default function DrawerComponent({ isOpen, onOpenChange }) {
                                         onChange={(e) => setLocation(e.target.value)} 
                                     />
 
-                                    <Textarea 
+                                    <Input
+                                        isRequired
+                                        label="Photo"
+                                        placeholder="Add a Poto"
+                                        maxLength={45}
+                                        value={photo}
+                                        onChange={(e) => setPhoto(e.target.value)}
+                                    />
+
+                                    <Textarea
+                                        isRequired
                                         label="Description" 
                                         placeholder="Describe the event" 
                                         maxLength={315} 
@@ -326,16 +343,28 @@ export default function DrawerComponent({ isOpen, onOpenChange }) {
                                         onChange={(e) => setDescription(e.target.value)}
                                     />
 
-                            </DrawerBody>
-                            <DrawerFooter>
+                                    <div className="flex gap-2">
                                         <Button color="danger" variant="light" onPress={onNestedClose}>
                                             Cancel
                                         </Button>
 
-                                        <Button color="primary" onPress={handleSaveEvent}>
+                                        <Button color="primary" type="submit" >
                                             Save Event
                                         </Button>
-                            </DrawerFooter>
+                                    </div>
+                                </Form>
+
+                            </DrawerBody>
+                            {/*<DrawerFooter>*/}
+                            {/*            <Button color="danger" variant="light" onPress={onNestedClose}>*/}
+                            {/*                Cancel*/}
+                            {/*            </Button>*/}
+
+                            {/*            <Button color="primary" type="submit" >*/}
+                            {/*                Save Event*/}
+                            {/*            </Button>*/}
+                            {/*</DrawerFooter>*/}
+
                             
                     </>
                 )}
@@ -429,7 +458,7 @@ export default function DrawerComponent({ isOpen, onOpenChange }) {
                                     alt="Event image"
                                     className="aspect-square w-full hover:scale-110"
                                     height={300}
-                                    src="https://nextuipro.nyc3.cdn.digitaloceanspaces.com/components-images/places/san-francisco.png"
+                                    src={selectedEvent.photo || "https://nextuipro.nyc3.cdn.digitaloceanspaces.com/components-images/places/san-francisco.png"}
                                     />
                                 </div>
                                  
@@ -444,7 +473,7 @@ export default function DrawerComponent({ isOpen, onOpenChange }) {
                                     month: "long",
                                     year: "numeric",
                                 })}</p>
-                                <p><strong>Time:</strong> {selectedEvent.time}</p>
+                                <p><strong>Time:</strong> {selectedEvent.start_time}</p>
                                 <p><strong>Location:</strong> {selectedEvent.location}</p>
                                 <p><strong>About the Event:</strong> {selectedEvent.description}</p>
                             </>
