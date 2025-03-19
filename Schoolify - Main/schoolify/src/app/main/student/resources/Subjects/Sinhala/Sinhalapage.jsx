@@ -9,18 +9,17 @@ const resources = [
     id: 1,
     title: "Learning Materials",
     subTopics: [
-      { id: 1, title: "Chapter 01: Motion", description: "Explains Newton's first, second, and third laws." },
-      { id: 2, title: "Chapter 02: Gravity", description: "Covers the effects of gravity and objects in free fall." },
-      { id: 3, title: "Chapter 03: Friction", description: "Discusses how friction and air resistance affect motion." },
+        { id: 1, title: "Chapter 01: Language and Grammer", description: "Covers the grammer parts." },
+        { id: 2, title: "Chapter 02: Literature", description: "Covers the literature parts." },
     ],
   },
   {
     id: 2,
     title: "Past Papers",
     subTopics: [
-      { id: 1, title: "First Term" },
-      { id: 2, title: "Second Term" },
-      { id: 3, title: "Third Term" },
+        { id: 1, title: "First Term" },
+        { id: 2, title: "Second Term" },
+        { id: 3, title: "Third Term" },
     ],
   },
   {
@@ -31,7 +30,7 @@ const resources = [
   },
 ]
 
-export default function ScienceResources() {
+export default function SinhalaResources() {
   const [selectedTopic, setSelectedTopic] = useState(null)
   const [selectedSubTopic, setSelectedSubTopic] = useState(null)
 
@@ -120,4 +119,3 @@ export default function ScienceResources() {
     </div>
   )
 }
-

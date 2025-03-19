@@ -51,8 +51,8 @@ export default function Features() {
             <div className="w-full max-w-[1200px] mx-auto gap-4 grid grid-cols-12 grid-rows-2 px-4">
                 {[
                     { title: "Real-Time Notifications", image: "/img/notification.png", description: "Notify parents, students, and teachers about important event, deadlines, and updates." },
-                    { title: "Attendance Tracking", image: "/img/attendance.png", description: "Digital submission, grading, and feedback on assignments." },
-                    { title: "Homework and Assignments", image: "/img/homework.png", description: "Digital submission, grading, and feedback on assignments." },
+                    { title: "Attendance Tracking", image: "/img/attendance.png", description: "Digital submission, grading, and feedback on resources." },
+                    { title: "Homework and Assignments", image: "/img/homework.png", description: "Digital submission, grading, and feedback on resources." },
                     { title: "Analytics and Insights", image: "/img/analytics.png", description: "Detailed reports for teachers and administrators on student performance." },
                     { title: "Your day your way", image: "https://nextui.org/images/card-example-5.jpeg", description: "Help save the planet" },
                     { title: "What to watch", image: "https://nextui.org/images/card-example-4.jpeg", description: "Help save the planet" },

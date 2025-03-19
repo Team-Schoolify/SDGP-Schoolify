@@ -9,19 +9,16 @@ const resources = [
     id: 1,
     title: "Learning Materials",
     subTopics: [
-      { id: 1, title: "Chapter 01: Motion", description: "Explains Newton's first, second, and third laws." },
-      { id: 2, title: "Chapter 02: Gravity", description: "Covers the effects of gravity and objects in free fall." },
-      { id: 3, title: "Chapter 03: Friction", description: "Discusses how friction and air resistance affect motion." },
+      { id: 1, title: "Chapter 01: Trigonometry", description: "Discusses how to solve with trigonometry functions." },
+      { id: 2, title: "Chapter 02: Algebra", description: "Studies algebric structures and the operations they use." },
+      { id: 3, title: "Chapter 03: Statistics", description: "Concerns the collection, organization, analysis, and presentation of data." },
     ],
   },
   {
     id: 2,
     title: "Past Papers",
-    subTopics: [
-      { id: 1, title: "First Term" },
-      { id: 2, title: "Second Term" },
-      { id: 3, title: "Third Term" },
-    ],
+    content:
+      "Atomic structure refers to the organization and composition of atoms, including protons, neutrons, and electrons, which form the basic building blocks of matter.",
   },
   {
     id: 3,
@@ -31,7 +28,7 @@ const resources = [
   },
 ]
 
-export default function ScienceResources() {
+export default function MathsResources() {
   const [selectedTopic, setSelectedTopic] = useState(null)
   const [selectedSubTopic, setSelectedSubTopic] = useState(null)
 
