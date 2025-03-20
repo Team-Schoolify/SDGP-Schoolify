@@ -1,5 +1,4 @@
 import * as React from "react"
-
 import { useEffect, useState } from "react"
 import { supabase } from "@/app/lib/supabaseClient"
 
@@ -12,9 +11,7 @@ import {
     DrawerContent,
     DrawerBody,
     useDisclosure,
-    Link,
 } from "@nextui-org/react";
-
 
 import {
     Carousel,
@@ -31,17 +28,17 @@ export default function CardSlideshow() {
     const [selectedEvent, setSelectedEvent] = useState(null);
 
     useEffect(() => {
-        async function fetchEvents() {
-            const { data, error } = await supabase
-                .from("events")
-                .select("title, image_url");
-
-            if (error) {
-                console.error("Error fetching events:", error.message);
-            } else {
-                setEvents(data);
-            }
-        }
+        const fetchEvents = async () => {
+          const { data, error } = await supabase
+            .from("events")
+            // fetch the columns you need
+            .select("id, title, date, start_time, end_time, location, description, photo");
+          if (error) {
+            console.error("Error fetching events:", error);
+          } else {
+            setEvents(data);
+          }
+        };
 
         fetchEvents();
     }, []);
@@ -52,53 +49,32 @@ export default function CardSlideshow() {
         onOpen();
     };
 
-    // Function to get the correct image URL
+    // Helper function to get the correct image src
     const getEventImage = (event) => {
-        if (event.image) {
-            return event.image;
+        if (!event.photo) {
+            return "/img/default-image.jpg";
         }
-        // Convert event title to lowercase, replace spaces with dashes
-        const formattedTitle = event.title.toLowerCase().replace(/\s/g, "-");
-        const localImagePath = `/img/${formattedTitle}.png`;
-
-        // Use a default image if no image is available
-        return localImagePath || "/img/default-image.jpg";
+        // if 'photo' is a full URL
+        if (event.photo.startsWith("http")) {
+            return event.photo;
+        }
+        // else assume it's a local image in /public/img
+        return `/img/${event.photo}`;
     };
 
-    // const list = [
-    //     {
-    //         title: "Mathematics",
-    //         img: "/img/mathematics.png",
-    //     },
-    //     {
-    //         title: "Science",
-    //         img: "/img/science.png",
-    //     },
-    //     {
-    //         title: "English",
-    //         img: "/img/english.png",
-    //     },
-    //     {
-    //         title: "History",
-    //         img: "/img/history.png",
-    //     },
-    //     {
-    //         title: "ICT",
-    //         img: "/img/ict.png",
-    //     },
-    //     {
-    //         title: "Sinhala",
-    //         img: "/img/sinhala.png",
-    //     },
-    //     {
-    //         title: "Commerce",
-    //         img: "/img/commerce.png",
-    //     },
-    //     {
-    //         title: "Music",
-    //         img: "/img/music.png",
-    //     },
-    // ];
+    // Helper function to format time
+    const formatTime = (timeString) => {
+        if (!timeString) return ""; // Handle null or undefined values
+        const dateObj = new Date(`1970-01-01T${timeString}`);
+        return dateObj.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: true });
+    };
+    
+    // Helper function to format date
+    const formatDate = (dateString) => {
+        if (!dateString) return ""; // Handle null or undefined values
+        const dateObj = new Date(dateString);
+        return dateObj.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+    };
 
     return (
         <>
@@ -122,14 +98,14 @@ export default function CardSlideshow() {
                                 <div className="p-1">
                                     <Card className="bg-white bg-opacity-40" key={index} isPressable shadow="sm" onPress={() => handleOpenDrawer(event)}>
                                         <CardBody className="overflow-visible p-0">
-                                            <Image
-                                                alt={event.title}
-                                                className="w-full object-cover "
-                                                radius="lg"
-                                                shadow="sm"
-                                                src={item.image_url || "/public/img/default-image.jpg"}
-                                                width="100%"
-                                            />
+                                        <Image
+                                            alt={event.title}
+                                            className="w-full object-cover"
+                                            radius="lg"
+                                            shadow="sm"
+                                            src={getEventImage(event)} 
+                                            width="100%"
+                                        />
                                         </CardBody>
                                         <CardFooter className="text-small text-black justify-between xw">
                                             <b>{event.title}</b>
@@ -146,7 +122,7 @@ export default function CardSlideshow() {
 
             {/* Drawer - Displays Selected Event Details */}
             <Drawer isOpen={isOpen} onOpenChange={onOpenChange}>
-                <DrawerContent>
+                <DrawerContent className="bg-gray-600 p-5">
                     <DrawerBody className="p-5">
                         {selectedEvent ? (
                             <div className="flex flex-col items-center space-y-4">
@@ -161,15 +137,15 @@ export default function CardSlideshow() {
                                 <h2 className="text-3xl font-bold text-center">{selectedEvent.title}</h2>
 
                                 {/* Event Location */}
-                                <p className="text-lg text-gray-600 font-medium">📍 {selectedEvent.location}</p>
+                                <p className="text-lg text-gray-300 font-medium">📍 {selectedEvent.location}</p>
 
                                 {/* Event Date & Time */}
-                                <p className="text-md text-gray-500">
-                                    📅 {selectedEvent.date} | 🕒 {selectedEvent.start_time} - {selectedEvent.end_time}
+                                <p className="text-md text-gray-300">
+                                    📅 {formatDate(selectedEvent.date)} | 🕒 {formatTime(selectedEvent.start_time)} - {formatTime(selectedEvent.end_time)}
                                 </p>
 
                                 {/* Event Description */}
-                                <p className="mt-2 text-gray-700 text-center px-4">{selectedEvent.description}</p>
+                                <p className="mt-2 text-gray-300 text-center px-4">{selectedEvent.description}</p>
                             </div>
                         ) : (
                             <p className="text-center">Loading...</p>
