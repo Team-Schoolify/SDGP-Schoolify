@@ -1,6 +1,5 @@
 import React from "react";
-const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
-import animationData from "@/app/main/teacher/dashboard/lottie.json"
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });import animationData from "@/app/main/student/dashboard/lottie.json"
 import { useRef } from "react";
 import dynamic from "next/dynamic";
 

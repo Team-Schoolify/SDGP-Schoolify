@@ -5,7 +5,9 @@ import {
     TableColumn,
     TableBody,
     TableRow,
-    TableCell
+    TableCell,
+    RadioGroup,
+    Radio,
 } from "@heroui/react";
 
 import { supabase } from "@/app/lib/supabaseClient";
@@ -36,17 +38,17 @@ const ReportSheetOfStudent = () => {
                 .from("parent")
                 .select("student_id")
                 .eq("parent_id", parentId)
-                .single();
+                .single(); // <-- Use .single() to get a single record
 
             if (error) {
                 console.error("Error fetching student ID:", error);
                 return;
             }
-            setStudentId(data.student_id);
+            setStudentId(data.student_id); // <-- Corrected access to student_id
         };
 
         fetchStudent();
-    }, [parentId]);
+    }, [parentId]); // <-- Use parentId instead of schoolId
 
     useEffect(() => {
         const fetchStudentName = async () => {
@@ -56,17 +58,17 @@ const ReportSheetOfStudent = () => {
                 .from("student")
                 .select("student_name")
                 .eq("student_id", studentId)
-                .single();
+                .single(); // <-- Use .single() to get a single record
 
             if (error) {
                 console.error("Error fetching student Name:", error);
                 return;
             }
-            setStudentName(data.student_name);
+            setStudentName(data.student_name); // <-- Corrected access to student_id
         };
 
         fetchStudentName();
-    }, [studentId]);
+    }, [studentId]); // <-- Use parentId instead of schoolId
 
     useEffect(() => {
         const fetchStudentGrades = async () => {
@@ -74,9 +76,8 @@ const ReportSheetOfStudent = () => {
 
             const { data, error } = await supabase
                 .from("gradebook")
-                .select("subject, grade, remarks, created_at, term, teacher_id")
-                .eq("student_id", studentId)
-                .order("term", { ascending: true });
+                .select("subject, grade, remarks, created_at, teacher_id")
+                .eq("student_id", studentId);
 
             if (error) {
                 console.error("Error fetching student grades:", error);
@@ -103,46 +104,33 @@ const ReportSheetOfStudent = () => {
         fetchStudentGrades();
     }, [studentId]);
 
-    // Group grades by term
-    const termGrades = {
-        1: grades.filter(grade => grade.term === 1),
-        2: grades.filter(grade => grade.term === 2),
-        3: grades.filter(grade => grade.term === 3),
-    };
-
     return (
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-3">
             <h2 className="text-4xl text-black font-bold">Result Sheet</h2>
             {teacherName && <p className="text-black text-2xl"><strong>Teacher:</strong> {teacherName}</p>}
             <p className="text-black text-2xl mb-2"><strong>Student:</strong> {studentName}</p>
-
-            {[1, 2, 3].map(term => (
-                <div key={term}>
-                    <h3 className="text-2xl text-black font-semibold mb-2">Term {term} Results</h3>
-                    {termGrades[term].length > 0 ? (
-                        <Table aria-label={`Term ${term} Grade Table`} color="primary" selectionMode="single">
-                            <TableHeader>
-                                <TableColumn>Subject</TableColumn>
-                                <TableColumn>Grade</TableColumn>
-                                <TableColumn>Remarks</TableColumn>
-                                <TableColumn>Date</TableColumn>
-                            </TableHeader>
-                            <TableBody>
-                                {termGrades[term].map((grade, index) => (
-                                    <TableRow key={index}>
-                                        <TableCell>{grade.subject}</TableCell>
-                                        <TableCell>{grade.grade}</TableCell>
-                                        <TableCell>{grade.remarks}</TableCell>
-                                        <TableCell>{new Date(grade.created_at).toLocaleDateString()}</TableCell>
-                                    </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                    ) : (
-                        <p className="text-danger font-bold">No grades available for Term {term}.</p>
-                    )}
-                </div>
-            ))}
+            {grades.length > 0 ? (
+                <Table aria-label="Student Grade Table" color="primary" selectionMode="single">
+                    <TableHeader>
+                        <TableColumn>Subject</TableColumn>
+                        <TableColumn>Grade</TableColumn>
+                        <TableColumn>Remarks</TableColumn>
+                        <TableColumn>Date</TableColumn>
+                    </TableHeader>
+                    <TableBody>
+                        {grades.map((grade, index) => (
+                            <TableRow key={index}>
+                                <TableCell>{grade.subject}</TableCell>
+                                <TableCell>{grade.grade}</TableCell>
+                                <TableCell>{grade.remarks}</TableCell>
+                                <TableCell>{new Date(grade.created_at).toLocaleDateString()}</TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            ) : (
+                <p className="text-black">No grades available.</p>
+            )}
         </div>
     );
 };

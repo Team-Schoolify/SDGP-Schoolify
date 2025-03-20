@@ -3,7 +3,6 @@ import React, {useEffect, useState} from 'react';
 import Hero from "@/app/main/parent/dashboard/Hero";
 import CardSlideshow from "@/app/main/parent/dashboard/CardSlideshow"
 import {useRouter} from "next/navigation";
-import SplashScreen from "@/app/components/ui/SplashScreen.jsx";
 
 export default function LoginPage() {
 
@@ -40,7 +39,7 @@ export default function LoginPage() {
     }, []);
 
     if (loading) {
-        return <SplashScreen onFinish={() => setLoading(false)} />;
+        return <p className="text-center text-black">Loading...</p>;
     }
 
     if (!user) {

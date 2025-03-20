@@ -12,17 +12,13 @@ import {
     Popover, PopoverTrigger, PopoverContent,
 } from "@heroui/react";
 import {supabase} from "@/app/lib/supabaseClient";
-import DrawerComponent from "@/app/main/teacher/event/DrawerComponent";
-import { useRouter } from "next/navigation";
 
 export const ProfileAndNotificationTeacher = () => {
     const [teacherId, setTeacherId] = useState(null); // Store school_id in state
     const [teacher, setTeacher] = useState(null);
     const [school, setSchool] = useState(null);
     const [schoolId, setSchoolId] = useState(null);
-    const {isOpen, onOpen, onOpenChange} = useDisclosure();
-    const router = useRouter(); // ✅ Initialize Next.js router
-
+    const {isOpen, onOpen, onClose} = useDisclosure();
 
     const NotificationIcon = ({size, height, width, ...props}) => {
         return (
@@ -43,30 +39,6 @@ export const ProfileAndNotificationTeacher = () => {
             </svg>
         );
     };
-    const CalendarIcon = ({ size, height, width, ...props }) => {
-        return (
-            <svg
-                fill="none"
-                height={size || height || 24}
-                viewBox="0 0 24 24"
-                width={size || width || 24}
-                xmlns="http://www.w3.org/2000/svg"
-                {...props}
-            >
-                <path
-                    fill="currentColor"
-                    fillRule="evenodd"
-                    d="M6 2a1 1 0 0 1 1 1v1h10V3a1 1 0 1 1 2 0v1h1a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1V3a1 1 0 0 1 1-1ZM4 8v12h16V8H4Zm2 4a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2H7a1 1 0 0 1-1-1Zm5-1a1 1 0 0 0 0 2h2a1 1 0 1 0 0-2h-2Zm5 0a1 1 0 1 0 0 2h2a1 1 0 1 0 0-2h-2Zm-10 5a1 1 0 1 1 0-2h2a1 1 0 1 1 0 2H7Zm3 0a1 1 0 0 0 1 1h2a1 1 0 1 0 0-2h-2a1 1 0 0 0-1 1Zm6-1a1 1 0 1 0 0 2h2a1 1 0 1 0 0-2h-2Z"
-                    clipRule="evenodd"
-                />
-            </svg>
-        );
-    };
-
-    const handleAvatarClick = () => {
-        router.push("/main/teacher/profile?role=teacher");
-    };
-
 
     useEffect(() => {
         if (typeof window !== "undefined") {
@@ -133,34 +105,14 @@ export const ProfileAndNotificationTeacher = () => {
     return (
     <>
         <div className="
-                  rounded-full fixed
-                  bottom-4 right-6 shadow-lg
-                  flex gap-4 items-center sm:flex-col flex-col z-50"
+                  text-white rounded-full fixed
+                  bottom-4 right-6 shadow-lg dark:bg-white dark:text-black
+                  flex gap-4 items-center sm:flex-row flex-col z-50"
         >
-            <>
-            <Button className="bg-warning"
-                    isIconOnly
-                    aria-label="more than 99 notifications"
-                    radius="full"
-                    variant="solid"
-                    onPress={onOpen}
-            >
-                <CalendarIcon size={24} />
-                {/*({notifications.filter(n => !n.is_read).length})*/}
-            </Button>
-                <DrawerComponent isOpen={isOpen} onOpenChange={onOpenChange} />
-            </>
-
             <Popover placement="top" showArrow={true} backdrop="blur">
-                {/*<PopoverTrigger>*/}
-                    <Avatar
-                        className="cursor-pointer"
-                        isBordered
-                        color="success"
-                        src={teacher?.photo || "https://i.pravatar.cc/150"}
-                        onClick={handleAvatarClick}
-                    />
-                {/*</PopoverTrigger>*/}
+                <PopoverTrigger>
+                    <Avatar className="cursor-pointer" isBordered color="success"  src={teacher?.photo || "https://i.pravatar.cc/150"} />
+                </PopoverTrigger>
                 <PopoverContent>
                     <div className="p-5 flex flex-col text-left gap-y-3">
                         <Avatar isBordered color="success" size="lg"
@@ -172,6 +124,36 @@ export const ProfileAndNotificationTeacher = () => {
                 </PopoverContent>
             </Popover>
         </div>
+
+        {/*<Drawer isOpen={isOpen} size="sm" onClose={onClose}>*/}
+        {/*    <DrawerContent>*/}
+        {/*        {(onClose) => (*/}
+        {/*            <>*/}
+        {/*                <DrawerHeader className="flex flex-col gap-1">Drawer Title</DrawerHeader>*/}
+        {/*                <DrawerBody>*/}
+        {/*                    <p>*/}
+        {/*                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pulvinar risus non*/}
+        {/*                        risus hendrerit venenatis. Pellentesque sit amet hendrerit risus, sed porttitor*/}
+        {/*                        quam.*/}
+        {/*                    </p>*/}
+        {/*                    <p>*/}
+        {/*                        Magna exercitation reprehenderit magna aute tempor cupidatat consequat elit dolor*/}
+        {/*                        adipisicing. Mollit dolor eiusmod sunt ex incididunt cillum quis. Velit duis sit*/}
+        {/*                        officia eiusmod Lorem aliqua enim laboris do dolor eiusmod.*/}
+        {/*                    </p>*/}
+        {/*                </DrawerBody>*/}
+        {/*                <DrawerFooter>*/}
+        {/*                    <Button color="danger" variant="light" onPress={onClose}>*/}
+        {/*                        Close*/}
+        {/*                    </Button>*/}
+        {/*                    <Button color="primary" onPress={onClose}>*/}
+        {/*                        Action*/}
+        {/*                    </Button>*/}
+        {/*                </DrawerFooter>*/}
+        {/*            </>*/}
+        {/*        )}*/}
+        {/*    </DrawerContent>*/}
+        {/*</Drawer>*/}
     </>
     )
 }

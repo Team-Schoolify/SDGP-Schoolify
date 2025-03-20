@@ -1,20 +1,15 @@
 "use client";
 
 import React, { useState } from "react";
-import { Form, Input, Button,
-    DateInput, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem
-} from "@heroui/react";
+import { Form, Input, Button } from "@heroui/react";
 import bcrypt from "bcryptjs";
 import { createClient } from "@supabase/supabase-js";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/app/lib/supabaseClient";
-import { CalendarDate, parseDate } from "@internationalized/date";
 
 
 export default function AdminStudentForm() {
     const [loading, setLoading] = useState(false);
-    const [selectedGender, setSelectedGender] = useState(new Set(["Male"]));
-    const [dob, setDob] = useState(null);
     const router = useRouter();
 
     const handleSubmit = async (e) => {
@@ -22,23 +17,6 @@ export default function AdminStudentForm() {
         setLoading(true);
 
         const formData = Object.fromEntries(new FormData(e.currentTarget));
-        const gender = Array.from(selectedGender).join("");
-        //
-        // // 🔍 Manual Validation
-        // if (
-        //     !formData.student_name ||
-        //     !formData.student_email ||
-        //     !formData.student_grade ||
-        //     !formData.password ||
-        //     !formData.school_id ||
-        //     !formData.subject_scheme ||
-        //     !gender
-        // ) {
-        //     alert("❌ Please fill in all required fields before submitting!");
-        //     setLoading(false);
-        //     return;
-        // }
-
 
         try {
 
@@ -74,7 +52,6 @@ export default function AdminStudentForm() {
                 photo: formData.photo || null, // Optional
                 school_id: parseInt(formData.school_id, 10),
                 subject_scheme: parseInt(formData.subject_scheme, 10), // ✅ Fixed column name
-                gender: gender, // New field
             };
 
             // ✅ Ensure correct table name: "students"
@@ -86,8 +63,6 @@ export default function AdminStudentForm() {
             } else {
                 alert("✅ Student added successfully!");
                 router.refresh();
-                window.location.reload();
-
             }
         } catch (err) {
             console.error("❌ Unexpected error:", err);
@@ -99,8 +74,7 @@ export default function AdminStudentForm() {
 
     return (
         <div className=" flex items-center justify-center">
-            <Form className="w-full max-w-md flex flex-col gap-4 bg-black p-8 rounded-xl" onSubmit={handleSubmit}
-                  validationBehavior="native">
+            <Form className="w-full max-w-md flex flex-col gap-4 bg-black p-8 rounded-xl" onSubmit={handleSubmit}>
                 <Input
                     isRequired
                     label="Student Name"
@@ -135,7 +109,6 @@ export default function AdminStudentForm() {
                     placeholder="Enter student password"
                 />
                 <Input
-                    isRequired
                     label="Photo URL"
                     labelPlacement={"outside"}
                     name="photo"
@@ -152,44 +125,18 @@ export default function AdminStudentForm() {
                 />
                 <Input
                     isRequired
-                    label="Subject Scheme ID"
+                    label="Subject Schedule ID"
                     labelPlacement={"outside"}
                     name="subject_scheme"
                     type="number"
-                    placeholder="Enter subject scheme ID"
+                    placeholder="Enter subject schedule ID"
                     min={1}
                     max={6}
                 />
 
-                 {/*Gender Dropdown */}
-                <label className="text-white text-sm font-bold">Gender</label>
-                <Dropdown className="w-full">
-                    <DropdownTrigger>
-                        <Button className="capitalize" variant="bordered">
-                            {Array.from(selectedGender).join(" ")}
-                        </Button>
-                    </DropdownTrigger>
-                    <DropdownMenu
-                        disallowEmptySelection
-                        aria-label="Select Gender"
-                        selectedKeys={selectedGender}
-                        selectionMode="single"
-                        variant="flat"
-                        onSelectionChange={setSelectedGender}
-                    >
-                        <DropdownItem key="Male">Male</DropdownItem>
-                        <DropdownItem key="Female">Female</DropdownItem>
-                    </DropdownMenu>
-                </Dropdown>
-
-                {/*/!* Date of Birth Input *!/*/}
-                {/*<label className="text-white text-sm font-bold">Date of Birth</label>*/}
-                {/*<DateInput isRequired labelPlacement="outside" placeholderValue={new CalendarDate(2000, 1, 1)} onChange={setDob} />*/}
-
                 <div className="flex gap-2">
                     <Button color="primary" type="submit" isLoading={loading}>
-                        {/*{loading ? "Submitting..." : "Submit"}*/}
-                        Submit
+                        {loading ? "Submitting..." : "Submit"}
                     </Button>
                     <Button type="reset" color="danger" variant="flat">
                         Reset
