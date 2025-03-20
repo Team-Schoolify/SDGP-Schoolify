@@ -6,7 +6,7 @@ import Lottie from "lottie-react";
 import animationData from "@/app/schoolifylanding/lotti.json"
 import { useRef } from "react";
 
-export const Hero = (props) => {
+const Hero = () => {
 
     const bookRef = useRef(null);
 
@@ -67,3 +67,4 @@ export const Hero = (props) => {
         </section>
     );
 };
+export default Hero;
