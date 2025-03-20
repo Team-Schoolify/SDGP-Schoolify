@@ -4,6 +4,7 @@ import {Providers} from "@/app/providers";
 import MainNavbar from "@/app/components/MainNavbar";
 import {FooterSection} from "@/app/components/FooterSection";
 import {ProfileAndNotificationTeacher} from "@/app/main/teacher/profileAndNotificationTeacher";
+import {Suspense} from "react";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -25,7 +26,9 @@ export default function RootLayout({ children }) {
         <>
 
             <Providers>
-                <MainNavbar/>
+                <Suspense fallback={<div>Loading Navbar...</div>}>
+                    <MainNavbar />
+                </Suspense>
                 <div id="root">{children}</div>
                 <ProfileAndNotificationTeacher/>
                 <FooterSection/>
