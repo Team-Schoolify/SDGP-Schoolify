@@ -66,16 +66,11 @@ export default function MainNavbar() {
             >
                 {/* Brand */}
                 <NavbarBrand>
-<<<<<<< HEAD
-                    <NextLink href={`/main/${role}/dashboard?role=${role}`} className="font-bold text-customWhite flex items-center">
-                        <img src="/img/logowhite.png" alt="Schoolify Logo" className="w-16"/>
-=======
                     <NextLink href={`/main/${role}/dashboard?role=${role}`}
                               className="font-bold text-customWhite flex items-center">
                         {/*<AcmeLogo />*/}
                         <img src="/img/logos/logowhite.png" alt="logo" className="w-16"/>
                         {/*<p>Schoolify</p>*/}
->>>>>>> 9b4704b55ccebfb2e5752bae497b42c214a4b111
                     </NextLink>
                 </NavbarBrand>
 
