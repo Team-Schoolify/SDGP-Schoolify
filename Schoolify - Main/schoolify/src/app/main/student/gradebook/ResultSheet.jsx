@@ -5,12 +5,7 @@ import {
     TableColumn,
     TableBody,
     TableRow,
-<<<<<<< HEAD
-    TableCell,
-
-=======
     TableCell
->>>>>>> 9b4704b55ccebfb2e5752bae497b42c214a4b111
 } from "@heroui/react";
 
 import { supabase } from "@/app/lib/supabaseClient";
