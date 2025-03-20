@@ -1,169 +1,3 @@
-// import React, { useEffect, useState } from "react";
-// import { supabase } from "@/app/lib/supabaseClient";
-// import {
-//     Card,
-//     CardBody,
-//     CardFooter,
-//     Image,
-//     Drawer,
-//     DrawerContent,
-//     DrawerHeader,
-//     DrawerBody,
-//     DrawerFooter,
-//     Button,
-//     useDisclosure,
-// } from "@heroui/react";
-//
-// export default function SubjectResources() {
-//     // State variables
-//     const { isOpen, onOpen, onClose } = useDisclosure(); // Drawer controls
-//     const [studentId, setStudentId] = useState(null);
-//     const [studentGrade, setStudentGrade] = useState(null);
-//     const [selectedSubject, setSelectedSubject] = useState("");
-//     const [resources, setResources] = useState([]); // Store fetched resources
-//
-//     // Fetch student ID from local storage
-//     useEffect(() => {
-//         if (typeof window !== "undefined") {
-//             const storedStudentId = localStorage.getItem("student_id");
-//             setStudentId(storedStudentId);
-//         }
-//     }, []);
-//
-//     // Fetch student grade from Supabase
-//     useEffect(() => {
-//         const fetchStudentGrade = async () => {
-//             if (studentId) {
-//                 const { data, error } = await supabase
-//                     .from("student")
-//                     .select("student_grade")
-//                     .eq("student_id", studentId)
-//                     .single();
-//
-//                 if (error) {
-//                     console.error("Error fetching student grade:", error.message);
-//                 } else {
-//                     setStudentGrade(data.student_grade);
-//                 }
-//             }
-//         };
-//
-//         fetchStudentGrade();
-//     }, [studentId]);
-//
-//     // Fetch resources for the selected subject
-//     const fetchResources = async (subject) => {
-//         if (!studentGrade) return;
-//
-//         const { data, error } = await supabase
-//             .from("resources")
-//             .select("*")
-//             .eq("grade", studentGrade)
-//             .eq("subject", subject);
-//
-//         if (error) {
-//             console.error("Error fetching resources:", error.message);
-//         } else {
-//             setResources(data);
-//         }
-//     };
-//
-//     // Handle subject card click
-//     const handleOpen = (subject) => {
-//         setSelectedSubject(subject);
-//         fetchResources(subject);
-//         onOpen();
-//     };
-//
-//     // Define available subjects based on grade
-//     const subjectsByGrade = {
-//         "6": ["Mathematics", "Science", "English", "History", "ICT", "Sinhala", "Commerce", "Music"],
-//         "7": ["Mathematics", "Science", "English", "History", "ICT", "Sinhala", "Commerce", "Music"],
-//         "8": ["Mathematics", "Science", "English", "History", "ICT", "Sinhala", "Commerce", "Music"],
-//         "9": ["Mathematics", "Science", "English", "History", "ICT", "Sinhala", "Commerce", "Music"],
-//         "10": ["Mathematics", "Science", "English", "History", "ICT", "Sinhala", "Commerce", "Music"],
-//         "11": ["Mathematics", "Science", "English", "History", "ICT", "Sinhala"],
-//         "12": ["Mathematics", "Physics", "Chemistry", "Biology", "Accounting", "Business Studies", "Arts"],
-//         "13": ["Mathematics", "Physics", "Chemistry", "Biology", "Accounting", "Business Studies", "Arts"],
-//     };
-//
-//     // Get subjects for the student's grade
-//     const availableSubjects = studentGrade ? subjectsByGrade[studentGrade] || [] : [];
-//
-//     return (
-//         <div className="mt-4">
-//             {/* Subject Cards Grid */}
-//             <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-2 gap-y-6 mt-6 mb-20">
-//                 {availableSubjects.map((subject, index) => (
-//                     <Card
-//                         key={index}
-//                         className="bg-white bg-opacity-40"
-//                         isPressable
-//                         shadow="sm"
-//                         onPress={() => handleOpen(subject)}
-//                     >
-//                         <CardBody className="overflow-visible p-0">
-//                             <Image
-//                                 alt={subject}
-//                                 className="w-full object-cover h-[140px]"
-//                                 radius="lg"
-//                                 shadow="sm"
-//                                 src={`/img/${subject.toLowerCase().replace(/\s/g, "-")}.png`}
-//                                 width="100%"
-//                             />
-//                         </CardBody>
-//                         <CardFooter className="text-small text-black justify-between">
-//                             <b>{subject}</b>
-//                         </CardFooter>
-//                     </Card>
-//                 ))}
-//             </div>
-//
-//             {/* Full-Screen Drawer for Resources */}
-//             <Drawer isOpen={isOpen} size="full" onClose={onClose}>
-//                 <DrawerContent>
-//                     {(onClose) => (
-//                         <>
-//                             <DrawerHeader className="flex flex-col gap-1">
-//                                 Resources for {selectedSubject}
-//                             </DrawerHeader>
-//                             <DrawerBody>
-//                                 {resources.length > 0 ? (
-//                                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-//                                         {resources.map((resource) => (
-//                                             <Card key={resource.id} className="bg-white bg-opacity-40">
-//                                                 <CardBody>
-//                                                     <h3 className="text-lg font-bold">{resource.title}</h3>
-//                                                     <p className="text-gray-600">{resource.description}</p>
-//                                                 </CardBody>
-//                                                 <CardFooter>
-//                                                     <Button
-//                                                         color="primary"
-//                                                         onPress={() => window.open(resource.file_url, "_blank")}
-//                                                     >
-//                                                         View Resource
-//                                                     </Button>
-//                                                 </CardFooter>
-//                                             </Card>
-//                                         ))}
-//                                     </div>
-//                                 ) : (
-//                                     <p className="text-gray-600">No resources available for this subject.</p>
-//                                 )}
-//                             </DrawerBody>
-//                             <DrawerFooter>
-//                                 <Button color="danger" variant="light" onPress={onClose}>
-//                                     Close
-//                                 </Button>
-//                             </DrawerFooter>
-//                         </>
-//                     )}
-//                 </DrawerContent>
-//             </Drawer>
-//         </div>
-//     );
-// }
-
 import React, { useEffect, useState } from "react";
 import { supabase } from "@/app/lib/supabaseClient";
 import {
@@ -177,7 +11,8 @@ import {
     DrawerBody,
     DrawerFooter,
     Button,
-    useDisclosure,
+    useDisclosure, CardHeader,
+    Link,
 } from "@heroui/react";
 
 export default function SubjectResources() {
@@ -259,7 +94,9 @@ export default function SubjectResources() {
     return (
         <div className="mt-4">
             {/* Subject Cards Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-2 gap-y-6 mt-6 mb-20">
+            <div className="text-black text-4xl font-bold mb-8">Your Subjects</div>
+            <div className="flex justify-center items-center">
+            `<div className="grid grid-cols-1  gap-x-6 gap-y-6 mt-6 mb-20  sm:w-2/3">
                 {availableSubjects.map((subject, index) => (
                     <Card
                         key={index}
@@ -274,15 +111,16 @@ export default function SubjectResources() {
                                 className="w-full object-cover h-[140px]"
                                 radius="lg"
                                 shadow="sm"
-                                src={`/img/${subject.toLowerCase().replace(/\s/g, "-")}.png`}
+                                src={`/img/Subjects/${subject.toLowerCase().replace(/\s/g, "-")}.jpg`}
                                 width="100%"
                             />
                         </CardBody>
-                        <CardFooter className="text-small text-black justify-between">
-                            <b>{subject}</b>
+                        <CardFooter className="text-2xl font-semibold text-black justify-between">
+                            {subject}
                         </CardFooter>
                     </Card>
                 ))}
+            </div>`
             </div>
 
             {/* Full-Screen Drawer for Resources */}
@@ -290,7 +128,7 @@ export default function SubjectResources() {
                 <DrawerContent>
                     {(onClose) => (
                         <>
-                            <DrawerHeader className="flex flex-col gap-1">
+                            <DrawerHeader className="flex flex-col gap-1 text-3xl">
                                 Resources for {selectedSubject}
                             </DrawerHeader>
                             <DrawerBody>
@@ -298,17 +136,26 @@ export default function SubjectResources() {
                                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                                         {resources.map((resource) => (
                                             <Card key={resource.id} className="bg-white bg-opacity-40">
-                                                <CardBody>
-                                                    <h3 className="text-lg font-bold">{resource.title}</h3>
-                                                    <p className="text-gray-600">{resource.description}</p>
+                                                <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
+                                                    <h3 className="text-lg text-black font-bold">{resource.title}</h3>
+                                                    <p className="text-black text-sm">
+                                                        {new Date(resource.created_at).toLocaleDateString()}
+                                                    </p>
+                                                </CardHeader>
+                                                <CardBody className="overflow-visible py-2">
+                                                    <Image
+                                                        alt="Resource Image"
+                                                        className="object-cover rounded-xl"
+                                                        src={`/img/Subjects/${selectedSubject.toLowerCase().replace(/\s/g, "-")}.jpg`}
+                                                        width="100%"
+                                                        height="140px"
+                                                    />
+                                                    <p className="text-black mt-2">{resource.description}</p>
                                                 </CardBody>
                                                 <CardFooter>
-                                                    <Button
-                                                        color="primary"
-                                                        onPress={() => window.open(resource.file_url, "_blank")}
-                                                    >
+                                                    <Link isBlock showAnchorIcon color="success" href={resource.file_url} target="_blank">
                                                         View Resource
-                                                    </Button>
+                                                    </Link>
                                                 </CardFooter>
                                             </Card>
                                         ))}

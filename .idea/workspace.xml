@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26e29180-a7b6-4d83-9617-8c4b38ae8cd0" name="Changes" comment="Backend for event" />
+    <list default="true" id="26e29180-a7b6-4d83-9617-8c4b38ae8cd0" name="Changes" comment="Backend for event">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/components/DrawerComponentParentAndStudent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/components/DrawerComponentParentAndStudent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/teacher/event/DrawerComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/teacher/event/DrawerComponent.jsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,32 +40,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/sonalkethaka/SDGP-Schoolify/Schoolify - Main/schoolify/src/app/main/admin/teacher",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "vcs.Git",
-    "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Sonal&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/sonalkethaka/SDGP-Schoolify/Schoolify - Main/schoolify/src/app/main/parent/profile&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;Settings.JavaScript&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/parent/profile" />
+      <recent name="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/teacher/profile" />
+      <recent name="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/student/profile" />
+      <recent name="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/student/chatbot" />
       <recent name="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/admin/teacher" />
-      <recent name="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/admin/parent" />
-      <recent name="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/admin/dashboard" />
-      <recent name="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/teacher/resources" />
-      <recent name="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/parent/attendance" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/main/student/chatbot" />
       <recent name="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/components" />
+      <recent name="$PROJECT_DIR$/Schoolify - Main/schoolify/src/app/components/ui" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -130,6 +138,38 @@
       <workItem from="1741293189304" duration="50000" />
       <workItem from="1741330811076" duration="1119000" />
       <workItem from="1741334520129" duration="245000" />
+      <workItem from="1741514270480" duration="2444000" />
+      <workItem from="1741696990377" duration="13000" />
+      <workItem from="1741800812757" duration="4646000" />
+      <workItem from="1741875151695" duration="5649000" />
+      <workItem from="1741882928751" duration="6719000" />
+      <workItem from="1741889794319" duration="3865000" />
+      <workItem from="1741898992775" duration="2953000" />
+      <workItem from="1741937457342" duration="4766000" />
+      <workItem from="1741943627432" duration="826000" />
+      <workItem from="1741948302764" duration="5739000" />
+      <workItem from="1741986966034" duration="2165000" />
+      <workItem from="1741989328331" duration="3337000" />
+      <workItem from="1741992685700" duration="302000" />
+      <workItem from="1741992996391" duration="5940000" />
+      <workItem from="1742024630892" duration="1949000" />
+      <workItem from="1742026592586" duration="9492000" />
+      <workItem from="1742045826425" duration="11444000" />
+      <workItem from="1742072277850" duration="683000" />
+      <workItem from="1742073531361" duration="361000" />
+      <workItem from="1742128857886" duration="3036000" />
+      <workItem from="1742151280402" duration="138000" />
+      <workItem from="1742198686943" duration="1902000" />
+      <workItem from="1742215698437" duration="140000" />
+      <workItem from="1742215863760" duration="5638000" />
+      <workItem from="1742239488347" duration="25000" />
+      <workItem from="1742283231434" duration="7915000" />
+      <workItem from="1742299996102" duration="14356000" />
+      <workItem from="1742317312803" duration="5564000" />
+      <workItem from="1742326067363" duration="47000" />
+      <workItem from="1742366725692" duration="3622000" />
+      <workItem from="1742374868327" duration="1353000" />
+      <workItem from="1742379448535" duration="4136000" />
     </task>
     <task id="LOCAL-00001" summary="Attendance changed for the test commit">
       <option name="closed" value="true" />

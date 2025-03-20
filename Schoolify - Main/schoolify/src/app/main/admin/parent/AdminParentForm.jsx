@@ -8,13 +8,54 @@ import { supabase } from "@/app/lib/supabaseClient";
 
 export default function AdminParentForm() {
     const [loading, setLoading] = useState(false);
+    const [contactNumber, setContactNumber] = useState("");
+    const [contactError, setContactError] = useState("");
+    const [submitted, setSubmitted] = React.useState(null);
+
+
     const router = useRouter();
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+
+        const data = Object.fromEntries(new FormData(e.currentTarget));
+
+        setSubmitted(data);
+    };
+
+    const handleContactChange = (e) => {
+        const value = e.target.value.replace(/\D/g, ""); // 🔍 Allow only digits
+        setContactNumber(value);
+
+        if (value.length !== 10) {
+            setContactError("Please enter a valid 10-digit contact number");
+        } else {
+            setContactError(""); // ✅ Clear error when valid
+        }
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
 
         const formData = Object.fromEntries(new FormData(e.currentTarget));
+
+        //
+        // // 🔍 Manual Validation
+        // if (
+        //     !formData.parent_name ||
+        //     !formData.parent_email ||
+        //     !formData.password ||
+        //     !formData.student_id ||
+        //     !formData.school_id ||
+        //     !contactNumber ||
+        //     !formData.address ||
+        //     !formData.photo
+        // ) {
+        //     alert("❌ Please fill in all required fields before submitting!");
+        //     setLoading(false);
+        //     return;
+        // }
 
         try {
             // ✅ Check if email already exists
@@ -48,6 +89,8 @@ export default function AdminParentForm() {
                 student_id: parseInt(formData.student_id, 10), // ✅ Matches column name
                 school_id: parseInt(formData.school_id, 10), // ✅ Matches column name
                 photo: formData.photo || null, // Optional
+                address: formData.address, // ✅ Ensure address is included
+                contact: contactNumber, // ✅ Fixed contact number
             };
 
             // ✅ Insert into `parent` table
@@ -69,8 +112,12 @@ export default function AdminParentForm() {
     };
 
     return (
-        <div className="flex items-center justify-center">
-            <Form className="w-full max-w-md flex flex-col gap-4 bg-black p-8 rounded-xl" onSubmit={handleSubmit}>
+        <div className="flex items-center justify-center ">
+            <Form
+                className="w-full max-w-md flex flex-col gap-4 bg-black p-8 rounded-xl"
+                onSubmit={handleSubmit}
+                validationBehavior="native"
+            >
                 <Input
                     isRequired
                     label="Parent Name"
@@ -85,6 +132,13 @@ export default function AdminParentForm() {
                     name="parent_email"
                     type="email"
                     placeholder="Enter parent email"
+                    errorMessage={({validationDetails, validationErrors}) => {
+                        if (validationDetails.typeMismatch) {
+                            return "Please enter a valid email address";
+                        }
+
+                        return validationErrors;
+                    }}
                 />
                 <Input
                     isRequired
@@ -113,21 +167,44 @@ export default function AdminParentForm() {
                     min={1}
                 />
                 <Input
+                    isRequired
                     label="Photo URL"
                     labelPlacement="outside"
                     name="photo"
                     placeholder="Enter parent photo URL (optional)"
                 />
 
-                <div className="flex gap-2">
+                <Input
+                    isRequired
+                    label="Address"
+                    labelPlacement="outside"
+                    name="address"
+                    placeholder="Enter your address"
+                />
+
+                <Input
+                    isRequired
+                    label="Contact Number"
+                    labelPlacement="outside"
+                    name="contact"
+                    type="tel" // 🔍 HeroUI does not support `type="tel"`
+                    placeholder="Enter your contact number"
+                    maxLength={10} // ✅ Limit input to 10 digits
+                    value={contactNumber}
+                    onChange={handleContactChange}
+                    errorMessage={contactError} // ✅ Display error message
+                />
+
+                {/*<div className="flex gap-2">*/}
                     <Button color="primary" type="submit" isLoading={loading}>
                         {loading ? "Submitting..." : "Submit"}
                     </Button>
                     <Button type="reset" color="danger" variant="flat">
                         Reset
                     </Button>
-                </div>
+                {/*</div>*/}
             </Form>
+
         </div>
     );
 }
