@@ -159,14 +159,14 @@ const AttendanceStudent = () => {
 
     return (
         <div className="p-6 flex flex-col items-center gap-4">
-            <h2 className="text-2xl font-bold text-center text-black">
+            <h2 className="text-4xl font-bold text-center text-black">
                 Attendance Records
             </h2>
-            <div className="flex sm:flex-row flex-col items-center gap-4">
+            <div className="grid sm:grid-cols-3 items-center gap-4">
 
             {attendanceRecords.length > 0 ? (
                 attendanceRecords.map((attendance, index) => (
-                    <Card key={index} className="w-96 shadow-lg">
+                    <Card key={index} className="w-80 shadow-lg">
                         <CardHeader className="text-xl font-bold text-center">Attendance</CardHeader>
                         <CardBody className="text-center">
                             <p className="text-lg text-white opacity-70">Date: {attendance.date}</p>
@@ -182,7 +182,7 @@ const AttendanceStudent = () => {
                 ))
 
             ) : (
-                <p className="text-black text-lg">No attendance records found.</p>
+                <p className="text-danger text-lg font-bold">No attendance records found.</p>
             )}
             </div>
         </div>

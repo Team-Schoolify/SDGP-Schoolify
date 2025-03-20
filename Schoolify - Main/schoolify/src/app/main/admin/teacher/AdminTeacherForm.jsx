@@ -16,6 +16,23 @@ export default function AdminTeacherForm() {
 
         const formData = Object.fromEntries(new FormData(e.currentTarget));
 
+        // // 🔍 Manual Validation
+        // if (
+        //     !formData.teacher_name ||
+        //     !formData.teacher_email ||
+        //     !formData.teacher_password ||
+        //     !formData.school_id ||
+        //     !formData.link ||
+        //     !formData.status ||
+        //     !formData.photo ||
+        //     !formData.subject ||
+        //     !formData.grade
+        // ) {
+        //     alert("❌ Please fill in all required fields before submitting!");
+        //     setLoading(false);
+        //     return;
+        // }
+
         try {
             // ✅ Check if email already exists
             const { data: existingTeacher, error: checkError } = await supabase
@@ -73,7 +90,8 @@ export default function AdminTeacherForm() {
 
     return (
         <div className="flex items-center justify-center">
-            <Form className="w-full max-w-md flex flex-col gap-4 bg-black p-8 rounded-xl" onSubmit={handleSubmit}>
+            <Form className="w-full max-w-md flex flex-col gap-4 bg-black p-8 rounded-xl" onSubmit={handleSubmit}
+                  validationBehavior="native">
                 <Input
                     isRequired
                     label="Teacher Name"
@@ -107,21 +125,26 @@ export default function AdminTeacherForm() {
                     min={1}
                 />
                 <Input
+                    isRequired
                     label="Link"
                     labelPlacement="outside"
                     name="link"
+                    type="url"
                     placeholder="Enter teacher profile link (optional)"
                 />
                 <Input
+                    isRequired
                     label="Status"
                     labelPlacement="outside"
                     name="status"
                     placeholder="Enter teacher status (optional)"
                 />
                 <Input
+                    isRequired
                     label="Photo URL"
                     labelPlacement="outside"
                     name="photo"
+                    type="url"
                     placeholder="Enter teacher photo URL (optional)"
                 />
                 <Input

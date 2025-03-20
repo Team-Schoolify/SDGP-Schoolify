@@ -5,8 +5,7 @@ import {
     TableColumn,
     TableBody,
     TableRow,
-    TableCell,
-
+    TableCell
 } from "@heroui/react";
 
 import { supabase } from "@/app/lib/supabaseClient";
@@ -33,8 +32,9 @@ const ResultSheet = () => {
 
             const { data, error } = await supabase
                 .from("gradebook")
-                .select("subject, grade, remarks, created_at, teacher_id")
-                .eq("student_id", studentId);
+                .select("subject, grade, remarks, created_at, term, teacher_id")
+                .eq("student_id", studentId)
+                .order("term", { ascending: true }); // Order by term
 
             if (error) {
                 console.error("Error fetching student grades:", error);
@@ -61,32 +61,45 @@ const ResultSheet = () => {
         fetchStudentGrades();
     }, [studentId]);
 
+    // Group grades by term
+    const termGrades = {
+        1: grades.filter(grade => grade.term === 1),
+        2: grades.filter(grade => grade.term === 2),
+        3: grades.filter(grade => grade.term === 3),
+    };
+
     return (
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-6">
             <h2 className="text-4xl text-black font-bold">Result Sheet</h2>
             {teacherName && <p className="text-black text-2xl mb-2"><strong>Teacher:</strong> {teacherName}</p>}
-            {grades.length > 0 ? (
-                <Table aria-label="Student Grade Table" color="primary" selectionMode="single">
-                    <TableHeader>
-                        <TableColumn>Subject</TableColumn>
-                        <TableColumn>Grade</TableColumn>
-                        <TableColumn>Remarks</TableColumn>
-                        <TableColumn>Date</TableColumn>
-                    </TableHeader>
-                    <TableBody>
-                        {grades.map((grade, index) => (
-                            <TableRow key={index}>
-                                <TableCell>{grade.subject}</TableCell>
-                                <TableCell>{grade.grade}</TableCell>
-                                <TableCell>{grade.remarks}</TableCell>
-                                <TableCell>{new Date(grade.created_at).toLocaleDateString()}</TableCell>
-                            </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            ) : (
-                <p className="text-black">No grades available.</p>
-            )}
+
+            {[1, 2, 3].map(term => (
+                <div key={term}>
+                    <h3 className="text-2xl text-black font-semibold mb-2">Term {term} Results</h3>
+                    {termGrades[term].length > 0 ? (
+                        <Table aria-label={`Term ${term} Grade Table`} color="primary" selectionMode="single">
+                            <TableHeader>
+                                <TableColumn>Subject</TableColumn>
+                                <TableColumn>Grade</TableColumn>
+                                <TableColumn>Remarks</TableColumn>
+                                <TableColumn>Date</TableColumn>
+                            </TableHeader>
+                            <TableBody>
+                                {termGrades[term].map((grade, index) => (
+                                    <TableRow key={index}>
+                                        <TableCell>{grade.subject}</TableCell>
+                                        <TableCell>{grade.grade}</TableCell>
+                                        <TableCell>{grade.remarks}</TableCell>
+                                        <TableCell>{new Date(grade.created_at).toLocaleDateString()}</TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    ) : (
+                        <p className="text-danger font-bold">No grades available for Term {term}.</p>
+                    )}
+                </div>
+            ))}
         </div>
     );
 };

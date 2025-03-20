@@ -22,9 +22,9 @@ import { today, getLocalTimeZone } from "@internationalized/date";
 import { supabase } from "@/app/lib/supabaseClient";
 
 
-export default function DrawerComponentParentAndStudent() {
+export default function DrawerComponentParentAndStudent({ isOpen, onOpenChange }) {
     // Disclosure hooks for main and nested drawers
-    const { isOpen, onOpen, onOpenChange } = useDisclosure();
+    // const { isOpen, onOpen, onOpenChange } = useDisclosure();
     const { isOpen: isViewAllOpen, onOpen: onViewAllOpen, onOpenChange: onViewAllChange } = useDisclosure();
     const { isOpen: isEventDetailOpen, onOpen: onEventDetailOpen, onOpenChange: onEventDetailChange } = useDisclosure();
 
@@ -56,9 +56,9 @@ export default function DrawerComponentParentAndStudent() {
   
     return (
       <>
-        <Button onPress={onOpen}>Open Drawer</Button>
+        {/*<Button onPress={onOpen}>Open Drawer</Button>*/}
 
-        <Drawer isOpen={isOpen} size="md" onOpenChange={onOpenChange}>
+        <Drawer isOpen={isOpen} size="md" onOpenChange={onOpenChange} backdrop="blur">
 
           <DrawerContent>
             {(onClose) => (
@@ -257,7 +257,7 @@ export default function DrawerComponentParentAndStudent() {
                                     alt="Event image"
                                     className="aspect-square w-full hover:scale-110"
                                     height={300}
-                                    src="https://nextuipro.nyc3.cdn.digitaloceanspaces.com/components-images/places/san-francisco.png"
+                                    src={selectedEvent.photo || "https://nextuipro.nyc3.cdn.digitaloceanspaces.com/components-images/places/san-francisco.png"}
                                     />
                                 </div>
                                  

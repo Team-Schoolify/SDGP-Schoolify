@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
 
             <Providers>
                 <MainNavbar/>
-                <div id="root">{children}</div>
+                <div className="min-h-screen" id="root">{children}</div>
                 <ProfileAndNotificationTeacher/>
                 <FooterSection/>
             </Providers>

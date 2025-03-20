@@ -4,6 +4,7 @@ import Hero from "@/app/main/teacher/dashboard/Hero";
 import Subjects from "@/app/main/teacher/dashboard/Subjects";
 import CardSlideshow from "@/app/main/teacher/dashboard/CardSlideshow"
 import {useRouter} from "next/navigation";
+import SplashScreen from "@/app/components/ui/SplashScreen.jsx";
 
 export default function LoginPage() {
 
@@ -40,7 +41,7 @@ export default function LoginPage() {
     }, []);
 
     if (loading) {
-        return <p className="text-center text-black">Loading...</p>;
+        return <SplashScreen onFinish={() => setLoading(false)} />;
     }
 
     if (!user) {
