@@ -23,11 +23,11 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        working-directory: Schoolify - Main/schoolify
-        run: npm install --legacy-peer-deps
+        working-directory: Schoolify/schoolify
+        run: npm install
 
       - name: Create .env.local file
-        working-directory: Schoolify - Main/schoolify
+        working-directory: Schoolify/schoolify
         run: echo "${{ secrets.SECRET_ENV_LOCAL }}" > .env.local
 
       - name: Run unit tests
@@ -36,7 +36,7 @@ jobs:
         run: npm test || true  # Ensures pipeline continues even if tests fail
 
       - name: Build Docker image
-        working-directory: Schoolify - Main/schoolify
+        working-directory: Schoolify/schoolify
         run: docker build -t schoolify:latest .
 
   deploy:
@@ -55,12 +55,12 @@ jobs:
         run: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
       - name: Create .env.local file  # Ensure it's present in the deploy step too
-        working-directory: Schoolify - Main/schoolify
+        working-directory: Schoolify/schoolify
         run: echo "${{ secrets.SECRET_ENV_LOCAL }}" > .env.local
 
 
       - name: Rebuild Docker image  # NEW STEP
-        working-directory: Schoolify - Main/schoolify
+        working-directory: Schoolify/schoolify
         run: docker build -t schoolify:latest .
 
       - name: Push Docker image
