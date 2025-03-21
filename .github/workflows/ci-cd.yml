@@ -23,7 +23,12 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: npm ci --legacy-peer-deps
+        working-directory: Schoolify - Main/schoolify
+        run: npm install --legacy-peer-deps
+
+      - name: Create .env.local file
+        working-directory: Schoolify - Main/schoolify
+        run: echo "${{ secrets.SECRET_ENV_LOCAL }}" > .env.local
 
       - name: Run unit tests
         env:
@@ -31,6 +36,7 @@ jobs:
         run: npm test || true  # Ensures pipeline continues even if tests fail
 
       - name: Build Docker image
+        working-directory: Schoolify - Main/schoolify
         run: docker build -t schoolify:latest .
 
   deploy:
@@ -48,6 +54,15 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
+      - name: Create .env.local file  # Ensure it's present in the deploy step too
+        working-directory: Schoolify - Main/schoolify
+        run: echo "${{ secrets.SECRET_ENV_LOCAL }}" > .env.local
+
+
+      - name: Rebuild Docker image  # NEW STEP
+        working-directory: Schoolify - Main/schoolify
+        run: docker build -t schoolify:latest .
+
       - name: Push Docker image
         run: |
           docker tag schoolify:latest ${{ secrets.DOCKER_USERNAME }}/schoolify:latest
@@ -56,4 +71,4 @@ jobs:
       - name: Deploy to Vercel
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-        run: npx vercel --prod --token="$VERCEL_TOKEN"
+        run: npx vercel --prod --yes --token="$VERCEL_TOKEN" --name schoolify
