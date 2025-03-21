@@ -2,7 +2,7 @@
 
 import React from "react";
 import {Button} from "@nextui-org/react";
-import Lottie from "lottie-react";
+// import Lottie from "lottie-react";
 import animationData from "@/app/schoolifylanding/lotti.json"
 import { useRef } from "react";
 
@@ -55,13 +55,13 @@ const Hero = () => {
                             in</a></p>
                     </div>
 
-                    <div>
-                        {/* <img class="w-full rounded-3xl" src="../public/img/abcd.png" alt="" /> */}
-                        <Lottie
-                            lottieRef={bookRef}
-                            loop={true}
-                            animationData={animationData} />
-                    </div>
+                    {/*<div>*/}
+                    {/*    /!* <img class="w-full rounded-3xl" src="../public/img/abcd.png" alt="" /> *!/*/}
+                    {/*    <Lottie*/}
+                    {/*        lottieRef={bookRef}*/}
+                    {/*        loop={true}*/}
+                    {/*        animationData={animationData} />*/}
+                    {/*</div>*/}
                 </div>
             </div>
         </section>
