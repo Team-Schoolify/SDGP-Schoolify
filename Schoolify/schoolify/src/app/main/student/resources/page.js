@@ -63,7 +63,7 @@ const subjects = [
 
 export default function SubjectsPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white p-6">
+    <div className="min-h-screen bg-gradient-to-b from-background-color to-white p-6">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-4xl font-bold text-center mb-12 relative inline-block text-black">
           Subjects

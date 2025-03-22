@@ -1,5 +1,6 @@
 "use client";
 import React, {useEffect, useState} from 'react'
+<<<<<<< HEAD
 import {
     Badge,
     Button,
@@ -12,10 +13,16 @@ import {
     Popover, PopoverTrigger, PopoverContent,
 } from "@heroui/react";
 import {supabase} from "@/app/lib/supabaseClient";
+=======
+import {Avatar, useDisclosure} from "@heroui/react";
+import {supabase} from "@/app/lib/supabaseClient";
+import { useRouter } from "next/navigation";
+>>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
 
 export const ProfileStudent = () => {
     const [studentId, setStudentId] = useState(null); // Store school_id in state
     const [student, setStudent] = useState(null);
+<<<<<<< HEAD
     const [school, setSchool] = useState(null);
     const [schoolId, setSchoolId] = useState(null);
     const {isOpen, onOpen, onClose} = useDisclosure();
@@ -47,6 +54,21 @@ export const ProfileStudent = () => {
             setStudentId(storedStudentId);
             setSchoolId(storedSchoolId);
             console.log(school, "sadasdasdasdasd");
+=======
+    const router = useRouter(); // ✅ Initialize Next.js router
+
+
+    // ✅ Handle Avatar Click to Navigate
+    const handleAvatarClick = () => {
+        router.push("/main/student/profile?role=student");
+    };
+
+
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            const storedStudentId = localStorage.getItem("student_id");
+            setStudentId(storedStudentId);
+>>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
         }
     }, []);
 
@@ -73,6 +95,7 @@ export const ProfileStudent = () => {
         fetchStudents();
     }, [studentId]); // Runs only when schoolId is available
 
+<<<<<<< HEAD
     useEffect(() => {
         const fetchSchool = async () => {
             if (!schoolId) return; // Prevent fetching if school_id is not available
@@ -151,6 +174,18 @@ export const ProfileStudent = () => {
         {/*        )}*/}
         {/*    </DrawerContent>*/}
         {/*</Drawer>*/}
+=======
+    return (
+    <>
+        <div>
+            <Avatar
+                className="cursor-pointer"
+                isBordered color="success"
+                src={student?.photo || "https://i.pravatar.cc/150"}
+                onClick={handleAvatarClick}
+            />
+        </div>
+>>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
     </>
     )
 }

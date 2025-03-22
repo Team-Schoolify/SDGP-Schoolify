@@ -19,13 +19,18 @@ const AttendanceMark = () => {
     const [students, setStudents] = useState([]);
     const [currentDate, setCurrentDate] = useState("");
     const [attendance, setAttendance] = useState({});
+    
 
     useEffect(() => {
         if (typeof window !== "undefined") {
             const storedSchoolId = localStorage.getItem("school_id");
             const storedTeacherId = localStorage.getItem("teacher_id");
+
+           
             setTeacherId(storedTeacherId);
             setSchoolId(storedSchoolId);
+            setCurrentDate(new Date().toISOString().split("T")[0]);
+              
         }
     }, []);
 
@@ -33,10 +38,12 @@ const AttendanceMark = () => {
         const fetchGradeFromTeacher = async () => {
             if (!teacherId) return; // Prevent fetching if teacherId is not available
 
+
             const { data, error } = await supabase
                 .from("teacher")
                 .select("grade")
                 .eq("teacher_id", teacherId)
+                .order("student_id", { ascending: true })
                 .single(); // Ensures a single object is returned
 
             if (error) {
@@ -45,6 +52,9 @@ const AttendanceMark = () => {
             }
 
             setGrade(data?.grade || "N/A"); // Set grade or default value
+           
+            
+            
         };
 
         fetchGradeFromTeacher();
@@ -64,6 +74,7 @@ const AttendanceMark = () => {
 
             if (error) {
                 console.error("Error fetching students:", error);
+                
                 return;
             }
 

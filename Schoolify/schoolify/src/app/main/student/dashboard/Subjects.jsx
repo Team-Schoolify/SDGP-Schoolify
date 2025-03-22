@@ -4,6 +4,7 @@ export default function Subjects() {
     const list = [
         {
             title: "Mathematics",
+<<<<<<< HEAD
             img: "/img/mathematics.png",
         },
         {
@@ -33,6 +34,37 @@ export default function Subjects() {
         {
             title: "Music",
             img: "/img/music.png",
+=======
+            img: "/img/Subjects/mathematics.jpg",
+        },
+        {
+            title: "Science",
+            img: "/img/Subjects/science.jpg",
+        },
+        {
+            title: "English",
+            img: "/img/Subjects/english.jpg",
+        },
+        {
+            title: "History",
+            img: "/img/Subjects/history.jpg",
+        },
+        {
+            title: "ICT",
+            img: "/img/Subjects/ict.jpg",
+        },
+        {
+            title: "Sinhala",
+            img: "/img/Subjects/sinhala.jpg",
+        },
+        {
+            title: "Commerce",
+            img: "/img/Subjects/commerce.jpg",
+        },
+        {
+            title: "Music",
+            img: "/img/Subjects/arts.jpg",
+>>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
         },
     ];
 

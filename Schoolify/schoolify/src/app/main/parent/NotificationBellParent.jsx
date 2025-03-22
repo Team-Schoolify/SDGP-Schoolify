@@ -148,7 +148,7 @@ const NotificationBell = () => {
                         isIconOnly
                         aria-label="more than 99 notifications"
                         radius="full"
-                        variant="light"
+                        variant="solid"
                         onClick={handleOpen}
                 >
                     <NotificationIcon size={24} />
