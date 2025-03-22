@@ -260,7 +260,7 @@ const Booking = () => {
     return (
         <>
             <div className="mt-10">
-                <h1 className="heading text-customBlue">
+                <h1 className="heading text-black">
                     Book A Session
                 </h1>
                 <div className="py-12 rounded-3xl flex flex-wrap items-center justify-center ">
@@ -463,7 +463,7 @@ const Booking = () => {
                                                             <div className="flex justify-end gap-4 mt-4">
                                                                 <Button
                                                                     variant="bordered"
-                                                                    color="warning"
+                                                                    color="primary"
                                                                     type="submit"
                                                                 >
                                                                     Submit

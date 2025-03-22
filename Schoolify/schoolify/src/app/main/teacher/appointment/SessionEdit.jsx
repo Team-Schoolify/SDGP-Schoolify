@@ -332,14 +332,15 @@ export const SessionEdit = () => {
 
     return (
         <div className="mt-10">
-            <h1 className="heading text-customBlue mb-8">
+            <h1 className="heading text-black mb-8">
                 Session Configuration
             </h1>
 
-            <div className=" bg-customBlack rounded-3xl sm:pb-10 sm:px-10 sm:pt-4 p-0">
+            <div className=" bg-customLightBlue rounded-3xl sm:pb-10 sm:px-10 sm:pt-4 p-0">
 
                 <div className="justify-center mb-4">
                     <Switch
+                        className="bg-customBlack"
                         isSelected={isTeacherAvailable}
                         isDisabled={isDisabled}
                         onValueChange={(value) => handleTeacherAvailability(value)}
@@ -374,7 +375,7 @@ export const SessionEdit = () => {
                 <div
                     className="grid grid-cols-1 md:grid-cols-2 max-w-screen-lg mx-auto items-center sm:gap-10 gap-4 lg:grid-cols-2">
 
-                    <div className="flex flex-col gap-y-1.5 bg-black w-full p-5 border-1 rounded-3xl">
+                    <div className="flex flex-col gap-y-1.5 bg-customBlack w-full p-5 border-1 rounded-3xl">
                         <h1 className="font-bold text-xl">WEDNESDAY</h1>
                         <div className="justify-center mt-3 mb-3">
                             <Switch
@@ -450,7 +451,7 @@ export const SessionEdit = () => {
                         </div>
                     </div>
 
-                    <div className="flex flex-col gap-y-1.5 bg-black w-full p-5 border-1 rounded-3xl">
+                    <div className="flex flex-col gap-y-1.5 bg-customBlack w-full p-5 border-1 rounded-3xl">
                         <h1 className="font-bold text-2xl">FRIDAY</h1>
                         <div className="justify-center mt-3 mb-3">
                             <Switch
