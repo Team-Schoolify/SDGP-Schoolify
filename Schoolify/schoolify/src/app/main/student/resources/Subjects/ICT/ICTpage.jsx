@@ -1,30 +1,18 @@
-<<<<<<< HEAD
-"use client";
-import Sciencepage from "@/app/main/student/resources/Subjects/Science/Sciencepage";
-
-
-export default function LoginPage() {
-    return (
-        <div>
-            <Sciencepage/>
-        </div>
-    );
-}
-=======
 "use client"
 
-import { ArrowRight, X } from "lucide-react"
 import { useState } from "react"
 import Link from "next/link"
+import { ArrowRight, X } from "lucide-react"
 
 const resources = [
   {
     id: 1,
     title: "Learning Materials",
     subTopics: [
-      { id: 1, title: " Chapter 01: ", description: "Explains Newton's first, second, and third laws." },
-      { id: 2, title: " Chapter 02: ", description: "Covers the effects of gravity and objects in free fall." },
-      { id: 3, title: " Chapter 03: ", description: "Discusses how friction and air resistance affect motion." },
+        { id: 1, title: "Chapter 01: Algorithms", description: "Covers that how to create algorithms in correct method." },
+        { id: 2, title: "Chapter 02: Flow Charts", description: "Covers that how to create flow charts." },
+        { id: 3, title: "Chapter 03: Pseudocodes", description: "Covers that how to create psuedocodes." },
+        { id: 4, title: "Chapter 04: Computer Programming", description: "Covers that how to create proper solution for problems in computer langguages" },
     ],
   },
   {
@@ -41,7 +29,7 @@ const resources = [
   },
 ]
 
-export default function ScienceResources() {
+export default function ictResources() {
   const [selectedTopic, setSelectedTopic] = useState(null)
   const [selectedSubTopic, setSelectedSubTopic] = useState(null)
 
@@ -65,7 +53,7 @@ export default function ScienceResources() {
                 <button
                   key={resource.id}
                   onClick={() => setSelectedTopic(resource)}
-                  className="group relative block w-full overflow-hidden rounded-xl bg-blue-400 p-6 text-left transition-all duration-300 hover:bg-blue-500 hover:shadow-lg hover:-translate-y-1"
+                  className="group relative block w-full overflow-hidden rounded-xl bg-green-400 p-6 text-left transition-all duration-300 hover:bg-green-500 hover:shadow-lg hover:-translate-y-1"
                 >
                   <div className="flex items-center justify-between">
                     <h2 className="text-lg font-semibold text-white md:text-xl">{resource.title}</h2>
@@ -101,7 +89,7 @@ export default function ScienceResources() {
                       <button
                         key={subTopic.id}
                         onClick={() => setSelectedSubTopic(subTopic)}
-                        className="block w-full rounded-xl bg-blue-300 p-4 text-left transition-all duration-300 hover:bg-blue-400 hover:shadow-lg"
+                        className="block w-full rounded-xl bg-green-300 p-4 text-left transition-all duration-300 hover:bg-green-400 hover:shadow-lg"
                       >
                         <h3 className="text-lg font-semibold text-white">{subTopic.title}</h3>
                       </button>
@@ -131,4 +119,3 @@ export default function ScienceResources() {
   )
 }
 
->>>>>>> f8965ee033cdaf20f83f9b8aa8b8ec53c9c2b881

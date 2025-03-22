@@ -27,11 +27,16 @@ import { useDisclosure } from "@heroui/react";
 import { Time, today, getLocalTimeZone } from "@internationalized/date";
 import {supabase} from "@/app/lib/supabaseClient";
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> f8965ee033cdaf20f83f9b8aa8b8ec53c9c2b881
 
 
 export default function DrawerComponent() {
     // Disclosure hooks for main and nested drawers
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
+<<<<<<< HEAD
+=======
 =======
 import {Form} from "@nextui-org/react";
 
@@ -40,6 +45,7 @@ export default function DrawerComponent({ isOpen, onOpenChange }) {
     // Disclosure hooks for main and nested drawers
     // const {isOpen, onOpen, onOpenChange} = useDisclosure();
 >>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
+>>>>>>> f8965ee033cdaf20f83f9b8aa8b8ec53c9c2b881
     const {isOpen: isNestedOpen, onOpen: onNestedOpen, onOpenChange: onNestedOpenChange} = useDisclosure();
     const { isOpen: isViewAllOpen, onOpen: onViewAllOpen, onOpenChange: onViewAllChange } = useDisclosure();
     const { isOpen: isEventDetailOpen, onOpen: onEventDetailOpen, onOpenChange: onEventDetailChange } = useDisclosure();
@@ -56,13 +62,19 @@ export default function DrawerComponent({ isOpen, onOpenChange }) {
     const [description, setDescription] = useState("");
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
     const [photo, setPhoto] = useState("");
 >>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
+>>>>>>> f8965ee033cdaf20f83f9b8aa8b8ec53c9c2b881
 
     // State for the list of events
     const [events, setEvents] = useState([]);
 
     // State for More Details 
+<<<<<<< HEAD
+    const [selectedEvent, setSelectedEvent] = useState(null)
+=======
 <<<<<<< HEAD
     const [selectedEvent, setSelectedEvent] = useState(null)
 =======
@@ -79,6 +91,7 @@ export default function DrawerComponent({ isOpen, onOpenChange }) {
         }
     }, []);
 >>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
+>>>>>>> f8965ee033cdaf20f83f9b8aa8b8ec53c9c2b881
 
     // Handle radio button change for time selection
     const handleOptionChange = (value) => {
@@ -92,6 +105,9 @@ export default function DrawerComponent({ isOpen, onOpenChange }) {
     };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> f8965ee033cdaf20f83f9b8aa8b8ec53c9c2b881
     // Handle form submission to save a new event
     // const handleSaveEvent = (e) => {
     //     if (e && e.preventDefault) {
@@ -125,8 +141,11 @@ export default function DrawerComponent({ isOpen, onOpenChange }) {
     //
     // };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
+>>>>>>> f8965ee033cdaf20f83f9b8aa8b8ec53c9c2b881
     const handleSaveEvent = async (e) => {
         if (e && e.preventDefault) {
             e.preventDefault();
@@ -151,10 +170,14 @@ export default function DrawerComponent({ isOpen, onOpenChange }) {
 <<<<<<< HEAD
             description: description.trim() || "No description provided"
 =======
+<<<<<<< HEAD
+            description: description.trim() || "No description provided"
+=======
             description: description.trim() || "No description provided",
             photo: photo.trim() || "No description provided",
             school_id: schoolId
 >>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
+>>>>>>> f8965ee033cdaf20f83f9b8aa8b8ec53c9c2b881
         };
 
         console.log("Inserting new event:", newEvent);
@@ -178,8 +201,11 @@ export default function DrawerComponent({ isOpen, onOpenChange }) {
         setEventTitle("");
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
         setPhoto("");
 >>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
+>>>>>>> f8965ee033cdaf20f83f9b8aa8b8ec53c9c2b881
         setEventDate(today(getLocalTimeZone()));
         setLocation("");
         setDescription("");
@@ -247,10 +273,16 @@ export default function DrawerComponent({ isOpen, onOpenChange }) {
 
         <Drawer isOpen={isOpen} size="md" onOpenChange={onOpenChange}>
 =======
+<<<<<<< HEAD
+        <Button onPress={onOpen}>Open Drawer</Button>
+
+        <Drawer isOpen={isOpen} size="md" onOpenChange={onOpenChange}>
+=======
         {/*<Button onPress={onOpen}>Open Drawer</Button>*/}
 
         <Drawer isOpen={isOpen} size="md" onOpenChange={onOpenChange} backdrop="blur">
 >>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
+>>>>>>> f8965ee033cdaf20f83f9b8aa8b8ec53c9c2b881
 
           <DrawerContent>
             {(onClose) => (
@@ -281,6 +313,9 @@ export default function DrawerComponent({ isOpen, onOpenChange }) {
                 <hr/>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> f8965ee033cdaf20f83f9b8aa8b8ec53c9c2b881
                 {/*<DrawerBody className="flex flex-col gap-4 overflow-y-scroll max-h-[50vh] px-5 scrollbar-hide">*/}
                 {/*    */}
                 {/*    <div className="flex flex-col gap-2">*/}
@@ -338,8 +373,11 @@ export default function DrawerComponent({ isOpen, onOpenChange }) {
 
                 {/*</DrawerBody>*/}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
+>>>>>>> f8965ee033cdaf20f83f9b8aa8b8ec53c9c2b881
                   <DrawerBody className="flex flex-col gap-4 overflow-y-scroll max-h-[50vh] px-5 scrollbar-hide">
                       <div className="flex flex-col gap-2">
                           {events.length === 0 ? (
@@ -407,10 +445,14 @@ export default function DrawerComponent({ isOpen, onOpenChange }) {
 <<<<<<< HEAD
                             <DrawerBody>
 =======
+<<<<<<< HEAD
+                            <DrawerBody>
+=======
 
                             <DrawerBody>
                                 <Form validationBehavior="native" className="w-full gap-y-9" onSubmit={handleSaveEvent}>
 >>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
+>>>>>>> f8965ee033cdaf20f83f9b8aa8b8ec53c9c2b881
 
                                 
                                     <Input 
@@ -420,7 +462,11 @@ export default function DrawerComponent({ isOpen, onOpenChange }) {
 <<<<<<< HEAD
                                         maxLength={45} 
 =======
+<<<<<<< HEAD
+                                        maxLength={45} 
+=======
 >>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
+>>>>>>> f8965ee033cdaf20f83f9b8aa8b8ec53c9c2b881
                                         value={eventTitle}
                                         onChange={(e) => setEventTitle(e.target.value)}
                                     />
@@ -458,20 +504,29 @@ export default function DrawerComponent({ isOpen, onOpenChange }) {
                                     
                                     
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> f8965ee033cdaf20f83f9b8aa8b8ec53c9c2b881
                                     <Input 
                                         label="Location" 
                                         placeholder="Add a location" 
                                         maxLength={45}
+<<<<<<< HEAD
+=======
 =======
                                     <Input
                                         isRequired
                                         label="Location" 
                                         placeholder="Add a location" 
 >>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
+>>>>>>> f8965ee033cdaf20f83f9b8aa8b8ec53c9c2b881
                                         value={location}
                                         onChange={(e) => setLocation(e.target.value)} 
                                     />
 
+<<<<<<< HEAD
+                                    <Textarea 
+=======
 <<<<<<< HEAD
                                     <Textarea 
 =======
@@ -486,6 +541,7 @@ export default function DrawerComponent({ isOpen, onOpenChange }) {
                                     <Textarea
                                         isRequired
 >>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
+>>>>>>> f8965ee033cdaf20f83f9b8aa8b8ec53c9c2b881
                                         label="Description" 
                                         placeholder="Describe the event" 
                                         maxLength={315} 
@@ -499,17 +555,27 @@ export default function DrawerComponent({ isOpen, onOpenChange }) {
                             </DrawerBody>
                             <DrawerFooter>
 =======
+<<<<<<< HEAD
+                            </DrawerBody>
+                            <DrawerFooter>
+=======
                                     <div className="flex gap-2">
 >>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
+>>>>>>> f8965ee033cdaf20f83f9b8aa8b8ec53c9c2b881
                                         <Button color="danger" variant="light" onPress={onNestedClose}>
                                             Cancel
                                         </Button>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> f8965ee033cdaf20f83f9b8aa8b8ec53c9c2b881
                                         <Button color="primary" onPress={handleSaveEvent}>
                                             Save Event
                                         </Button>
                             </DrawerFooter>
+<<<<<<< HEAD
+=======
 =======
                                         <Button color="primary" type="submit" >
                                             Save Event
@@ -529,6 +595,7 @@ export default function DrawerComponent({ isOpen, onOpenChange }) {
                             {/*</DrawerFooter>*/}
 
 >>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
+>>>>>>> f8965ee033cdaf20f83f9b8aa8b8ec53c9c2b881
                             
                     </>
                 )}
@@ -625,8 +692,12 @@ export default function DrawerComponent({ isOpen, onOpenChange }) {
 <<<<<<< HEAD
                                     src="https://nextuipro.nyc3.cdn.digitaloceanspaces.com/components-images/places/san-francisco.png"
 =======
+<<<<<<< HEAD
+                                    src="https://nextuipro.nyc3.cdn.digitaloceanspaces.com/components-images/places/san-francisco.png"
+=======
                                     src={selectedEvent.photo || "https://nextuipro.nyc3.cdn.digitaloceanspaces.com/components-images/places/san-francisco.png"}
 >>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
+>>>>>>> f8965ee033cdaf20f83f9b8aa8b8ec53c9c2b881
                                     />
                                 </div>
                                  
@@ -644,8 +715,12 @@ export default function DrawerComponent({ isOpen, onOpenChange }) {
 <<<<<<< HEAD
                                 <p><strong>Time:</strong> {selectedEvent.time}</p>
 =======
+<<<<<<< HEAD
+                                <p><strong>Time:</strong> {selectedEvent.time}</p>
+=======
                                 <p><strong>Time:</strong> {selectedEvent.start_time}</p>
 >>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
+>>>>>>> f8965ee033cdaf20f83f9b8aa8b8ec53c9c2b881
                                 <p><strong>Location:</strong> {selectedEvent.location}</p>
                                 <p><strong>About the Event:</strong> {selectedEvent.description}</p>
                             </>

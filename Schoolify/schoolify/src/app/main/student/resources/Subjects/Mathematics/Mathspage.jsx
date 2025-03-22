@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-"use client";
-import Sciencepage from "@/app/main/student/resources/Subjects/Science/Sciencepage";
-
-
-export default function LoginPage() {
-    return (
-        <div>
-            <Sciencepage/>
-        </div>
-    );
-}
-=======
 "use client"
 
 import { ArrowRight, X } from "lucide-react"
@@ -131,4 +118,3 @@ export default function ScienceResources() {
   )
 }
 
->>>>>>> f8965ee033cdaf20f83f9b8aa8b8ec53c9c2b881
