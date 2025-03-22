@@ -3,6 +3,12 @@ import React from "react";
 import { useRef } from "react";
 import dynamic from "next/dynamic";
 
+<<<<<<< HEAD:Schoolify/schoolify/src/app/main/student/dashboard/Hero.jsx
+=======
+// const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
+// import animationData from "@/app/main/student/dashboard/lottie_student.json"
+
+>>>>>>> 6a7c1c289781965526ef3bf26429fe467c7e35db:Schoolify - Main/schoolify/src/app/main/student/dashboard/Hero.jsx
 export const Hero = (props) => {
 
     const bookRef = useRef(null);
@@ -27,6 +33,7 @@ export const Hero = (props) => {
                         </h1>
                     </div>
 
+<<<<<<< HEAD:Schoolify/schoolify/src/app/main/student/dashboard/Hero.jsx
                     {/* Animation Section */}
                     {/*<div className="flex justify-end">*/}
                     {/*    <Lottie*/}
@@ -36,6 +43,17 @@ export const Hero = (props) => {
                     {/*        className="w-full lg:w-6/7"*/}
                     {/*    />*/}
                     {/*</div>*/}
+=======
+                    {/* Animation Section
+                    <div className="flex justify-end">
+                        <Lottie
+                            lottieRef={bookRef}
+                            loop={true}
+                            animationData={animationData}
+                            className="w-full lg:w-6/7"
+                        />
+                    </div> */}
+>>>>>>> 6a7c1c289781965526ef3bf26429fe467c7e35db:Schoolify - Main/schoolify/src/app/main/student/dashboard/Hero.jsx
                 </div>
             </div>
         </section>
