@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // import jwt from 'jsonwebtoken';
 //
 // export default async function handler(req, res) {
@@ -47,6 +48,8 @@
 // }
 
 
+=======
+>>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
 import jwt from 'jsonwebtoken';
 import { supabase } from '../../../lib/supabaseClient';
 

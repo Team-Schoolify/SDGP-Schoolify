@@ -7,12 +7,14 @@ import CardSlideshow from "@/app/main/student/dashboard/CardSlideshow"
 import {FooterSection} from "@/app/components/FooterSection";
 import {useRouter} from "next/navigation";
 import {ProfileStudent} from "@/app/main/student/profileStudent";
+import SplashScreen from "@/app/components/ui/SplashScreen.jsx";
 
 export default function LoginPage() {
 
     const router = useRouter();
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -43,7 +45,8 @@ export default function LoginPage() {
     }, []);
 
     if (loading) {
-        return <p className="text-center text-white">Loading...</p>;
+        // return <p className="text-center text-white">Loading...</p>;
+        return <SplashScreen onFinish={() => setLoading(false)} />;
     }
 
     if (!user) {
@@ -51,7 +54,7 @@ export default function LoginPage() {
     }
 
     return (
-        <div>
+        <div >
             {/*<MainNavbar/>*/}
             <Hero/>
             <Subjects/>

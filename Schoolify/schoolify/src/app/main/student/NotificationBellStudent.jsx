@@ -69,15 +69,6 @@ const NotificationBell = () => {
 
         console.log("Fetching notifications for:", { userId, role });
 
-        // const roleColumn = role === "student" ? "student_id" :
-        //     role === "parent" ? "parent_id" :
-        //         role === "teacher" ? "teacher_id" : null;
-        //
-        // if (!roleColumn) {
-        //     console.error("Invalid role detected:", role);
-        //     return;
-        // }
-
         const fetchNotifications = async () => {
             const { data, error } = await supabase
                 .from('notifications')
@@ -148,7 +139,7 @@ const NotificationBell = () => {
                         isIconOnly
                         aria-label="more than 99 notifications"
                         radius="full"
-                        variant="light"
+                        variant="solid"
                         onClick={handleOpen}
                 >
                     <NotificationIcon size={24} />

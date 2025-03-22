@@ -5,6 +5,8 @@ import MainNavbar from "@/app/components/MainNavbar";
 import {FooterSection} from "@/app/components/FooterSection";
 import {ProfileParent} from "@/app/main/parent/profileParent";
 import NotificationBellParent from "@/app/main/parent/NotificationBellParent";
+import Calendar from "@/app/components/Calendar"
+import {Suspense} from "react";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -26,12 +28,15 @@ export default function RootLayout({ children }) {
         <>
 
             <Providers>
-                <MainNavbar/>
-                <div id="root">{children}</div>
+                <Suspense fallback={<div>Loading Navbar...</div>}>
+                    <MainNavbar />
+                </Suspense>
+                <div className="min-h-screen" id="root">{children}</div>
                 <div className="
                   text-white rounded-full fixed
-                  bottom-4 right-6 shadow-lg dark:bg-white dark:text-black
+                  bottom-4 right-6 shadow-lg
                   flex gap-4 items-center sm:flex-row flex-col z-50">
+                    <Calendar/>
                     <NotificationBellParent/>
                     <ProfileParent/>
                 </div>

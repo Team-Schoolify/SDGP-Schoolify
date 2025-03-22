@@ -12,6 +12,8 @@ import {
     Popover, PopoverTrigger, PopoverContent,
 } from "@heroui/react";
 import {supabase} from "@/app/lib/supabaseClient";
+import { useRouter } from "next/navigation";
+
 
 export const ProfileParent = () => {
     const [parentId, setParentId] = useState(null); // Store school_id in state
@@ -19,6 +21,8 @@ export const ProfileParent = () => {
     const [school, setSchool] = useState(null);
     const [schoolId, setSchoolId] = useState(null);
     const {isOpen, onOpen, onClose} = useDisclosure();
+    const router = useRouter(); // ✅ Initialize Next.js router
+
 
     const NotificationIcon = ({size, height, width, ...props}) => {
         return (
@@ -38,6 +42,11 @@ export const ProfileParent = () => {
                 />
             </svg>
         );
+    };
+
+    // ✅ Handle Avatar Click to Navigate
+    const handleAvatarClick = () => {
+        router.push("/main/parent/profile?role=parent");
     };
 
     useEffect(() => {
@@ -106,9 +115,14 @@ export const ProfileParent = () => {
         <div
         >
             <Popover placement="top" showArrow={true} backdrop="blur">
-                <PopoverTrigger>
-                    <Avatar className="cursor-pointer" isBordered color="success"  src={parent?.photo || "https://i.pravatar.cc/150"} />
-                </PopoverTrigger>
+                {/*<PopoverTrigger>*/}
+                    <Avatar
+                        className="cursor-pointer"
+                        isBordered color="success"
+                        src={parent?.photo || "https://i.pravatar.cc/150"}
+                        onClick={handleAvatarClick}
+                    />
+                {/*</PopoverTrigger>*/}
                 <PopoverContent>
                     <div className="p-5 flex flex-col text-left gap-y-3">
                         <Avatar isBordered color="success" size="lg"
