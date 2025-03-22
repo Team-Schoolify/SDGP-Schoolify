@@ -22,9 +22,15 @@ import { today, getLocalTimeZone } from "@internationalized/date";
 import { supabase } from "@/app/lib/supabaseClient";
 
 
+<<<<<<< HEAD
+export default function DrawerComponentParentAndStudent() {
+    // Disclosure hooks for main and nested drawers
+    const { isOpen, onOpen, onOpenChange } = useDisclosure();
+=======
 export default function DrawerComponentParentAndStudent({ isOpen, onOpenChange }) {
     // Disclosure hooks for main and nested drawers
     // const { isOpen, onOpen, onOpenChange } = useDisclosure();
+>>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
     const { isOpen: isViewAllOpen, onOpen: onViewAllOpen, onOpenChange: onViewAllChange } = useDisclosure();
     const { isOpen: isEventDetailOpen, onOpen: onEventDetailOpen, onOpenChange: onEventDetailChange } = useDisclosure();
 
@@ -56,9 +62,15 @@ export default function DrawerComponentParentAndStudent({ isOpen, onOpenChange }
   
     return (
       <>
+<<<<<<< HEAD
+        <Button onPress={onOpen}>Open Drawer</Button>
+
+        <Drawer isOpen={isOpen} size="md" onOpenChange={onOpenChange}>
+=======
         {/*<Button onPress={onOpen}>Open Drawer</Button>*/}
 
         <Drawer isOpen={isOpen} size="md" onOpenChange={onOpenChange} backdrop="blur">
+>>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
 
           <DrawerContent>
             {(onClose) => (
@@ -257,7 +269,11 @@ export default function DrawerComponentParentAndStudent({ isOpen, onOpenChange }
                                     alt="Event image"
                                     className="aspect-square w-full hover:scale-110"
                                     height={300}
+<<<<<<< HEAD
+                                    src="https://nextuipro.nyc3.cdn.digitaloceanspaces.com/components-images/places/san-francisco.png"
+=======
                                     src={selectedEvent.photo || "https://nextuipro.nyc3.cdn.digitaloceanspaces.com/components-images/places/san-francisco.png"}
+>>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
                                     />
                                 </div>
                                  

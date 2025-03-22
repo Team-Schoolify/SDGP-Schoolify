@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+import React, {useEffect, useState} from 'react'
+=======
 // import React, {useEffect, useState} from 'react'
 // import { supabase } from "@/app/lib/supabaseClient";
 // import { Card, CardHeader, CardBody, CardFooter } from "@heroui/react";
@@ -135,10 +138,26 @@
 
 
 import React, { useEffect, useState } from "react";
+>>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
 import { supabase } from "@/app/lib/supabaseClient";
 import { Card, CardHeader, CardBody, CardFooter } from "@heroui/react";
 
 const AttendanceParent = () => {
+<<<<<<< HEAD
+
+    const [schoolId, setSchoolId] = useState(null);
+    const [parentId, setParentId] = useState(null);
+    const [studentId, setStudentId] = useState(null);
+    const [teacherId, setTeacherId] = useState(null);
+    const [attendance, setAttendance] = useState(null);
+    const [teacher, setTeacher] = useState(null);
+    const [student, setStudent] = useState(null);
+    const [currentDate, setCurrentDate] = useState("");
+
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            const storedSchoolId = localStorage.getItem("school_id") ;
+=======
     const [schoolId, setSchoolId] = useState(null);
     const [parentId, setParentId] = useState(null);
     const [studentId, setStudentId] = useState(null);
@@ -149,11 +168,19 @@ const AttendanceParent = () => {
     useEffect(() => {
         if (typeof window !== "undefined") {
             const storedSchoolId = localStorage.getItem("school_id");
+>>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
             const storedParentId = localStorage.getItem("parent_id");
 
             setSchoolId(storedSchoolId);
             setParentId(storedParentId);
         }
+<<<<<<< HEAD
+        setCurrentDate(new Date().toISOString().split("T")[0]);
+        
+
+
+=======
+>>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
     }, []);
 
     useEffect(() => {
@@ -164,7 +191,11 @@ const AttendanceParent = () => {
                 .from("parent")
                 .select("student_id")
                 .eq("parent_id", parentId)
+<<<<<<< HEAD
+                .single(); // Get only today's attendance record
+=======
                 .single();
+>>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
 
             if (error) {
                 console.error("Error fetching student id:", error);
@@ -172,6 +203,10 @@ const AttendanceParent = () => {
             }
 
             setStudentId(data.student_id || null);
+<<<<<<< HEAD
+            
+=======
+>>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
         };
 
         fetchStudentId();
@@ -185,7 +220,12 @@ const AttendanceParent = () => {
                 .from("student")
                 .select("student_name")
                 .eq("student_id", studentId)
+<<<<<<< HEAD
+                .eq("date", currentDate)
+                .single(); // Get only today's attendance record
+=======
                 .single();
+>>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
 
             if (error) {
                 console.error("Error fetching student name:", error);
@@ -200,20 +240,79 @@ const AttendanceParent = () => {
 
     useEffect(() => {
         const fetchAttendance = async () => {
+<<<<<<< HEAD
+            if (!studentId || !schoolId || !currentDate) return;
+=======
             if (!studentId || !schoolId) return;
+>>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
 
             const { data, error } = await supabase
                 .from("attendance")
                 .select("status, date, created_at, teacher_id")
                 .eq("student_id", studentId)
                 .eq("school_id", schoolId)
+<<<<<<< HEAD
+                .eq("date", currentDate)
+                .single(); // Get only today's attendance record
+=======
                 .order("date", { ascending: false }); // Fetch all records and sort by date (latest first)
+>>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
 
             if (error) {
                 console.error("Error fetching attendance:", error);
                 return;
             }
 
+<<<<<<< HEAD
+            setAttendance(data || null);
+            
+        };
+
+        fetchAttendance();
+    }, [studentId, schoolId, currentDate]);
+
+    useEffect(() => {
+        const fetchTeacherName = async () => {
+            if (!teacherId) return;
+
+            const { data, error } = await supabase
+                .from("teacher")
+                .select("teacher_name")
+                .eq("teacher_id", teacherId)
+                .single(); // Get only today's attendance record
+
+            if (error) {
+                console.error("Error fetching teacher name:", error);
+                return;
+            }
+
+            setTeacher(data || null);
+        };
+
+        fetchTeacherName();
+    }, [teacherId]);
+
+    return (
+        <div className="p-6 flex justify-center">
+            <Card className="w-96 shadow-lg">
+                <CardHeader className="text-xl font-bold text-center">Attendance Record</CardHeader>
+                <CardBody className="text-center">
+                    <p className="text-lg text-white opacity-70">Date: {attendance ? attendance.date : "date"}</p>
+                    <p className="text-lg text-white opacity-70">Student: {student ? student.student_name : "name"}</p>
+                    <p className={`text-2xl font-semibold ${attendance?.status === "Present" ? "text-success" : "text-danger"}`}>
+                        {attendance ? attendance.status : "Attendance Not Marked"}
+                    </p>
+                </CardBody>
+                <CardFooter className="text-left text-sm text-white opacity-70">
+                    {attendance ? `Marked at: ${new Date(attendance.created_at).toLocaleTimeString()}` : "No record found"}<br/>
+                    {teacher ? `Marked by: ${teacher.teacher_name}` : "No record found"}
+                </CardFooter>
+            </Card>
+        </div>
+    )
+}
+export default AttendanceParent
+=======
             setAttendanceRecords(data || []);
         };
 
@@ -280,3 +379,4 @@ const AttendanceParent = () => {
             };
 
             export default AttendanceParent;
+>>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398

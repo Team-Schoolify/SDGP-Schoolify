@@ -1,3 +1,32 @@
+<<<<<<< HEAD
+import React, {useEffect, useState} from 'react'
+import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button, Input} from "@heroui/react";
+import {Form, Select, SelectItem} from "@nextui-org/react";
+import {supabase} from "@/app/lib/supabaseClient";
+import {schoolRole} from "@/app/login/page";
+
+const GradeSheet = () => {
+    const [schoolId, setSchoolId] = useState(null); // Store school_id in state
+    const [teacherId, setTeacherId] = useState(null);
+    const [students, setStudents] = useState([]);
+    const [selectedStudent, setSelectedStudent] = useState(null); // Default role
+    const [selectedSubjects, setSelectedSubjects] = useState([]);
+    const [grades, setGrades] = useState({});
+    const [remarks, setRemarks] = useState("");
+
+    const subjects = [
+        ["Maths","Science","English","Sinhala","History","Arts","Geography","PTS","Maths",],
+        ["Maths","Science","English","Sinhala","History","Buddhism","Basket 1","Basket 2","Basket 3",],
+        ["Maths","Physics","Chemistry"],
+        ["Bio","Physics","Chemistry"],
+        ["Commerce","anan","manan"],
+        ["Sinhala","sakala","bujan"]
+    ];
+
+
+    useEffect(() => {
+        // Ensure localStorage is accessed only in the browser
+=======
 "use client";
 
 import React, { useState, useEffect, useMemo } from "react";
@@ -37,6 +66,7 @@ const GradeSheet = () => {
     ];
 
     useEffect(() => {
+>>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
         if (typeof window !== "undefined") {
             const storedSchoolId = localStorage.getItem("school_id");
             const storedTeacherId = localStorage.getItem("teacher_id");
@@ -47,34 +77,62 @@ const GradeSheet = () => {
 
     useEffect(() => {
         const fetchStudents = async () => {
+<<<<<<< HEAD
+            if (!schoolId) return; // Prevent fetching if school_id is not available
+
+=======
             if (!schoolId) return;
+>>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
             const { data, error } = await supabase
                 .from("student")
                 .select("student_id, student_name, student_grade, subject_scheme")
                 .eq("school_id", schoolId);
+<<<<<<< HEAD
+
+=======
+>>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
             if (error) {
                 console.error("Error fetching students:", error);
                 return;
             }
             setStudents(data);
         };
+<<<<<<< HEAD
+
+        fetchStudents();
+    }, [schoolId]); // Runs only when schoolId is available
+
+=======
         fetchStudents();
     }, [schoolId]);
+>>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
 
     const handleSave = async (e) => {
         e.preventDefault();
 
+<<<<<<< HEAD
+        if (!selectedStudent || !selectedSubjects.length) {
+            alert("Please select a student and enter grades.");
+            return;
+        }
+
+        const student = students.find(s => s.student_id === selectedStudent);
+=======
         if (!selectedStudent || !selectedSubjects.length || !term) {
             alert("Please select a student, a term, and enter grades.");
             return;
         }
 
         const student = students.find((s) => s.student_id === selectedStudent);
+>>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
         if (!student) {
             alert("Invalid student selection.");
             return;
         }
 
+<<<<<<< HEAD
+        const entries = selectedSubjects.map(subject => ({
+=======
         // Check if the student already has results for the selected term
         const { data: existingGrades, error: checkError } = await supabase
             .from("gradebook")
@@ -95,16 +153,23 @@ const GradeSheet = () => {
 
         // Prepare the entries
         const entries = selectedSubjects.map((subject) => ({
+>>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
             student_id: student.student_id,
             school_id: schoolId,
             teacher_id: teacherId,
             subject: subject,
             grade: grades[subject] || null,
+<<<<<<< HEAD
+            remarks: remarks,
+        }));
+
+=======
             term: term,
             remarks: remarks,
         }));
 
         // Insert data
+>>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
         const { data, error } = await supabase.from("gradebook").insert(entries);
 
         if (error) {
@@ -112,6 +177,70 @@ const GradeSheet = () => {
             alert("Failed to save grades. Please try again.");
         } else {
             alert("Grades saved successfully!");
+<<<<<<< HEAD
+            console.log("Inserted Data:", data);
+            setGrades({});
+            setRemarks("");
+        }
+    };
+
+
+
+    return (
+        <div className="flex flex-col gap-y-1.5 bg-black w-full p-5 border-1 rounded-3xl">
+            <h1 className="font-bold text-xl">GradeSheet</h1>
+            <div className="justify-center mt-3 mb-3 ">
+                <Form
+                    className="flex flex-col gap-6 text-left items-left  w-full"
+                    validationBehavior="native"
+                    onSubmit={handleSave}
+                >
+
+                <Select
+                    isRequired
+                    className="w-full rounded-lg"
+                    defaultSelectedKeys={[" "]}
+                    label="Student Name"
+                    labelPlacement="outside"
+                    placeholder="Select A Student"
+                    variant="bordered"
+                    fullWidth={true}
+                    selectedKeys={selectedStudent ? new Set([String(selectedStudent)]) : new Set()} // Ensure string
+                    onSelectionChange={(keys) => {
+                        if (!keys || keys.size === 0) return;
+
+                        const selectedId = Number(Array.from(keys)[0]); // Convert to Number
+                        console.log("selectedId:", selectedId);
+
+                        setSelectedStudent(selectedId); // Store as Number
+
+                        const student = students.find(s => Number(s.student_id) === selectedId); // Compare as Number
+                        console.log("Selected Student Object:", student);
+
+                        if (student) {
+                            setSelectedSubjects(subjects[student.subject_scheme - 1] || []);
+                        } else {
+                            setSelectedSubjects([]);
+                            console.error("No matching student found in the students array.");
+                        }
+                    }}
+                >
+                    {students.map((student) => (
+                        <SelectItem key={student.student_id}>{student.student_name}</SelectItem>
+                    ))}
+                </Select>
+                    <div className="w-full  grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        {/*{selectedSubjects.map((subject, index) => (*/}
+                        {/*    <Input*/}
+                        {/*        isRequired*/}
+                        {/*        key={index}*/}
+                        {/*        label={subject}*/}
+                        {/*        labelPlacement="outside"*/}
+                        {/*        name={subject}*/}
+                        {/*        placeholder="Enter Grade"*/}
+                        {/*    />*/}
+                        {/*))}*/}
+=======
             setGrades({});
             setRemarks("");
             setTerm(null);
@@ -177,6 +306,7 @@ const GradeSheet = () => {
                     </Select>
 
                     <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-6">
+>>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
                         {selectedSubjects.map((subject, index) => (
                             <Input
                                 isRequired
@@ -191,7 +321,11 @@ const GradeSheet = () => {
                         <Input
                             isRequired
                             label="Remarks"
+<<<<<<< HEAD
+                            labelPlacement={"outside"}
+=======
                             labelPlacement="outside"
+>>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
                             name="remarks"
                             placeholder="Remark"
                             type="textarea"
@@ -199,20 +333,33 @@ const GradeSheet = () => {
                             onChange={(e) => setRemarks(e.target.value)}
                         />
                     </div>
+<<<<<<< HEAD
+=======
 
+>>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
                     <div className="flex justify-end gap-4 mt-4">
                         <Button
                             variant="bordered"
                             color="warning"
                             type="submit"
+<<<<<<< HEAD
+
+=======
+>>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
                         >
                             Save
                         </Button>
                     </div>
                 </Form>
             </div>
+<<<<<<< HEAD
+        </div>)
+}
+export default GradeSheet
+=======
         </div>
     );
 };
 
 export default GradeSheet;
+>>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398

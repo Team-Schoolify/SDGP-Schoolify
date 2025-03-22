@@ -19,7 +19,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
+<<<<<<< HEAD
+    title: "Resources",
+=======
     title: "Dashboard",
+>>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
     description: "This is Schoolify Website",
 };
 
@@ -31,7 +35,11 @@ export default function RootLayout({ children }) {
                 <Suspense fallback={<div>Loading Navbar...</div>}>
                     <MainNavbar />
                 </Suspense>
+<<<<<<< HEAD
+                <div id="root">{children}</div>
+=======
                 <div className="min-h-screen" id="root">{children}</div>
+>>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
                 <div className="
                   text-white rounded-full fixed
                   bottom-4 right-6 shadow-lg
@@ -40,9 +48,16 @@ export default function RootLayout({ children }) {
                     <NotificationBell/>
                     <ProfileStudent/>
                 </div>
+<<<<<<< HEAD
+                <FooterSection/>
+            </Providers>
+        </>
+    );
+=======
                     <FooterSection/>
             </Providers>
 
         </>
 );
+>>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
 }
