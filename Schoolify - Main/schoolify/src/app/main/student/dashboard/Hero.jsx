@@ -2,8 +2,8 @@ import React from "react";
 import { useRef } from "react";
 import dynamic from "next/dynamic";
 
-const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
-import animationData from "@/app/main/student/dashboard/lottie_student.json"
+// const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
+// import animationData from "@/app/main/student/dashboard/lottie_student.json"
 
 export const Hero = (props) => {
 
@@ -30,7 +30,7 @@ export const Hero = (props) => {
                         </h1>
                     </div>
 
-                    {/* Animation Section */}
+                    {/* Animation Section
                     <div className="flex justify-end">
                         <Lottie
                             lottieRef={bookRef}
@@ -38,7 +38,7 @@ export const Hero = (props) => {
                             animationData={animationData}
                             className="w-full lg:w-6/7"
                         />
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </section>
