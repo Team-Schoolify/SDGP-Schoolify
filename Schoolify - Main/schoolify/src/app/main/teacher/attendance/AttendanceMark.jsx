@@ -38,10 +38,12 @@ const AttendanceMark = () => {
         const fetchGradeFromTeacher = async () => {
             if (!teacherId) return; // Prevent fetching if teacherId is not available
 
+
             const { data, error } = await supabase
                 .from("teacher")
                 .select("grade")
                 .eq("teacher_id", teacherId)
+                .order("student_id", { ascending: true })
                 .single(); // Ensures a single object is returned
 
             if (error) {

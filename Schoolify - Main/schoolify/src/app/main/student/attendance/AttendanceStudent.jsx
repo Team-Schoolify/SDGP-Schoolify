@@ -67,6 +67,7 @@ const AttendanceStudent = () => {
             }
 
             setTeacher(data || null);
+            setTeacher(data?.teacher || null);
         };
 
         fetchTeacherName();
