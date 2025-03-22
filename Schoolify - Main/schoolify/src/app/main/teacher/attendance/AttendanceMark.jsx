@@ -72,8 +72,7 @@ const AttendanceMark = () => {
 
             if (error) {
                 console.error("Error fetching students:", error);
-                setState((prev) => ({ ...prev, students: studentData }));
-                    setAttendance(new Map(studentData.map((s) => [s.student_id, false])));
+                
                 return;
             }
 
