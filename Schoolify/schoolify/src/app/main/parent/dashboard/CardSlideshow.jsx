@@ -100,7 +100,7 @@ export default function CardSlideshow() {
                                         <CardBody className="overflow-visible p-0">
                                         <Image
                                             alt={event.title}
-                                            className="w-full object-cover"
+                                            className="w-full h-64 object-cover"
                                             radius="lg"
                                             shadow="sm"
                                             src={getEventImage(event)} 
@@ -127,11 +127,6 @@ export default function CardSlideshow() {
                         {selectedEvent ? (
                             <div className="flex flex-col items-center space-y-4">
                                 {/* Event Image */}
-                                {/*<Image*/}
-                                {/*    alt={selectedEvent.title}*/}
-                                {/*    className="w-full max-w-lg object-cover rounded-lg"*/}
-                                {/*    src={getEventImage(selectedEvent)}*/}
-                                {/*/>*/}
                                 <div className="flex w-full justify-center items-center pt-4">
                                     <Image
                                         isBlurred
