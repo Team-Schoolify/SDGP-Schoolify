@@ -57,6 +57,7 @@ const AttendanceParent = () => {
                 .from("student")
                 .select("student_name")
                 .eq("student_id", studentId)
+                .eq("date", currentDate)
                 .single(); // Get only today's attendance record
 
             if (error) {
