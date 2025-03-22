@@ -23,11 +23,8 @@ export const Hero = (props) => {
                             className="text-2xl font-bold  sm:text-6xl xl:text-8xl pb-2
           bg-gradient-to-r from-customBlue to-customLightBlue bg-clip-text text-transparent"
                         >
-                            Hello Student!
+                            Welcome Back!
                         </h1>
-                        <p className="mt-4 text-base text-black sm:text-3xl">
-                            Are you ready to do the learning?
-                        </p>
                     </div>
 
                     {/* Animation Section */}
