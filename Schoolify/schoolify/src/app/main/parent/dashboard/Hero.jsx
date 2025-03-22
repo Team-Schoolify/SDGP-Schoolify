@@ -1,10 +1,5 @@
 import React from "react";
-<<<<<<< HEAD:Schoolify - Main/schoolify/src/app/main/student/dashboard/Hero.jsx
-const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
-import animationData from "@/app/main/student/dashboard/lottie_student.json"
-=======
 // const Lottie = dynamic(() => import("lottie-react"), { ssr: false });import animationData from "@/app/main/student/dashboard/lottie.json"
->>>>>>> 641b4ce8034b7c717671250103426c12ef0ab8df:Schoolify/schoolify/src/app/main/parent/dashboard/Hero.jsx
 import { useRef } from "react";
 import dynamic from "next/dynamic";
 
