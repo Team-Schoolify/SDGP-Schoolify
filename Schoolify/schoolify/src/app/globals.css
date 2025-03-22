@@ -107,6 +107,9 @@ body {
   * {
     @apply border-border;
     }
+    html {
+        font-family: 'Poppins', sans-serif;
+    }
   body {
     @apply bg-background text-foreground;
     }
