@@ -18,6 +18,9 @@ export default {
   			customGreen: '#6CBC82',
 			customBlack: "#18181B",
   			customLightBlue: '#6598E5',
+			customBackGround: '#ebf3fa',
+			customDarkBackGround: '#c2e1fc',
+			customFooter: '#5d98c6',
   			card: {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'
@@ -62,7 +65,10 @@ export default {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
-  		}
+  		},
+		fontFamily: {
+			sans: ['Poppins', 'sans-serif'],
+		},
   	}
   },
   darkMode: ["class", "class"],

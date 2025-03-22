@@ -87,7 +87,7 @@ const TeacherSessionCard = () => {
 
     return (
         <div className="mt-10">
-            <h1 className="heading text-customBlue">
+            <h1 className="heading text-black">
                 Sessions you've Got
             </h1>
             <div className="mt-16">
@@ -163,7 +163,7 @@ const TeacherSessionCard = () => {
                         ))}
                     </div>
                 ) : (
-                    <p className="text-white font-bold text-2xl">No sessions booked for youyet.</p>
+                    <p className="text-danger font-bold text-2xl">No sessions booked for youyet.</p>
                 )}
             </div>
         </div>

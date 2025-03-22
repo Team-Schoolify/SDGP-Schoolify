@@ -8,6 +8,7 @@ import NotificationBell from "@/app/main/student/NotificationBellStudent";
 import Calendar from "@/app/components/Calendar.jsx";
 import NotificationBellParent from "@/app/main/parent/NotificationBellParent.jsx";
 import {ProfileParent} from "@/app/main/parent/profileParent.jsx";
+import {Suspense} from "react";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -29,6 +30,9 @@ export default function RootLayout({ children }) {
         <>
 
             <Providers>
+                <Suspense fallback={<div>Loading Navbar...</div>}>
+                    <MainNavbar />
+                </Suspense>
                 <div id="root">{children}</div>
                 <div className="
                   text-white rounded-full fixed
@@ -38,6 +42,7 @@ export default function RootLayout({ children }) {
                     <NotificationBellParent/>
                     <ProfileParent/>
                 </div>
+                <FooterSection/>
             </Providers>
 
         </>

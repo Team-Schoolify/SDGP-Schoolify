@@ -272,7 +272,7 @@ export default function DrawerComponentParentAndStudent({ isOpen, onOpenChange }
                                     month: "long",
                                     year: "numeric",
                                 })}</p>
-                                <p><strong>Time:</strong> {selectedEvent.time}</p>
+                                <p><strong>Time:</strong> {selectedEvent.start_time}</p>
                                 <p><strong>Location:</strong> {selectedEvent.location}</p>
                                 <p><strong>About the Event:</strong> {selectedEvent.description}</p>
                             </>
