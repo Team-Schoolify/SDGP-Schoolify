@@ -100,7 +100,7 @@ export default function CardSlideshow() {
                                         <CardBody className="overflow-visible p-0">
                                         <Image
                                             alt={event.title}
-                                            className="w-full h-64 object-cover"
+                                            className="w-full h-50 object-cover"
                                             radius="lg"
                                             shadow="sm"
                                             src={getEventImage(event)} 
