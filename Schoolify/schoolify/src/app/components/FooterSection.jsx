@@ -65,7 +65,7 @@ export function FooterSection() {
                             <ul>
                                 <li>
                                     <a href="#" className="hover:text-white">
-                                        FaceBook
+                                        Twitter
                                     </a>
                                 </li>
                                 <li>
@@ -154,7 +154,6 @@ export function FooterSection() {
                             <path d="M22.675 0H1.325A1.32 1.32 0 000 1.318v21.363C0 23.684.316 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.797c0-3.1 1.894-4.787 4.659-4.787 1.325 0 2.464.098 2.795.143v3.242h-1.918c-1.504 0-1.796.715-1.796 1.762v2.311h3.591l-.467 3.622h-3.124V24h6.116A1.32 1.32 0 0024 22.682V1.318A1.32 1.32 0 0022.675 0z" />
                         </svg>
                     </a>
-
                     <a
                         href="https://instagram.com"
                         className="hover:opacity-80"

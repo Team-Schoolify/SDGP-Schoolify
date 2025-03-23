@@ -3,13 +3,10 @@ import "@/app/globals.css";
 import {Providers} from "@/app/providers";
 import MainNavbar from "@/app/components/MainNavbar";
 import {FooterSection} from "@/app/components/FooterSection";
-<<<<<<< HEAD:Schoolify - Main/schoolify/src/app/main/student/gradebook/layout.js
-=======
 import {ProfileStudent} from "@/app/main/student/profileStudent";
 import NotificationBell from "@/app/main/student/NotificationBellStudent";
 import Calendar from "@/app/components/Calendar";
 import {Suspense} from "react";
->>>>>>> c63787fbd329fbb9c606e342da1b1ce5c6199ecb:Schoolify/schoolify/src/app/main/student/gradebook/layout.js
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -35,8 +32,6 @@ export default function RootLayout({ children }) {
                     <MainNavbar />
                 </Suspense>
                 <div id="root">{children}</div>
-<<<<<<< HEAD:Schoolify - Main/schoolify/src/app/main/student/gradebook/layout.js
-=======
                 <div className="
                   text-white rounded-full fixed
                   bottom-4 right-6 shadow-lg
@@ -45,7 +40,6 @@ export default function RootLayout({ children }) {
                     <NotificationBell/>
                     <ProfileStudent/>
                 </div>
->>>>>>> c63787fbd329fbb9c606e342da1b1ce5c6199ecb:Schoolify/schoolify/src/app/main/student/gradebook/layout.js
                 <FooterSection/>
             </Providers>
 

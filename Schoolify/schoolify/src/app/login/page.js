@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { BackgroundLines } from "@/app/components/ui/background-lines";
 import { Button, Input, Checkbox, Link, Form, Divider, Image } from "@nextui-org/react";
 import { Icon } from "@iconify/react";
-import { SchoolifyIcon } from "./SchoolifyIcon";
+import { AcmeIcon } from "./AcmeIcon";
 import NextLink from "next/link";
 import { jwtDecode } from "jwt-decode";
 import {Select, SelectItem} from "@nextui-org/react";
