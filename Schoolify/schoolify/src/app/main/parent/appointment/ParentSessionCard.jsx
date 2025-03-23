@@ -89,7 +89,7 @@ const ParentSessionCard = () => {
 
     return (
         <div className="mt-10">
-            <h1 className="heading text-customBlue">
+            <h1 className="heading text-black">
                 Your Booked Sessions
             </h1>
             <div className="mt-16">

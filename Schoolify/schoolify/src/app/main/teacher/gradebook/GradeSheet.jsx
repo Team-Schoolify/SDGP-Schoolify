@@ -82,8 +82,7 @@ const GradeSheet = () => {
 
 =======
             if (!schoolId) return;
->>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
-            const { data, error } = await supabase
+            const {data, error} = await supabase
                 .from("student")
                 .select("student_id, student_name, student_grade, subject_scheme")
                 .eq("school_id", schoolId);
@@ -134,7 +133,7 @@ const GradeSheet = () => {
         const entries = selectedSubjects.map(subject => ({
 =======
         // Check if the student already has results for the selected term
-        const { data: existingGrades, error: checkError } = await supabase
+        const {data: existingGrades, error: checkError} = await supabase
             .from("gradebook")
             .select("*")
             .eq("student_id", student.student_id)
@@ -169,8 +168,7 @@ const GradeSheet = () => {
         }));
 
         // Insert data
->>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
-        const { data, error } = await supabase.from("gradebook").insert(entries);
+        const {data, error} = await supabase.from("gradebook").insert(entries);
 
         if (error) {
             console.error("Error saving grades:", error);
@@ -250,115 +248,102 @@ const GradeSheet = () => {
     };
 
     return (
-        <div className="flex flex-col gap-y-1.5 bg-black w-full p-5 border-1 rounded-3xl">
-            <h1 className="font-bold text-4xl">GradeSheet</h1>
-            <div className="justify-center mt-3 mb-3 ">
-                <Form
-                    className="flex flex-col gap-6 text-left items-left w-full"
-                    validationBehavior="native"
-                    onSubmit={handleSave}
-                >
-                    <Select
-                        isRequired
-                        className="w-full rounded-lg"
-                        label="Student Name"
-                        labelPlacement="outside"
-                        placeholder="Select A Student"
-                        variant="bordered"
-                        fullWidth={true}
-                        selectedKeys={selectedStudent ? new Set([String(selectedStudent)]) : new Set()}
-                        onSelectionChange={(keys) => {
-                            if (!keys || keys.size === 0) return;
-                            const selectedId = Number(Array.from(keys)[0]);
-                            setSelectedStudent(selectedId);
-                            const student = students.find(s => Number(s.student_id) === selectedId);
-                            if (student) {
-                                setSelectedSubjects(subjects[student.subject_scheme - 1] || []);
-                            } else {
-                                setSelectedSubjects([]);
-                                console.error("No matching student found.");
-                            }
-                        }}
-                    >
-                        {students.map((student) => (
-                            <SelectItem key={student.student_id}>{student.student_name}</SelectItem>
-                        ))}
-                    </Select>
+        <>
+            <h1 className="font-bold text-4xl text-black mb-8">GradeSheet</h1>
+            <div className="flex flex-col gap-y-1.5 bg-customBlack text-black w-full p-5  rounded-3xl">
 
-                    {/* Term Selection */}
-                    <Select
-                        isRequired
-                        className="w-full rounded-lg"
-                        label="Term"
-                        labelPlacement="outside"
-                        placeholder="Select Term"
-                        variant="bordered"
-                        fullWidth={true}
-                        selectedKeys={term ? new Set([String(term)]) : new Set()}
-                        onSelectionChange={(keys) => {
-                            if (!keys || keys.size === 0) return;
-                            setTerm(Number(Array.from(keys)[0]));
-                        }}
+                <div className="justify-center mt-3 mb-3 ">
+                    <Form
+                        className="flex flex-col gap-6 text-left items-left w-full "
+                        validationBehavior="native"
+                        onSubmit={handleSave}
                     >
-                        <SelectItem key="1">Term 1</SelectItem>
-                        <SelectItem key="2">Term 2</SelectItem>
-                        <SelectItem key="3">Term 3</SelectItem>
-                    </Select>
+                        <Select
+                            isRequired
+                            className="w-full rounded-lg"
+                            label="Student Name"
+                            labelPlacement="outside"
+                            placeholder="Select A Student"
+                            variant="bordered"
+                            fullWidth={true}
+                            selectedKeys={selectedStudent ? new Set([String(selectedStudent)]) : new Set()}
+                            onSelectionChange={(keys) => {
+                                if (!keys || keys.size === 0) return;
+                                const selectedId = Number(Array.from(keys)[0]);
+                                setSelectedStudent(selectedId);
+                                const student = students.find(s => Number(s.student_id) === selectedId);
+                                if (student) {
+                                    setSelectedSubjects(subjects[student.subject_scheme - 1] || []);
+                                } else {
+                                    setSelectedSubjects([]);
+                                    console.error("No matching student found.");
+                                }
+                            }}
+                        >
+                            {students.map((student) => (
+                                <SelectItem key={student.student_id}>{student.student_name}</SelectItem>
+                            ))}
+                        </Select>
 
-                    <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-6">
->>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
-                        {selectedSubjects.map((subject, index) => (
+                        {/* Term Selection */}
+                        <Select
+                            isRequired
+                            className="w-full rounded-lg"
+                            label="Term"
+                            labelPlacement="outside"
+                            placeholder="Select Term"
+                            variant="bordered"
+                            fullWidth={true}
+                            selectedKeys={term ? new Set([String(term)]) : new Set()}
+                            onSelectionChange={(keys) => {
+                                if (!keys || keys.size === 0) return;
+                                setTerm(Number(Array.from(keys)[0]));
+                            }}
+                        >
+                            <SelectItem key="1">Term 1</SelectItem>
+                            <SelectItem key="2">Term 2</SelectItem>
+                            <SelectItem key="3">Term 3</SelectItem>
+                        </Select>
+
+                        <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            {selectedSubjects.map((subject, index) => (
+                                <Input
+                                    isRequired
+                                    key={index}
+                                    label={subject}
+                                    labelPlacement="outside"
+                                    name={subject}
+                                    placeholder="Enter Grade"
+                                    onChange={(e) => setGrades({...grades, [subject]: e.target.value})}
+                                />
+                            ))}
                             <Input
                                 isRequired
-                                key={index}
-                                label={subject}
+                                label="Remarks"
                                 labelPlacement="outside"
-                                name={subject}
-                                placeholder="Enter Grade"
-                                onChange={(e) => setGrades({ ...grades, [subject]: e.target.value })}
+                                name="remarks"
+                                placeholder="Remark"
+                                type="textarea"
+                                variant="bordered"
+                                onChange={(e) => setRemarks(e.target.value)}
                             />
-                        ))}
-                        <Input
-                            isRequired
-                            label="Remarks"
-<<<<<<< HEAD
-                            labelPlacement={"outside"}
-=======
-                            labelPlacement="outside"
->>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
-                            name="remarks"
-                            placeholder="Remark"
-                            type="textarea"
-                            variant="bordered"
-                            onChange={(e) => setRemarks(e.target.value)}
-                        />
-                    </div>
-<<<<<<< HEAD
-=======
+                        </div>
 
->>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
-                    <div className="flex justify-end gap-4 mt-4">
-                        <Button
-                            variant="bordered"
-                            color="warning"
-                            type="submit"
-<<<<<<< HEAD
-
-=======
->>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
-                        >
-                            Save
-                        </Button>
-                    </div>
-                </Form>
+                        <div className="flex justify-end gap-4 mt-4">
+                            <Button
+                                variant="bordered"
+                                color="primary"
+                                type="submit"
+                            >
+                                Save
+                            </Button>
+                        </div>
+                    </Form>
+                </div>
             </div>
-<<<<<<< HEAD
-        </div>)
-}
-export default GradeSheet
-=======
-        </div>
-    );
+        </>
+)
+    ;
 };
 
 export default GradeSheet;

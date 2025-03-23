@@ -181,11 +181,7 @@ export default function CardSlideshow() {
                                         <CardBody className="overflow-visible p-0">
                                         <Image
                                             alt={event.title}
-<<<<<<< HEAD
-                                            className="w-full object-cover"
-=======
-                                            className="w-full h-50 object-cover"
->>>>>>> f8965ee033cdaf20f83f9b8aa8b8ec53c9c2b881
+                                            className="w-full h-64 object-cover"
                                             radius="lg"
                                             shadow="sm"
                                             src={getEventImage(event)} 
@@ -339,17 +335,22 @@ export default function CardSlideshow() {
 =======
 
             {/* Drawer - Displays Selected Event Details */}
-            <Drawer isOpen={isOpen} onOpenChange={onOpenChange}>
+            <Drawer backdrop="blur" isOpen={isOpen} onOpenChange={onOpenChange}>
                 <DrawerContent className="bg-gray-600 p-5">
                     <DrawerBody className="p-5">
                         {selectedEvent ? (
                             <div className="flex flex-col items-center space-y-4">
                                 {/* Event Image */}
-                                <Image
-                                    alt={selectedEvent.title}
-                                    className="w-full max-w-lg object-cover rounded-lg"
-                                    src={getEventImage(selectedEvent)}
-                                />
+                                <div className="flex w-full justify-center items-center pt-4">
+                                    <Image
+                                        isBlurred
+                                        isZoomed
+                                        alt={selectedEvent.title}
+                                        className="aspect-square w-full hover:scale-110"
+                                        height={300}
+                                        src={getEventImage(selectedEvent)}
+                                    />
+                                </div>
 
                                 {/* Event Title */}
                                 <h2 className="text-3xl font-bold text-center">{selectedEvent.title}</h2>

@@ -158,7 +158,7 @@ const AttendanceMark = () => {
                     ))}
                 </TableBody>
             </Table>
-            <Button className="w-full" type="submit" color="warning" variant="ghost">
+            <Button className="w-full" type="submit" color="primary" variant="ghost">
                 Submit Attendance
             </Button>
         </Form>
