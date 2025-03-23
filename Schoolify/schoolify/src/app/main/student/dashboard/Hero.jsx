@@ -27,7 +27,13 @@ export const Hero = (props) => {
                     </div>
 
                     {/* Animation Section */}
-
+                    <div className="flex justify-center items-center">
+                        <img
+                            src="/img/lottie.gif"
+                            alt="Student Studying"
+                            className="w-full max-w-lg h-auto md:max-w-xl lg:max-w-2xl"
+                        />
+                    </div>
                 </div>
             </div>
         </section>
