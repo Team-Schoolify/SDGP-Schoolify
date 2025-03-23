@@ -30,7 +30,6 @@ export default function RootLayout({ children }) {
                     <MainNavbar />
                 </Suspense>
                 <div id="root">{children}</div>
-                <ProfileAndNotificationTeacher/>
                 <FooterSection/>
             </Providers>
 
