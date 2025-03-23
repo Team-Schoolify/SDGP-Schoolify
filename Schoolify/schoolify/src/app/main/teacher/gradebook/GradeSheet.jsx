@@ -1,32 +1,3 @@
-<<<<<<< HEAD
-import React, {useEffect, useState} from 'react'
-import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button, Input} from "@heroui/react";
-import {Form, Select, SelectItem} from "@nextui-org/react";
-import {supabase} from "@/app/lib/supabaseClient";
-import {schoolRole} from "@/app/login/page";
-
-const GradeSheet = () => {
-    const [schoolId, setSchoolId] = useState(null); // Store school_id in state
-    const [teacherId, setTeacherId] = useState(null);
-    const [students, setStudents] = useState([]);
-    const [selectedStudent, setSelectedStudent] = useState(null); // Default role
-    const [selectedSubjects, setSelectedSubjects] = useState([]);
-    const [grades, setGrades] = useState({});
-    const [remarks, setRemarks] = useState("");
-
-    const subjects = [
-        ["Maths","Science","English","Sinhala","History","Arts","Geography","PTS","Maths",],
-        ["Maths","Science","English","Sinhala","History","Buddhism","Basket 1","Basket 2","Basket 3",],
-        ["Maths","Physics","Chemistry"],
-        ["Bio","Physics","Chemistry"],
-        ["Commerce","anan","manan"],
-        ["Sinhala","sakala","bujan"]
-    ];
-
-
-    useEffect(() => {
-        // Ensure localStorage is accessed only in the browser
-=======
 "use client";
 
 import React, { useState, useEffect, useMemo } from "react";
@@ -66,7 +37,6 @@ const GradeSheet = () => {
     ];
 
     useEffect(() => {
->>>>>>> 8c161dff35ceb5e4130dbbf5164120827a129398
         if (typeof window !== "undefined") {
             const storedSchoolId = localStorage.getItem("school_id");
             const storedTeacherId = localStorage.getItem("teacher_id");
