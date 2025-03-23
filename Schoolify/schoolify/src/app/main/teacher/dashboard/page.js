@@ -51,7 +51,7 @@ export default function LoginPage() {
     return (
         <div>
             <Hero/>
-            {/* <Subjects/> */}
+            {/*<Subjects/>*/}
             <CardSlideshow/>
         </div>
     );
