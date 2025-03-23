@@ -154,10 +154,6 @@ const AttendanceParent = () => {
             setSchoolId(storedSchoolId);
             setParentId(storedParentId);
         }
-        setCurrentDate(new Date().toISOString().split("T")[0]);
-        
-
-
     }, []);
 
     useEffect(() => {
@@ -189,8 +185,7 @@ const AttendanceParent = () => {
                 .from("student")
                 .select("student_name")
                 .eq("student_id", studentId)
-                .eq("date", currentDate)
-                .single(); // Get only today's attendance record
+                .single();
 
             if (error) {
                 console.error("Error fetching student name:", error);
@@ -205,7 +200,7 @@ const AttendanceParent = () => {
 
     useEffect(() => {
         const fetchAttendance = async () => {
-            if (!studentId || !schoolId || !currentDate) return;
+            if (!studentId || !schoolId) return;
 
             const { data, error } = await supabase
                 .from("attendance")
@@ -261,7 +256,7 @@ const AttendanceParent = () => {
             <div className="grid sm:grid-cols-3 items-center gap-4">
                 {attendanceRecords.length > 0 ? (
                     attendanceRecords.map((attendance, index) => (
-                        <Card key={index} className="w-80 shadow-lg">
+                        <Card key={index} className="w-80 shadow-lg bg-customBlack">
                             <CardHeader className="text-xl font-bold text-center">Attendance</CardHeader>
                             <CardBody className="text-center">
                                 <p className="text-lg text-white opacity-70">Date: {attendance.date}</p>

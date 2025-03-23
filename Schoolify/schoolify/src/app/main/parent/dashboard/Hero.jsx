@@ -27,15 +27,15 @@ export const Hero = (props) => {
                         </h1>
                     </div>
 
-                    {/* Animation Section
-                    <div className="flex justify-end">
-                        <Lottie
-                            lottieRef={bookRef}
-                            loop={true}
-                            animationData={animationData}
-                            className="w-full lg:w-6/7"
-                        />
-                    </div> */}
+                    {/* Animation Section */}
+                    {/*<div className="flex justify-end">*/}
+                    {/*    <Lottie*/}
+                    {/*        lottieRef={bookRef}*/}
+                    {/*        loop={true}*/}
+                    {/*        animationData={animationData}*/}
+                    {/*        className="w-full lg:w-6/7"*/}
+                    {/*    />*/}
+                    {/*</div>*/}
                 </div>
             </div>
         </section>

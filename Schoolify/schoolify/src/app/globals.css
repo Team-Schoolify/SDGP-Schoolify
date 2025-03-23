@@ -107,6 +107,9 @@ body {
   * {
     @apply border-border;
     }
+    html {
+        font-family: 'Poppins', sans-serif;
+    }
   body {
     @apply bg-background text-foreground;
     }
@@ -127,3 +130,4 @@ body {
     padding-left: 21px;
     padding-right: 21px;
   }
+  

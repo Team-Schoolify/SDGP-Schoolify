@@ -125,17 +125,17 @@ export default function SubjectResources() {
 
             {/* Full-Screen Drawer for Resources */}
             <Drawer isOpen={isOpen} size="full" onClose={onClose}>
-                <DrawerContent>
+                <DrawerContent className="bg-white">
                     {(onClose) => (
                         <>
-                            <DrawerHeader className="flex flex-col gap-1 text-3xl">
+                            <DrawerHeader className="flex flex-col gap-1 text-3xl bg-black">
                                 Resources for {selectedSubject}
                             </DrawerHeader>
                             <DrawerBody>
                                 {resources.length > 0 ? (
                                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                                         {resources.map((resource) => (
-                                            <Card key={resource.id} className="bg-white bg-opacity-40">
+                                            <Card key={resource.id} className="bg-customLightBlue bg-opacity-80">
                                                 <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
                                                     <h3 className="text-lg text-black font-bold">{resource.title}</h3>
                                                     <p className="text-black text-sm">
@@ -153,7 +153,7 @@ export default function SubjectResources() {
                                                     <p className="text-black mt-2">{resource.description}</p>
                                                 </CardBody>
                                                 <CardFooter>
-                                                    <Link isBlock showAnchorIcon color="success" href={resource.file_url} target="_blank">
+                                                    <Link isBlock showAnchorIcon color="primary" href={resource.file_url} target="_blank">
                                                         View Resource
                                                     </Link>
                                                 </CardFooter>
@@ -164,7 +164,7 @@ export default function SubjectResources() {
                                     <p className="text-gray-600">No resources available for this subject.</p>
                                 )}
                             </DrawerBody>
-                            <DrawerFooter>
+                            <DrawerFooter className="bg-black">
                                 <Button color="danger" variant="light" onPress={onClose}>
                                     Close
                                 </Button>
