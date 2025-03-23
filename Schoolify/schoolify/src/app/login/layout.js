@@ -1,11 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/app/globals.css";
 import {Providers} from "@/app/providers";
-import MainNavbar from "@/app/components/MainNavbar";
-import {FooterSection} from "@/app/components/FooterSection";
-import {ProfileParent} from "@/app/main/parent/profileParent";
-import NotificationBellParent from "@/app/main/parent/NotificationBellParent";
-import {Suspense} from "react";
+
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -18,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-    title: "Parent",
+    title: "Login",
     description: "This is Schoolify Website",
     icon: "/favicon.ico"
 };
@@ -28,13 +24,11 @@ export default function RootLayout({ children }) {
         <>
 
             <Providers>
-                <Suspense fallback={<div>Loading Navbar...</div>}>
-                    <MainNavbar />
-                </Suspense>
-                <div id="root">{children}</div>
-                <FooterSection/>
+
+                {children}
+
             </Providers>
 
         </>
-);
+    );
 }
