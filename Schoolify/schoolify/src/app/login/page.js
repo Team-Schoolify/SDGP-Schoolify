@@ -188,7 +188,6 @@ export default function LoginPage() {
                                 {/*    </Checkbox>*/}
                                 {/*    <Link className="text-sm text-gray-400" href="#" size="sm">*/}
                                 {/*        Forgot password?*/}
-                                {/*    </Link>*/}
                                 {/*</div>*/}
                                 <Button
                                     className="w-full"
