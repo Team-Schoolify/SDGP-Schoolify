@@ -108,7 +108,6 @@ export default function MainNavbar() {
                 {/*            Sign Up*/}
                 {/*        </Button>*/}
                 {/*    </NavbarItem>*/}
-                {/*</NavbarContent>*/}
 
                 {/* Hamburger Menu (Mobile) */}
                 <NavbarContent className="sm:hidden flex items-center justify-end">
